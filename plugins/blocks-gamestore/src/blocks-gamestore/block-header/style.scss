@@ -1,0 +1,70 @@
+.wp-block-blocks-gamestore-block-header {
+	width: 100%;
+	background: var(--background-default, rgba(250, 250, 250, 1));
+	color: var(--text-primary, #0e0d0f);
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 140%;
+	letter-spacing: 15%;
+	text-align: left;
+	text-transform: uppercase;
+
+	a {
+		text-decoration: none;
+	}
+
+	.inner-header {
+		padding: 0 32px;
+		display: flex;
+		height: 100px;
+		align-items: center;
+		justify-content: space-between;
+
+		.wp-block-group {
+			display: flex;
+			align-items: center;
+			gap: 48px;
+
+			.wp-block-navigation {
+				margin-top: 0;
+			}
+		}
+
+		.right-section {
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			gap: 12px;
+
+			.header-icon {
+				fill: none;
+				stroke: var(--action-main, rgba(14, 13, 15, 0.64));
+			}
+
+			.header-search,
+			.header-mode-switcher,
+			.header-cart-link {
+				cursor: pointer;
+			}
+
+			.header-member-link {
+				a {
+					display: flex;
+					height: 40px;
+					box-sizing: border-box;
+					align-items: center;
+					padding: 4px 20px;
+					border: 1px solid var(--divider-main, rgba(14, 13, 15, 0.08));
+					border-radius: 5px;
+					color: var(--text-primary, rgba(14, 13, 15, 1));
+					font-size: 12px;
+					font-weight: 700;
+					line-height: 12px;
+					letter-spacing: 1.8px;
+					text-align: left;
+					text-transform: uppercase;
+				}
+			}
+		}
+	}
+}
