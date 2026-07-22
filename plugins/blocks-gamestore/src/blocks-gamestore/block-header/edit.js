@@ -35,7 +35,8 @@ export default function Edit({ attributes, setAttributes }) {
 								width="24"
 								height="24"
 								fill="none"
-								color="var(--action-main, rgba(14, 13, 15, 0.64))"
+								color="var(--action-main-svg, rgb(14, 13, 15))"
+								opacity="0.64"
 							>
 								<rect
 									width="24"
@@ -67,7 +68,8 @@ export default function Edit({ attributes, setAttributes }) {
 								width="36"
 								height="36"
 								fill="none"
-								color="var(--action-main, rgba(14, 13, 15, 0.64))"
+								color="var(--action-main-svg, rgb(14, 13, 15))"
+								opacity="0.64"
 							>
 								<rect
 									width="36"
@@ -143,7 +145,8 @@ export default function Edit({ attributes, setAttributes }) {
 										width="36"
 										height="36"
 										fill="none"
-										color="var(--action-main, rgba(14, 13, 15, 0.64))"
+										color="var(--action-main-svg, rgb(14, 13, 15))"
+										opacity="0.64"
 									>
 										<rect
 											width="36"

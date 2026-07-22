@@ -63,7 +63,8 @@ function Edit({
               width: "24",
               height: "24",
               fill: "none",
-              color: "var(--action-main, rgba(14, 13, 15, 0.64))",
+              color: "var(--action-main-svg, rgb(14, 13, 15))",
+              opacity: "0.64",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("rect", {
                 width: "24",
                 height: "24",
@@ -92,7 +93,8 @@ function Edit({
               width: "36",
               height: "36",
               fill: "none",
-              color: "var(--action-main, rgba(14, 13, 15, 0.64))",
+              color: "var(--action-main-svg, rgb(14, 13, 15))",
+              opacity: "0.64",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("rect", {
                 width: "36",
                 height: "36",
@@ -160,7 +162,8 @@ function Edit({
                 width: "36",
                 height: "36",
                 fill: "none",
-                color: "var(--action-main, rgba(14, 13, 15, 0.64))",
+                color: "var(--action-main-svg, rgb(14, 13, 15))",
+                opacity: "0.64",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("rect", {
                   width: "36",
                   height: "36",
@@ -275,7 +278,8 @@ function save({
             width: "24",
             height: "24",
             fill: "none",
-            color: "var(--action-main, rgba(14, 13, 15, 0.64))",
+            color: "var(--action-main-svg, rgb(14, 13, 15))",
+            opacity: "0.64",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("rect", {
               width: "24",
               height: "24",
@@ -304,7 +308,8 @@ function save({
             width: "36",
             height: "36",
             fill: "none",
-            color: "var(--action-main, rgba(14, 13, 15, 0.64))",
+            color: "var(--action-main-svg, rgb(14, 13, 15))",
+            opacity: "0.64",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("rect", {
               width: "36",
               height: "36",
@@ -372,7 +377,8 @@ function save({
               width: "36",
               height: "36",
               fill: "none",
-              color: "var(--action-main, rgba(14, 13, 15, 0.64))",
+              color: "var(--action-main-svg, rgb(14, 13, 15))",
+              opacity: "0.64",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("rect", {
                 width: "36",
                 height: "36",
