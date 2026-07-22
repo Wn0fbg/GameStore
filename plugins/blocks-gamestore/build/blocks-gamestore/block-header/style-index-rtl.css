@@ -132,6 +132,7 @@
     background: url(../../images/mobile.ce1801d1.png) !important;
     background-size: cover !important;
     background-position: center !important;
+    background-repeat: no-repeat;
     z-index: 999999 !important;
     padding: 80px 24px 30px !important;
     overflow-y: auto !important;
