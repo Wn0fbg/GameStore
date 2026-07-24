@@ -1,22 +1,40 @@
 <?php
 
 function gamestore_styles() {
-	wp_enqueue_style(
-		'gamestore-general',
-		get_template_directory_uri() . '/assets/css/gamestore.css',
-		[],
-		wp_get_theme()->get( 'Version' )
-	);
+    // Сначала Swiper
+    wp_enqueue_style(
+        'swiper-bundle',
+        get_template_directory_uri() . '/assets/css/swiper-bundle.min.css',
+        [],
+        wp_get_theme()->get('Version')
+    );
 
-	wp_enqueue_script(
-		'gamestore-theme-related', 
-		get_template_directory_uri() . '/assets/js/gamestore-theme-related.js', 
-		[], 
-		wp_get_theme()->get( 'Version' ), 
-		true
-	);
+    // Потом ваши стили (с зависимостью от Swiper)
+    wp_enqueue_style(
+        'gamestore-general',
+        get_template_directory_uri() . '/assets/css/gamestore.css',
+        ['swiper-bundle'], // Добавьте зависимость
+        wp_get_theme()->get('Version')
+    );
+
+    // Скрипты
+    wp_enqueue_script(
+        'swiper-bundle', 
+        get_template_directory_uri() . '/assets/js/swiper-bundle.min.js', 
+        [], 
+        wp_get_theme()->get('Version'), 
+        true
+    );
+
+    wp_enqueue_script(
+        'gamestore-theme-related', 
+        get_template_directory_uri() . '/assets/js/gamestore-theme-related.js', 
+        ['swiper-bundle'], // Зависимость
+        wp_get_theme()->get('Version'), 
+        true
+    );
 }
-add_action( 'wp_enqueue_scripts', 'gamestore_styles' );
+add_action('wp_enqueue_scripts', 'gamestore_styles');
 
 function gamestore_google_font() {
 	$font_url = '';

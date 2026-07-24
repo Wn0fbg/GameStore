@@ -15,7 +15,11 @@ const SlideItem = ({ index, slide, onImageChange, onRemove }) => {
 		<div className="slide-item">
 			<div className="slide-item-image">
 				<p>Light Version Logo</p>
-				{slide.lightImage && <img src={slide.lightImage} alt="Slide image" />}
+				{slide.lightImage && (
+					<div className="image-box">
+						<img src={slide.lightImage} alt="Slide image" />
+					</div>
+				)}
 				<MediaPlaceholder
 					icon="format-image"
 					onSelect={(media) => onImageChange(media.url, index, "lightImage")}
@@ -31,7 +35,11 @@ const SlideItem = ({ index, slide, onImageChange, onRemove }) => {
 			</div>
 			<div className="slide-item-image">
 				<p>Dark Version Logo</p>
-				{slide.darkImage && <img src={slide.darkImage} alt="Slide image" />}
+				{slide.darkImage && (
+					<div className="image-box">
+						<img src={slide.darkImage} alt="Slide image" />
+					</div>
+				)}
 				<MediaPlaceholder
 					icon="format-image"
 					onSelect={(media) => onImageChange(media.url, index, "darkImage")}
@@ -56,10 +64,18 @@ const SlideItem = ({ index, slide, onImageChange, onRemove }) => {
 };
 
 export default function Edit({ attributes, setAttributes }) {
-	const { title, description, link, linkAnchor, video, image, isVideo } =
-		attributes;
+	const {
+		title,
+		description,
+		link,
+		linkAnchor,
+		video,
+		image,
+		isVideo,
+		slides: initialSlides,
+	} = attributes;
 	const [isVideoUpload, setIsVideoUpload] = useState(isVideo);
-	const [slides, setSlides] = useState([attributes.slides || []]);
+	const [slides, setSlides] = useState(initialSlides || []);
 
 	const onSlideChange = (updatedSlide, index) => {
 		const updatedSlides = [...slides];
@@ -69,7 +85,10 @@ export default function Edit({ attributes, setAttributes }) {
 	};
 
 	const addSlide = () => {
-		setSlides([...slides, { image: "" }]);
+		const newSlide = { lightImage: "", darkImage: "" };
+		const updatedSlides = [...slides, newSlide];
+		setSlides(updatedSlides);
+		setAttributes({ slides: updatedSlides });
 	};
 
 	const removeSlide = (index) => {
@@ -79,8 +98,8 @@ export default function Edit({ attributes, setAttributes }) {
 		setAttributes({ slides: updatedSlides });
 	};
 
-	const handleImageChange = (url, index) => {
-		const updatedSlide = { ...slides[index], image: url };
+	const handleImageChange = (url, index, imageType) => {
+		const updatedSlide = { ...slides[index], [imageType]: url };
 		onSlideChange(updatedSlide, index);
 	};
 
@@ -160,10 +179,10 @@ export default function Edit({ attributes, setAttributes }) {
 							onRemove={removeSlide}
 						/>
 					))}
+					<Button className="components-button is-primary" onClick={addSlide}>
+						Add Slide
+					</Button>
 				</PanelBody>
-				<Button className="components-button is-primary" onClick={addSlide}>
-					Add Slide
-				</Button>
 			</InspectorControls>
 			<div {...useBlockProps()}>
 				{video && (
@@ -197,7 +216,7 @@ export default function Edit({ attributes, setAttributes }) {
 						placeholder="Enter description..."
 					/>
 					{linkAnchor && (
-						<a href={link} className="hero-button">
+						<a href={link} className="hero-button shadow">
 							{linkAnchor}
 						</a>
 					)}

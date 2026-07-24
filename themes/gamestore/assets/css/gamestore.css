@@ -95,6 +95,8 @@ html {
 body {
   text-align: left;
   overflow: hidden;
+  font-size: clamp(1rem, calc(0.93rem + 0.33vw), 1.25rem);
+  line-height: 1.6;
 }
 
 /* Styles intended only for the front.*/
@@ -116,14 +118,22 @@ body {
 /* Variables */
 :root {
   --background-default: #fafafa;
-  --action-main-svg: rgba(14, 13, 15);
-  --divider-main: rgba(14, 13, 15, 0.08);
+  --action-main-svg: #0e0d0f;
+  --divider-main: #0e0d0f14;
   --text-primary: #0e0d0f;
-  --secondary-48: rgba(250, 250, 250, 0.48);
+  --secondary-48: #fafafa7a;
   --color-contrast: #0a090a;
   --purple-main: #6f76c0;
+  --accent-gradient: linear-gradient(90deg, #3dafe2 0%, #6f76c0 100%);
+  --text-secondary: rgba(14, 13, 15, 0.7);
+  --mask-gradient: linear-gradient(
+    270deg,
+    rgba(14, 13, 15, 0) 0%,
+    #ececec 79.5%
+  );
+  --mask-gradient-second: linear-gradient(180deg, #fafafa00 0%, #fafafa 100%);
 }
-  
+
 .dark-mode-gamestore {
   --background-default: #0e0d0f;
   --action-main-svg: rgba(255, 255, 255);
@@ -131,8 +141,95 @@ body {
   --text-primary: #ffffff;
   --secondary-48: rgba(14, 13, 15, 0.6);
   --color-contrast: #fff;
+  --text-secondary: #ffffff;
+  --wp--preset--color--base: #0e0d0f;
+  --wp--preset--color--contrast: #fff;
+  --mask-gradient: linear-gradient(
+    270deg,
+    rgba(14, 13, 15, 0) 0%,
+    #0d0b0f 79.5%
+  );
+  --mask-gradient-second: linear-gradient(180deg, #0e0d0f00 0%, #0e0d0f 100%);
 }
 
 body {
   font-family: "Urbanist";
+  font-style: normal;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Оберните все стили в родительский класс вашей темы */
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: "Urbanist";
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.h1 {
+  font-size: clamp(2.5rem, calc(2.11rem + 1.97vw), 4rem);
+}
+
+.h2 {
+  font-size: clamp(2.25rem, calc(1.95rem + 1.48vw), 3.38rem);
+}
+
+.h3 {
+  font-size: clamp(2rem, calc(1.8rem + 0.98vw), 2.75rem);
+}
+
+.h4 {
+  font-size: clamp(1.75rem, calc(1.65rem + 0.49vw), 2.13rem);
+}
+
+.h5 {
+  font-size: clamp(1.5rem, calc(1.4rem + 0.49vw), 1.88rem);
+}
+
+.h6 {
+  font-size: clamp(1.25rem, calc(1.15rem + 0.49vw), 1.63rem);
+}
+
+.hero-button {
+  border-radius: 5px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 32px;
+  font-style: Bold;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 2.1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: var(
+    --accent-gradient,
+    linear-gradient(90deg, #3dafe2 0%, #6f76c0 100%)
+  );
+  transition: all 300ms ease-in-out;
+
+  &.shadow {
+    box-shadow: 0px 16px 24px 0px rgba(61, 175, 226, 0.48);
+  }
+
+  &:hover {
+    background: linear-gradient(90deg, #6f76c0 0%, #4c54a6 100%);
+    transition: all 300ms ease-in-out;
+
+    &.shadow {
+      box-shadow: 0px 8px 12px -6px rgba(61, 175, 226, 0.48);
+    }
+  }
 }
