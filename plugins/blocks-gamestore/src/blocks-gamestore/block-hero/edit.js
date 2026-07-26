@@ -139,7 +139,7 @@ export default function Edit({ attributes, setAttributes }) {
 							});
 						}}
 					/>
-					<div style={{ marginTop: "10px" }}>
+					<div>
 						{isVideoUpload && video && (
 							<video controls muted style={{ maxWidth: "100%" }}>
 								<source src={video} type="video/mp4" />
@@ -221,6 +221,28 @@ export default function Edit({ attributes, setAttributes }) {
 						</a>
 					)}
 				</div>
+				{slides && (
+					<div className="hero-slider">
+						<div className="slider-container">
+							<div className="swiper-wrapper">
+								{slides.map((slide, index) => (
+									<div key={index} className="swiper-slide slide-item">
+										<img
+											src={slide.lightImage}
+											alt="Logo"
+											className="light-logo"
+										/>
+										<img
+											src={slide.darkImage}
+											alt="Logo"
+											className="dark-logo"
+										/>
+									</div>
+								))}
+							</div>
+						</div>
+					</div>
+				)}
 			</div>
 		</>
 	);

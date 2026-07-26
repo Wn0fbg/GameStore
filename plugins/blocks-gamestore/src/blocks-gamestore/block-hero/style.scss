@@ -8,6 +8,16 @@ body .is-layout-constrained .wp-block-blocks-gamestore-block-hero {
 }
 
 .wp-block-blocks-gamestore-block-hero {
+	.image-bg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 980px;
+		object-fit: cover;
+		z-index: 0;
+	}
+
 	.video-bg {
 		position: absolute;
 		top: 0;
