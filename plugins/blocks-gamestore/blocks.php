@@ -2,7 +2,7 @@
 function view_block_games_line($attributes) {
     $args = array(
         'post_type' => 'product',
-        'post_per_page'=> 12,
+        'post_per_page'=> $attributes['count'],
         'orderby'=> 'data',
         'order'=> 'DESC',
     );
