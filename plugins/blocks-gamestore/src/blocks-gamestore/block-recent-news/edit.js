@@ -6,31 +6,10 @@ import {
 } from "@wordpress/block-editor";
 import { PanelBody, TextControl, TextareaControl } from "@wordpress/components";
 import "./editor.scss";
+import ServerSideRender from "@wordpress/server-side-render";
 
 export default function Edit({ attributes, setAttributes }) {
 	const { count, title, description, image } = attributes;
-
-	const blockProps = useBlockProps({
-		style: image
-			? {
-					backgroundImage: `url(${image})`,
-					backgroundSize: "cover",
-					backgroundPosition: "center",
-					backgroundRepeat: "no-repeat",
-					minHeight: "300px", // Добавляем минимальную высоту
-					padding: "30px",
-					display: "flex",
-					flexDirection: "column",
-					justifyContent: "center",
-					alignItems: "flex-start",
-					borderRadius: "4px",
-					position: "relative",
-			  }
-			: {
-					minHeight: "100px", // Минимальная высота даже без фона
-					padding: "20px",
-			  },
-	});
 
 	return (
 		<>
@@ -97,7 +76,12 @@ export default function Edit({ attributes, setAttributes }) {
 					/>
 				</PanelBody>
 			</InspectorControls>
-			<div {...blockProps}></div>
+			<div {...useBlockProps()}>
+				<ServerSideRender
+					block="blocks-gamestore/recent-news"
+					attributes={attributes}
+				/>
+			</div>
 		</>
 	);
 }

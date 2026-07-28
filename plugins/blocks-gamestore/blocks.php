@@ -34,7 +34,7 @@ function view_block_games_line($attributes) {
 function view_block_recent_news($attributes) {
     $args = array(
         'post_type' => 'news',
-        'posts_per_page' => $attributes['count'], // было post_per_page, исправлено на posts_per_page
+        'posts_per_page' => $attributes['count'],
         'orderby' => 'date',
         'order' => 'DESC'
     );
@@ -64,8 +64,7 @@ function view_block_recent_news($attributes) {
                 echo '</div>';
             }
             echo '<div class="news-excert">'.get_the_excerpt().'</div>';
-            echo '<a href="'.get_the_permalink().'" class=""read-more>Open the post</a>';
-            echo '</div>';
+            echo '<a href="'.get_the_permalink().'" class="read-more">Open the post</a>'; // также исправлен class (было class=""read-more)
             echo '</div>';
         }
         echo '</div>';
