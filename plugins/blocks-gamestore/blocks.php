@@ -15,7 +15,7 @@ function view_block_games_line($attributes) {
         echo '<div class="games-line-container"><div class="swiper-wrapper">';
         while ( $games_query->have_posts() ) {
             $games_query->the_post();
-            $product = wc_get_product( get_the_ID() );
+            $product = wc_get_product( get_the_ID());
             echo '<div class="swiper-slide game-item">';
             echo '<a href="' . esc_url(get_the_permalink()) . '">';
             echo $product->get_image('full');

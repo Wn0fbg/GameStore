@@ -1,5 +1,4 @@
 <?php
-
 function gamestore_styles() {
     // Сначала Swiper
     wp_enqueue_style(
@@ -33,6 +32,9 @@ function gamestore_styles() {
         wp_get_theme()->get('Version'), 
         true
     );
+    wp_localize_script('gamestore-theme-related', 'gamestore_params', array(
+        'ajaxurl' => admin_url('admin-ajax.php')
+    ));
 }
 add_action('wp_enqueue_scripts', 'gamestore_styles');
 
@@ -80,4 +82,4 @@ function gamestore_futenberg_styles() {
         wp_get_theme()->get('Version')
     );
 }
-add_action('enqueue_block_assets', 'gamestore_futenberg_styles');
+add_action('enqueue_block_assets', 'gamestore_futenberg_styles');     
