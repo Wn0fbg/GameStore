@@ -51,10 +51,9 @@ body .is-layout-constrained .wp-block-blocks-gamestore-block-hero {
   gap: 24px;
   position: relative;
   z-index: 2;
-  padding-right: 190px;
+  padding-right: 100px;
 }
 .wp-block-blocks-gamestore-block-hero .hero-content .hero-title {
-  font-size: clamp(2.5rem, 2.11rem + 1.97vw, 4rem);
   margin-block-start: 0;
   margin-block-end: 0;
   font-weight: 700;
