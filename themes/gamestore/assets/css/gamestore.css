@@ -167,39 +167,39 @@ body {
 }
 
 /* Оберните все стили в родительский класс вашей темы */
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "Urbanist";
   font-style: normal;
   font-weight: 700;
   line-height: 1.2;
 }
 
-.h1 {
+h1 {
   font-size: clamp(2.5rem, calc(2.11rem + 1.97vw), 4rem);
 }
 
-.h2 {
+h2 {
   font-size: clamp(2.25rem, calc(1.95rem + 1.48vw), 3.38rem);
 }
 
-.h3 {
+h3 {
   font-size: clamp(2rem, calc(1.8rem + 0.98vw), 2.75rem);
 }
 
-.h4 {
+h4 {
   font-size: clamp(1.75rem, calc(1.65rem + 0.49vw), 2.13rem);
 }
 
-.h5 {
+h5 {
   font-size: clamp(1.5rem, calc(1.4rem + 0.49vw), 1.88rem);
 }
 
-.h6 {
+h6 {
   font-size: clamp(1.25rem, calc(1.15rem + 0.49vw), 1.63rem);
 }
 

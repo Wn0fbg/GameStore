@@ -63,3 +63,21 @@ function gamestore_google_font_script() {
 	);
 }
 add_action('wp_enqueue_scripts', 'gamestore_google_font_script');
+
+// Load assets in Gutenberg
+function gamestore_futenberg_styles() {
+    wp_enqueue_style(
+		'gamestore-google-font', 
+		gamestore_google_font(), 
+		[], 
+		'1.0.0'
+	);
+
+    wp_enqueue_style(
+        'gamestore-editor-style',
+        get_template_directory_uri() . '/assets/css/editor-style.css',
+        ['gamestore-google-font'],
+        wp_get_theme()->get('Version')
+    );
+}
+add_action('enqueue_block_assets', 'gamestore_futenberg_styles');
