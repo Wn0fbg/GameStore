@@ -61,9 +61,42 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => console.log("Error fetching latest games", error));
   });
 
+  searchInput.addEventListener("input", function () {
+    const searchItem = searchInput.value;
+    titleElement.textContent = "Search Results";
+
+    showPlaceholders();
+
+    fetch(gamestore_params.ajaxurl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({
+        action: "search_games_by_title",
+        search: searchItem,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success && data.data.length > 0) {
+          renderGames(data.data);
+          titleElement.textContent = "Search Results";
+        } else {
+          titleElement.textContent =
+            "Nothing was found. You might be interested in";
+          showPlaceholders();
+          loadDefaultGames();
+        }
+      })
+      .catch((error) => console.log("Error fetching latest games", error));
+  });
+
   closeButton.addEventListener("click", function () {
     searchContainer.style.display = "none";
     searchResult.innerHTML = "";
+    searchInput.value = "";
+    titleElement.textContent = "You might be interested";
   });
 
   function showPlaceholders() {
@@ -86,12 +119,31 @@ document.addEventListener("DOMContentLoaded", function () {
         <a href="${game.link || "#"}">
           <div class="game-featured-image">${game.thumbnail || ""}</div>
           <div class="game-meta">
-            ${game.price || "Free"}
+          <div class="game-price">${game.price || "Free"}</div>
             <h3>${game.title || "No title"}</h3>
           </div>
         </a>
       `;
       searchResult.appendChild(gameDiv);
     });
+  }
+
+  function loadDefaultGames() {
+    fetch(gamestore_params.ajaxurl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({
+        action: "load_latest_games",
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          renderGames(data.data);
+        }
+      })
+      .catch((error) => console.log("Error fetching latest games", error));
   }
 });
