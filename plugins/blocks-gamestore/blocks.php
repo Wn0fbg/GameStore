@@ -77,3 +77,15 @@ function view_block_recent_news($attributes) {
 
     return ob_get_clean();
 }
+
+function view_block_subscripe($attributes) {
+    // $image_bg = !empty($attributes['image']) ? ' style="background-image: url(' . esc_url($attributes['image']) . ');"' : '';
+    // $image_bg .
+    ob_start();
+
+    echo '<div ' . get_block_wrapper_attributes() .  '>';
+    echo 'test';
+    echo '</div>';
+
+    return ob_get_clean();
+}
