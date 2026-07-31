@@ -11,6 +11,13 @@ import "./editor.scss";
 export default function Edit({ attributes, setAttributes }) {
 	const { title, description, image, shortcode } = attributes;
 
+	const blockProps = useBlockProps({
+		className: "alignfull",
+		style: {
+			background: image ? `url(${image})` : undefined,
+		},
+	});
+
 	return (
 		<>
 			<InspectorControls>
@@ -72,19 +79,12 @@ export default function Edit({ attributes, setAttributes }) {
 					<TextControl
 						label={__("Shortcode", "blocks-gamestore")}
 						value={shortcode}
-						onChange={(value) => setAttributes({ shortcode: value })}
+						onChange={(val) => setAttributes({ shortcode: val })}
 					/>
 				</PanelBody>
 			</InspectorControls>
-			<div
-				{...useBlockProps({
-					className="alignfull",
-					style: {
-						background: image ? `url(${image})` : undefined,
-					},
-				})}
-			>
-				<div className="subscribe-inner wrapper">
+			<div {...blockProps}>
+				<div className="subscribe-inner">
 					<RichText
 						tagName="h1"
 						className="subscribe-title"

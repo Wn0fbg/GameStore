@@ -6,7 +6,7 @@
 	"title": "Subscribe",
 	"category": "gamestore",
 	"icon": "smiley",
-	"description": "Subscribe",
+	"description": "Subscribe Block",
 	"example": {},
 	"supports": {
 		"html": false

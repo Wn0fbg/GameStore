@@ -169,15 +169,15 @@ return array(
 		'editorStyle' => 'file:./index.css',
 		'style' => 'file:./style-index.css'
 	),
-	'block-subscripe' => array(
+	'block-subscribe' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
-		'name' => 'blocks-gamestore/subscripe',
+		'name' => 'blocks-gamestore/subscribe',
 		'version' => '0.1.0',
-		'title' => 'Recent News',
+		'title' => 'Subscribe',
 		'category' => 'gamestore',
 		'icon' => 'smiley',
-		'description' => 'Recent News Block',
+		'description' => 'Subscribe Block',
 		'example' => array(
 			
 		),
@@ -185,10 +185,6 @@ return array(
 			'html' => false
 		),
 		'attributes' => array(
-			'count' => array(
-				'type' => 'number',
-				'default' => 3
-			),
 			'title' => array(
 				'type' => 'string'
 			),
@@ -196,6 +192,9 @@ return array(
 				'type' => 'string'
 			),
 			'image' => array(
+				'type' => 'string'
+			),
+			'shortcode' => array(
 				'type' => 'string'
 			)
 		),
