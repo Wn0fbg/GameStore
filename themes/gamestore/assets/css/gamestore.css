@@ -118,6 +118,7 @@ body {
 /* Variables */
 :root {
   --background-default: #fafafa;
+  --background-2: #fafafa;
   --background-80: rgba(250, 250, 250, 0.8);
   --action-main-svg: #0e0d0f;
   --divider-main: #0e0d0f14;
@@ -138,6 +139,7 @@ body {
 
 .dark-mode-gamestore {
   --background-default: #0e0d0f;
+  --background-2: #0e0d0f;
   --background-80: rgb(14, 13, 15);
   --action-main-svg: rgba(255, 255, 255);
   --divider-main: rgba(255, 255, 255, 0.12);
