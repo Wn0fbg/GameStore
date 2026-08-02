@@ -122,6 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <div class="game-price">${game.price || "Free"}</div>
             <h3>${game.title || "No title"}</h3>
           </div>
+          <div class="game-platforms">${game.platforms}</div>
         </a>
       `;
       searchResult.appendChild(gameDiv);

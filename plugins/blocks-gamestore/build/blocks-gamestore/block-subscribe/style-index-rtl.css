@@ -7,6 +7,7 @@
   padding-bottom: clamp(3.75rem, 2.77rem + 4.92vw, 7.5rem);
   box-sizing: border-box;
   position: relative;
+  background-size: cover;
 }
 .wp-block-blocks-gamestore-subscribe::before {
   content: "";
