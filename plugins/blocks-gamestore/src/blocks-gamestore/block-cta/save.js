@@ -1,0 +1,39 @@
+import { useBlockProps, RichText } from "@wordpress/block-editor";
+
+export default function save({ attributes }) {
+	const { title, description, links, image, imageBg } = attributes;
+
+	const blockProps = useBlockProps.save({
+		className: "alignfull",
+		style: {
+			background: imageBg ? `url(${imageBg})` : undefined,
+		},
+	});
+
+	return (
+		<div {...blockProps}>
+			<div className="wrapper cta-inner">
+				<div className="left-part">
+					<RichText.Content tagName="h2" className="cta-title" value={title} />
+					<RichText.Content
+						tagName="p"
+						className="cta-description"
+						value={description}
+					/>
+					<div className="links-list">
+						{links.map((link, index) => (
+							<p key={index}>
+								<a href={link.url} target="_blank" rel="noopenner noreferrer">
+									{link.anchor || "Untitled Link"}
+								</a>
+							</p>
+						))}
+					</div>
+				</div>
+				<div className="right-part">
+					{image && <img className="image-cta" src={image} alt="cta image" />}
+				</div>
+			</div>
+		</div>
+	);
+}

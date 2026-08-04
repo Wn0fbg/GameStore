@@ -34,6 +34,7 @@ add_filter('block_categories_all', function($categories) {
 function create_block_blocks_gamestore_block_init() {
 	register_block_type(__DIR__ . '/build/blocks-gamestore/block-header');
 	register_block_type(__DIR__ . '/build/blocks-gamestore/block-hero');
+	register_block_type(__DIR__ . '/build/blocks-gamestore/block-cta');
 	register_block_type(__DIR__ . '/build/blocks-gamestore/block-games-line', array(
 		'render_callback' => 'view_block_games_line'
 	));
