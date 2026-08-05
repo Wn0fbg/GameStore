@@ -56,9 +56,13 @@ function Edit({
   setAttributes
 }) {
   const {
-    title
+    title,
+    margin
   } = attributes;
   const [faqs, setFaqs] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.useState)(attributes.faqs || []);
+  const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps)({
+    className: `${margin ? "no-margin" : ""}`
+  });
   const onFAQChange = (updatedFAQ, index) => {
     const updatedFaqs = [...faqs];
     updatedFaqs[index] = updatedFAQ;
@@ -109,6 +113,12 @@ function Edit({
           onChange: title => setAttributes({
             title
           })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+          label: "Margins Zero",
+          checked: margin,
+          onChange: margin => setAttributes({
+            margin
+          })
         }), faqs.map((faq, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(FAQItem, {
           index: index,
           faq: faq,
@@ -122,7 +132,7 @@ function Edit({
         })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-      ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps)(),
+      ...blockProps,
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "wrapper faq-inner",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.RichText, {
@@ -199,19 +209,20 @@ function save({
 }) {
   const {
     title,
-    faqs
+    faqs,
+    margin
   } = attributes;
+  const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save({
+    className: `${margin ? "no-margin" : ""}`
+  });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save(),
+    ...blockProps,
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
       className: "wrapper faq-inner",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.RichText.Content, {
+      children: [title && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.RichText.Content, {
         tagName: "h1",
         className: "faq-title",
-        value: title,
-        onChange: title => setAttributes({
-          title
-        })
+        value: title
       }), faqs.map((faq, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
         className: "faq-item",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.RichText.Content, {
@@ -310,7 +321,7 @@ module.exports = window["wp"]["element"];
   \***************************************************/
 (module) {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"blocks-gamestore/block-faq","version":"0.1.0","title":"FAQs","category":"gamestore","icon":"smiley","description":"FAQs Block.","example":{},"supports":{"html":false},"attributes":{"title":{"type":"string","source":"html","selector":".faq-title"},"faqs":{"type":"array","default":[]}},"textdomain":"blocks-gamestore","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"blocks-gamestore/block-faq","version":"0.1.0","title":"FAQs","category":"gamestore","icon":"smiley","description":"FAQs Block.","example":{},"supports":{"html":false},"attributes":{"title":{"type":"string","source":"html","selector":".faq-title"},"faqs":{"type":"array","default":[]},"margin":{"type":"boolean","default":false}},"textdomain":"blocks-gamestore","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ }
 

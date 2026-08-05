@@ -8,6 +8,7 @@ import {
 	TextControl,
 	TextareaControl,
 	Button,
+	ToggleControl,
 } from "@wordpress/components";
 import { useState } from "@wordpress/element";
 import "./editor.scss";
@@ -44,8 +45,12 @@ const FAQItem = ({
 };
 
 export default function Edit({ attributes, setAttributes }) {
-	const { title } = attributes;
+	const { title, margin } = attributes;
 	const [faqs, setFaqs] = useState(attributes.faqs || []);
+
+	const blockProps = useBlockProps({
+		className: `${margin ? "no-margin" : ""}`,
+	});
 
 	const onFAQChange = (updatedFAQ, index) => {
 		const updatedFaqs = [...faqs];
@@ -86,6 +91,11 @@ export default function Edit({ attributes, setAttributes }) {
 						value={title}
 						onChange={(title) => setAttributes({ title })}
 					/>
+					<ToggleControl
+						label="Margins Zero"
+						checked={margin}
+						onChange={(margin) => setAttributes({ margin })}
+					/>
 					{faqs.map((faq, index) => (
 						<FAQItem
 							key={index}
@@ -102,7 +112,7 @@ export default function Edit({ attributes, setAttributes }) {
 					</Button>
 				</PanelBody>
 			</InspectorControls>
-			<div {...useBlockProps()}>
+			<div {...blockProps}>
 				<div className="wrapper faq-inner">
 					<RichText
 						tagName="h1"

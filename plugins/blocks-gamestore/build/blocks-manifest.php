@@ -92,6 +92,10 @@ return array(
 				'default' => array(
 					
 				)
+			),
+			'margin' => array(
+				'type' => 'boolean',
+				'default' => false
 			)
 		),
 		'textdomain' => 'blocks-gamestore',
