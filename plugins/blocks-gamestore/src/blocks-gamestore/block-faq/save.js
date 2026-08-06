@@ -16,12 +16,12 @@ export default function save({ attributes }) {
 				{faqs.map((faq, index) => (
 					<div key={index} className="faq-item">
 						<RichText.Content
-							tagName="p"
+							tagName="div"
 							className="faq-item-title"
 							value={faq.title}
 						/>
 						<RichText.Content
-							tagName="p"
+							tagName="div"
 							className="faq-item-description"
 							value={faq.description}
 						/>

@@ -34,7 +34,7 @@ const FAQItem = ({
   onRemove
 }) => {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-    className: "faq-item",
+    className: "gutenberg-faq-item",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
       label: "Question",
       value: faq.title,
@@ -145,12 +145,12 @@ function Edit({
         }), faqs.map((faq, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
           className: "faq-item",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.RichText, {
-            tagName: "p",
+            tagName: "div",
             className: "faq-item-title",
             value: faq.title,
             onChange: newTitle => handleTitleChange(newTitle, index)
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.RichText, {
-            tagName: "p",
+            tagName: "div",
             className: "faq-item-description",
             value: faq.description,
             onChange: newDescription => handleDescriptionChange(newDescription, index)
@@ -226,11 +226,11 @@ function save({
       }), faqs.map((faq, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
         className: "faq-item",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.RichText.Content, {
-          tagName: "p",
+          tagName: "div",
           className: "faq-item-title",
           value: faq.title
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.RichText.Content, {
-          tagName: "p",
+          tagName: "div",
           className: "faq-item-description",
           value: faq.description
         })]

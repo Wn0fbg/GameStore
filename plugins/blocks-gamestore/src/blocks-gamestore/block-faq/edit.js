@@ -21,7 +21,7 @@ const FAQItem = ({
 	onRemove,
 }) => {
 	return (
-		<div className="faq-item">
+		<div className="gutenberg-faq-item">
 			<br />
 			<TextControl
 				label="Question"
@@ -123,13 +123,13 @@ export default function Edit({ attributes, setAttributes }) {
 					{faqs.map((faq, index) => (
 						<div key={index} className="faq-item">
 							<RichText
-								tagName="p"
+								tagName="div"
 								className="faq-item-title"
 								value={faq.title}
 								onChange={(newTitle) => handleTitleChange(newTitle, index)}
 							/>
 							<RichText
-								tagName="p"
+								tagName="div"
 								className="faq-item-description"
 								value={faq.description}
 								onChange={(newDescription) =>
