@@ -68,7 +68,7 @@ const LinkRepeater = ({ links, setLinks }) => {
 
 const LogosRepeater = ({ logos, setLogos }) => {
 	const addLogo = () => {
-		setLogos([...logos, { url: "", image: "" }]);
+		setLogos([...logos, { url: "", image: "", imageDark: "" }]);
 	};
 
 	const removeLogo = (index) => {
@@ -95,10 +95,20 @@ const LogosRepeater = ({ logos, setLogos }) => {
 							onChange={(value) => updatedLogo(index, "url", value)}
 							placeholder="https://example.com"
 						/>
+						{logo.image && <img src={logo.image} alt="Logo" />}
 						<MediaPlaceholder
 							icon="format-image"
 							labels={{ title: "Logo" }}
 							onSelect={(media) => updatedLogo(index, "image", media.url)}
+							accept="image/*"
+							allowedTypes={["image"]}
+						/>
+						<br />
+						{logo.imageDark && <img src={logo.imageDark} alt="Logo" />}
+						<MediaPlaceholder
+							icon="format-image"
+							labels={{ title: "Dark variant Logo" }}
+							onSelect={(media) => updatedLogo(index, "imageDark", media.url)}
 							accept="image/*"
 							allowedTypes={["image"]}
 						/>
@@ -142,8 +152,41 @@ export default function Edit({ attributes, setAttributes }) {
 				</PanelBody>
 			</InspectorControls>
 			<div {...useBlockProps()}>
-				<div className="inner-footer">
+				<div className="wrapper inner-footer">
 					<InnerBlocks />
+					<div className="footer-line"></div>
+					<div className="footer-bottom">
+						<div className="left-part">
+							{copyrights && <p>{copyrights}</p>}
+							{logos && (
+								<div className="footer-logos">
+									{logos.map((logo, index) => (
+										<a
+											key={index}
+											href={logo.url}
+											target="_blank"
+											rel="nofollow noreferrer"
+										>
+											<img src={logo.image} className="light-logo" alt="Logo" />
+											<img
+												src={logo.imageDark}
+												className="dark-logo"
+												alt="Dark Variant Logo"
+											/>
+										</a>
+									))}
+								</div>
+							)}
+						</div>
+						<div className="right-part">
+							{links &&
+								links.map((link, index) => (
+									<a key={index} href={link.url}>
+										{link.anchor}
+									</a>
+								))}
+						</div>
+					</div>
 				</div>
 			</div>
 		</>
