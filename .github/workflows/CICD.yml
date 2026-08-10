@@ -1,0 +1,102 @@
+name: GameStore Deploy
+
+on:
+  push:
+    branches:
+      - dev
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master # 👈 было users, исправлено на uses
+
+      - name: Prepare WordPress Zip
+        run: |
+          WP_LINK=$(cat wp-version-control.cfg)
+          wget -O "./wordpress.zip" "$WP_LINK"  # 👈 был пропущен URL
+
+      - name: Prepare plugins and theme zip
+        run: zip -r wpcontent.zip plugins mu-plugins themes
+
+      - name: Copy Zips to Server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          source: "wordpress.zip, wpcontent.zip" # 👈 убраны точки
+          target: ${{ github.event_name == 'push' && 'public_html/dev.geniuscourses.com' || 'public_html/live.geniuscourses.com' }}
+
+      - name: Enable Maintenance Mode
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          source: ".maintenance" # 👈 создайте файл .maintenance в корне проекта
+          target: ${{ github.event_name == 'push' && 'public_html/dev.geniuscourses.com' || 'public_html/live.geniuscourses.com' }}
+          # ИЛИ создайте файл через SSH (лучше)
+
+      - name: Update WordPress Core
+        uses: appleboy/ssh-action@1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            TARGET="${{ github.event_name == 'push' && 'public_html/dev.geniuscourses.com' || 'public_html/live.geniuscourses.com' }}"
+
+            # Включаем режим обслуживания через SSH (более надежно)
+            touch "$TARGET/.maintenance"
+
+            # Удаляем старые файлы WP, кроме wp-config.php и wp-content
+            find "$TARGET" -maxdepth 1 -type f ! -name "wp-config.php" ! -name ".maintenance" -delete
+            rm -rf "$TARGET/wp-admin/" "$TARGET/wp-includes/"
+
+            # Распаковываем WordPress
+            unzip -o "$TARGET/wordpress.zip" -d "$TARGET/tmp/"
+            cp -rf "$TARGET/tmp/wordpress/"* "$TARGET/"
+            rm -rf "$TARGET/tmp/"
+
+            # Удаляем zip-архивы после распаковки
+            rm -f "$TARGET/wordpress.zip"
+
+      - name: Update Plugins and Theme
+        uses: appleboy/ssh-action@1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            TARGET="${{ github.event_name == 'push' && 'public_html/dev.geniuscourses.com' || 'public_html/live.geniuscourses.com' }}"
+
+            # Удаляем старые папки плагинов и тем
+            rm -rf "$TARGET/wp-content/plugins" \
+                   "$TARGET/wp-content/mu-plugins" \
+                   "$TARGET/wp-content/themes"
+
+            # Распаковываем новые
+            unzip -q "$TARGET/wpcontent.zip" -d "$TARGET/wp-content/"
+
+            # Удаляем архив
+            rm -f "$TARGET/wpcontent.zip"
+
+      - name: Disable Maintenance Mode
+        uses: appleboy/ssh-action@1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            TARGET="${{ github.event_name == 'push' && 'public_html/dev.geniuscourses.com' || 'public_html/live.geniuscourses.com' }}"
+            rm -f "$TARGET/.maintenance"
