@@ -29,9 +29,239 @@ export default function Edit({ attributes, setAttributes }) {
 				<div className="inner-header">
 					<InnerBlocks />
 					<div className="right-section">
-						<div className="header-search"></div>
-						<div className="header-mode-switcher"></div>
-						{cartLink && <div className="header-cart-link"></div>}
+						<div className="header-search">
+							<svg
+								viewBox="0 0 36 36"
+								xmlns="http://www.w3.org/2000/svg"
+								width="36.000000"
+								height="36.000000"
+								fill="none"
+								customFrame="#000000"
+							>
+								<defs>
+									<clipPath id="clipPath_1">
+										<rect
+											width="24.000000"
+											height="24.000000"
+											x="6.000000"
+											y="6.000000"
+											fill="rgb(255,255,255)"
+										/>
+									</clipPath>
+								</defs>
+								<rect
+									id="search-normal"
+									width="36.000000"
+									height="36.000000"
+									x="0.000000"
+									y="0.000000"
+									fill="rgb(255,255,255)"
+									fill-opacity="0"
+								/>
+								<g
+									id="2199092_search_find_glass_magnifier_zoom_icon 1"
+									clip-path="url(#clipPath_1)"
+									customFrame="url(#clipPath_1)"
+								>
+									<rect
+										id="2199092_search_find_glass_magnifier_zoom_icon 1"
+										width="24.000000"
+										height="24.000000"
+										x="6.000000"
+										y="6.000000"
+										fill="rgb(255,255,255)"
+										fill-opacity="0"
+									/>
+									<g id="Layer_2">
+										<g id="Layer_3">
+											<path
+												id="Vector"
+												d="M28.29 27.66L23.61 22.95C26.97 19.2 26.7 13.44 22.95 10.05C19.2 6.66002 13.44 6.96002 10.05 10.71C6.66002 14.46 6.96002 20.22 10.71 23.61C14.19 26.76 19.5 26.76 22.98 23.61L27.69 28.32L28.29 27.66ZM16.83 25.05C12.3 25.05 8.61002 21.36 8.61002 16.83C8.61002 12.27 12.3 8.61002 16.83 8.61002C21.36 8.61002 25.05 12.3 25.05 16.83C25.05 21.36 21.36 25.05 16.83 25.05Z"
+												fill="var(--action-main, rgba(14, 13, 15, 0.64))"
+												fill-rule="nonzero"
+											/>
+											<path
+												id="Vector"
+												d="M16.8301 9.83984L16.8301 10.7398C20.1901 10.7398 22.9201 13.4698 22.9201 16.8298L23.8201 16.8298C23.8201 12.9598 20.7001 9.83984 16.8301 9.83984Z"
+												fill="var(--action-main, rgba(14, 13, 15, 0.64))"
+												fill-rule="nonzero"
+											/>
+										</g>
+									</g>
+								</g>
+							</svg>
+						</div>
+						<div className="header-mode-switcher">
+							<svg
+								viewBox="0 0 36 36"
+								xmlns="http://www.w3.org/2000/svg"
+								width="36.000000"
+								height="36.000000"
+								fill="none"
+								customFrame="url(#clipPath_0)"
+							>
+								<defs>
+									<clipPath id="clipPath_0">
+										<rect
+											width="36.000000"
+											height="36.000000"
+											x="0.000000"
+											y="0.000000"
+											rx="18.000000"
+											fill="rgb(255,255,255)"
+										/>
+									</clipPath>
+								</defs>
+								<rect
+									id="IconButton / switch theme"
+									width="36.000000"
+									height="36.000000"
+									x="0.000000"
+									y="0.000000"
+									rx="18.000000"
+									fill="rgb(255,255,255)"
+									fill-opacity="0"
+								/>
+								<g id="Group 64">
+									<path
+										id="Vector"
+										d="M12 0L0 0"
+										stroke="var(--action-main, rgba(14, 13, 15, 0.64))"
+										stroke-opacity="0.639999986"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="1.000000"
+										transform="matrix(0,1,-1,0,21,12)"
+									/>
+									<path
+										id="Vector"
+										d="M9 18L12 18"
+										stroke="var(--action-main, rgba(14, 13, 15, 0.64))"
+										stroke-opacity="0.639999986"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="1.000000"
+									/>
+									<path
+										id="Vector"
+										d="M12.5098 9.51025L14.6398 11.6403"
+										stroke="var(--action-main, rgba(14, 13, 15, 0.64))"
+										stroke-opacity="0.639999986"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="1.000000"
+									/>
+									<path
+										id="Vector"
+										d="M0 0L3 0"
+										stroke="var(--action-main, rgba(14, 13, 15, 0.64))"
+										stroke-opacity="0.639999986"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="1.000000"
+										transform="matrix(0,1,-1,0,21,6)"
+									/>
+									<path
+										id="Vector"
+										d="M3 0L0 0"
+										stroke="var(--action-main, rgba(14, 13, 15, 0.64))"
+										stroke-opacity="0.639999986"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="1.000000"
+										transform="matrix(0,1,-1,0,21,27)"
+									/>
+									<path
+										id="Vector"
+										d="M12.5098 26.4899L14.6398 24.3599"
+										stroke="var(--action-main, rgba(14, 13, 15, 0.64))"
+										stroke-opacity="0.639999986"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="1.000000"
+									/>
+									<path
+										id="Vector"
+										d="M21 24C17.6863 24 15 21.3137 15 18C15 14.6863 17.6863 12 21 12C24.3137 12 27 14.6863 27 18C27 21.3137 24.3137 24 21 24Z"
+										stroke="var(--action-main, rgba(14, 13, 15, 0.64))"
+										stroke-opacity="0.639999986"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="1.000000"
+									/>
+								</g>
+							</svg>
+						</div>
+						{cartLink && (
+							<div className="header-cart-link">
+								<svg
+									viewBox="0 0 36 36"
+									xmlns="http://www.w3.org/2000/svg"
+									width="36.000000"
+									height="36.000000"
+									fill="none"
+									customFrame="url(#clipPath_2)"
+								>
+									<defs>
+										<clipPath id="clipPath_2">
+											<rect
+												width="36.000000"
+												height="36.000000"
+												x="0.000000"
+												y="0.000000"
+												rx="18.000000"
+												fill="rgb(255,255,255)"
+											/>
+										</clipPath>
+									</defs>
+									<rect
+										id="IconButton / switch theme"
+										width="36.000000"
+										height="36.000000"
+										x="0.000000"
+										y="0.000000"
+										rx="18.000000"
+										fill="rgb(255,255,255)"
+										fill-opacity="0"
+									/>
+									<g id="Group 63">
+										<path
+											id="Vector"
+											d="M7.71436 14.5713L9.42864 26.5713L26.5715 26.5713L28.2858 14.5713"
+											fill-rule="nonzero"
+											stroke="var(--action-main, rgba(14, 13, 15, 0.64))"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="1.000000"
+										/>
+										<path
+											id="Vector"
+											d="M12.8574 16.2859L14.5717 9.42871"
+											stroke="var(--action-main, rgba(14, 13, 15, 0.64))"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="1.000000"
+										/>
+										<path
+											id="Vector"
+											d="M23.143 16.2859L21.4287 9.42871"
+											stroke="var(--action-main, rgba(14, 13, 15, 0.64))"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="1.000000"
+										/>
+										<path
+											id="Vector"
+											d="M6 14.5713L30 14.5713"
+											stroke="var(--action-main, rgba(14, 13, 15, 0.64))"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="1.000000"
+										/>
+									</g>
+								</svg>
+							</div>
+						)}
 						{memberLink && (
 							<div className="header-member-link">
 								<a href={memberLink}>Member Link</a>
