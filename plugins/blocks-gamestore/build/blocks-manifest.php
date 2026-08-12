@@ -63,6 +63,33 @@ return array(
 		'supports' => array(
 			'html' => false
 		),
+		'attributes' => array(
+			'title' => array(
+				'type' => 'string',
+				'source' => 'html',
+				'selector' => '.hero-title'
+			),
+			'description' => array(
+				'type' => 'string',
+				'source' => 'html',
+				'selector' => '.hero-description'
+			),
+			'link' => array(
+				'type' => 'string',
+				'source' => 'attribute',
+				'selector' => 'a',
+				'attribute' => 'href'
+			),
+			'linkAnchor' => array(
+				'type' => 'string',
+				'source' => 'html',
+				'selector' => 'a'
+			),
+			'video' => array(
+				'type' => 'string',
+				'default' => ''
+			)
+		),
 		'textdomain' => 'blocks-gamestore',
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',

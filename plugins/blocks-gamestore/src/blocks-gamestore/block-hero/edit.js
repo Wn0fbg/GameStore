@@ -1,41 +1,60 @@
-/**
- * Retrieves the translation of text.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
- */
-import { __ } from '@wordpress/i18n';
+import {
+	useBlockProps,
+	RichText,
+	InspectorControls,
+	MediaUpload,
+} from "@wordpress/block-editor";
+import { PanelBody, TextControl, TextareaControl } from "@wordpress/components";
+import "./editor.scss";
 
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
-import { useBlockProps } from '@wordpress/block-editor';
+export default function Edit({ attributes, setAttributes }) {
+	const { title, description, link, linkAnchor, video } = attributes;
 
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
-import './editor.scss';
-
-/**
- * The edit function describes the structure of your block in the context of the
- * editor. This represents what the editor will render when the block is used.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
- *
- * @return {Element} Element to render.
- */
-export default function Edit() {
 	return (
-		<p { ...useBlockProps() }>
-			{ __(
-				'Blocks Gamestore – hello from the editor!',
-				'blocks-gamestore'
-			) }
-		</p>
+		<>
+			<InspectorControls>
+				<PanelBody title="Hero Settings">
+					<TextControl
+						label="Title"
+						value={title}
+						onChange={(title) => setAttributes({ title })}
+					/>
+					<TextareaControl
+						label="Description"
+						value={description}
+						onChange={(description) => setAttributes({ description })}
+					/>
+					<TextControl
+						label="Button URL"
+						value={link}
+						onChange={(link) => setAttributes({ link })}
+					/>
+					<TextControl
+						label="Button Anchor"
+						value={linkAnchor}
+						onChange={(linkAnchor) => setAttributes({ linkAnchor })}
+					/>
+					{video && (
+						<video controls muted>
+							<source src={video} type="video/mp4" />
+						</video>
+					)}
+					<MediaUpload
+						onSelect={(media) => setAttributes({ video: media.url })}
+						accept="video/*"
+						value={video}
+						render={({ open }) => (
+							<button
+								className="components-button is-secondary video-upload"
+								onClick={open}
+							>
+								Upload Video
+							</button>
+						)}
+					/>
+				</PanelBody>
+			</InspectorControls>
+			<div {...useBlockProps()}></div>
+		</>
 	);
 }
