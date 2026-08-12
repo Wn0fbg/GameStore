@@ -209,67 +209,70 @@ function Edit({
             })
           }), cartLink && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
             className: "header-cart-link",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("svg", {
-              viewBox: "0 0 36 36",
-              xmlns: "http://www.w3.org/2000/svg",
-              width: "36.000000",
-              height: "36.000000",
-              fill: "none",
-              customFrame: "url(#clipPath_2)",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("defs", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("clipPath", {
-                  id: "clipPath_2",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("rect", {
-                    width: "36.000000",
-                    height: "36.000000",
-                    x: "0.000000",
-                    y: "0.000000",
-                    rx: "18.000000",
-                    fill: "rgb(255,255,255)"
-                  })
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("rect", {
-                id: "IconButton / switch theme",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
+              href: cartLink,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("svg", {
+                viewBox: "0 0 36 36",
+                xmlns: "http://www.w3.org/2000/svg",
                 width: "36.000000",
                 height: "36.000000",
-                x: "0.000000",
-                y: "0.000000",
-                rx: "18.000000",
-                fill: "rgb(255,255,255)",
-                "fill-opacity": "0"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("g", {
-                id: "Group 63",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("path", {
-                  id: "Vector",
-                  d: "M7.71436 14.5713L9.42864 26.5713L26.5715 26.5713L28.2858 14.5713",
-                  "fill-rule": "nonzero",
-                  stroke: "var(--action-main, rgba(14, 13, 15, 0.64))",
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round",
-                  "stroke-width": "1.000000"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("path", {
-                  id: "Vector",
-                  d: "M12.8574 16.2859L14.5717 9.42871",
-                  stroke: "var(--action-main, rgba(14, 13, 15, 0.64))",
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round",
-                  "stroke-width": "1.000000"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("path", {
-                  id: "Vector",
-                  d: "M23.143 16.2859L21.4287 9.42871",
-                  stroke: "var(--action-main, rgba(14, 13, 15, 0.64))",
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round",
-                  "stroke-width": "1.000000"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("path", {
-                  id: "Vector",
-                  d: "M6 14.5713L30 14.5713",
-                  stroke: "var(--action-main, rgba(14, 13, 15, 0.64))",
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round",
-                  "stroke-width": "1.000000"
+                fill: "none",
+                customFrame: "url(#clipPath_2)",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("defs", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("clipPath", {
+                    id: "clipPath_2",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("rect", {
+                      width: "36.000000",
+                      height: "36.000000",
+                      x: "0.000000",
+                      y: "0.000000",
+                      rx: "18.000000",
+                      fill: "rgb(255,255,255)"
+                    })
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("rect", {
+                  id: "IconButton / switch theme",
+                  width: "36.000000",
+                  height: "36.000000",
+                  x: "0.000000",
+                  y: "0.000000",
+                  rx: "18.000000",
+                  fill: "rgb(255,255,255)",
+                  "fill-opacity": "0"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("g", {
+                  id: "Group 63",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("path", {
+                    id: "Vector",
+                    d: "M7.71436 14.5713L9.42864 26.5713L26.5715 26.5713L28.2858 14.5713",
+                    "fill-rule": "nonzero",
+                    stroke: "var(--action-main, rgba(14, 13, 15, 0.64))",
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round",
+                    "stroke-width": "1.000000"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("path", {
+                    id: "Vector",
+                    d: "M12.8574 16.2859L14.5717 9.42871",
+                    stroke: "var(--action-main, rgba(14, 13, 15, 0.64))",
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round",
+                    "stroke-width": "1.000000"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("path", {
+                    id: "Vector",
+                    d: "M23.143 16.2859L21.4287 9.42871",
+                    stroke: "var(--action-main, rgba(14, 13, 15, 0.64))",
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round",
+                    "stroke-width": "1.000000"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("path", {
+                    id: "Vector",
+                    d: "M6 14.5713L30 14.5713",
+                    stroke: "var(--action-main, rgba(14, 13, 15, 0.64))",
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round",
+                    "stroke-width": "1.000000"
+                  })]
                 })]
-              })]
+              })
             })
           }), memberLink && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
             className: "header-member-link",
@@ -495,67 +498,70 @@ function save({
           })
         }), cartLink && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
           className: "header-cart-link",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
-            viewBox: "0 0 36 36",
-            xmlns: "http://www.w3.org/2000/svg",
-            width: "36.000000",
-            height: "36.000000",
-            fill: "none",
-            customFrame: "url(#clipPath_2)",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("defs", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("clipPath", {
-                id: "clipPath_2",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("rect", {
-                  width: "36.000000",
-                  height: "36.000000",
-                  x: "0.000000",
-                  y: "0.000000",
-                  rx: "18.000000",
-                  fill: "rgb(255,255,255)"
-                })
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("rect", {
-              id: "IconButton / switch theme",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+            href: cartLink,
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
+              viewBox: "0 0 36 36",
+              xmlns: "http://www.w3.org/2000/svg",
               width: "36.000000",
               height: "36.000000",
-              x: "0.000000",
-              y: "0.000000",
-              rx: "18.000000",
-              fill: "rgb(255,255,255)",
-              "fill-opacity": "0"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("g", {
-              id: "Group 63",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-                id: "Vector",
-                d: "M7.71436 14.5713L9.42864 26.5713L26.5715 26.5713L28.2858 14.5713",
-                "fill-rule": "nonzero",
-                stroke: "var(--action-main, rgba(14, 13, 15, 0.64))",
-                "stroke-linecap": "round",
-                "stroke-linejoin": "round",
-                "stroke-width": "1.000000"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-                id: "Vector",
-                d: "M12.8574 16.2859L14.5717 9.42871",
-                stroke: "var(--action-main, rgba(14, 13, 15, 0.64))",
-                "stroke-linecap": "round",
-                "stroke-linejoin": "round",
-                "stroke-width": "1.000000"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-                id: "Vector",
-                d: "M23.143 16.2859L21.4287 9.42871",
-                stroke: "var(--action-main, rgba(14, 13, 15, 0.64))",
-                "stroke-linecap": "round",
-                "stroke-linejoin": "round",
-                "stroke-width": "1.000000"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-                id: "Vector",
-                d: "M6 14.5713L30 14.5713",
-                stroke: "var(--action-main, rgba(14, 13, 15, 0.64))",
-                "stroke-linecap": "round",
-                "stroke-linejoin": "round",
-                "stroke-width": "1.000000"
+              fill: "none",
+              customFrame: "url(#clipPath_2)",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("defs", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("clipPath", {
+                  id: "clipPath_2",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("rect", {
+                    width: "36.000000",
+                    height: "36.000000",
+                    x: "0.000000",
+                    y: "0.000000",
+                    rx: "18.000000",
+                    fill: "rgb(255,255,255)"
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("rect", {
+                id: "IconButton / switch theme",
+                width: "36.000000",
+                height: "36.000000",
+                x: "0.000000",
+                y: "0.000000",
+                rx: "18.000000",
+                fill: "rgb(255,255,255)",
+                "fill-opacity": "0"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("g", {
+                id: "Group 63",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+                  id: "Vector",
+                  d: "M7.71436 14.5713L9.42864 26.5713L26.5715 26.5713L28.2858 14.5713",
+                  "fill-rule": "nonzero",
+                  stroke: "var(--action-main, rgba(14, 13, 15, 0.64))",
+                  "stroke-linecap": "round",
+                  "stroke-linejoin": "round",
+                  "stroke-width": "1.000000"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+                  id: "Vector",
+                  d: "M12.8574 16.2859L14.5717 9.42871",
+                  stroke: "var(--action-main, rgba(14, 13, 15, 0.64))",
+                  "stroke-linecap": "round",
+                  "stroke-linejoin": "round",
+                  "stroke-width": "1.000000"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+                  id: "Vector",
+                  d: "M23.143 16.2859L21.4287 9.42871",
+                  stroke: "var(--action-main, rgba(14, 13, 15, 0.64))",
+                  "stroke-linecap": "round",
+                  "stroke-linejoin": "round",
+                  "stroke-width": "1.000000"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+                  id: "Vector",
+                  d: "M6 14.5713L30 14.5713",
+                  stroke: "var(--action-main, rgba(14, 13, 15, 0.64))",
+                  "stroke-linecap": "round",
+                  "stroke-linejoin": "round",
+                  "stroke-width": "1.000000"
+                })]
               })]
-            })]
+            })
           })
         }), memberLink && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
           className: "header-member-link",

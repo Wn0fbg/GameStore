@@ -194,72 +194,74 @@ export default function Edit({ attributes, setAttributes }) {
 						</div>
 						{cartLink && (
 							<div className="header-cart-link">
-								<svg
-									viewBox="0 0 36 36"
-									xmlns="http://www.w3.org/2000/svg"
-									width="36.000000"
-									height="36.000000"
-									fill="none"
-									customFrame="url(#clipPath_2)"
-								>
-									<defs>
-										<clipPath id="clipPath_2">
-											<rect
-												width="36.000000"
-												height="36.000000"
-												x="0.000000"
-												y="0.000000"
-												rx="18.000000"
-												fill="rgb(255,255,255)"
-											/>
-										</clipPath>
-									</defs>
-									<rect
-										id="IconButton / switch theme"
+								<a href={cartLink}>
+									<svg
+										viewBox="0 0 36 36"
+										xmlns="http://www.w3.org/2000/svg"
 										width="36.000000"
 										height="36.000000"
-										x="0.000000"
-										y="0.000000"
-										rx="18.000000"
-										fill="rgb(255,255,255)"
-										fill-opacity="0"
-									/>
-									<g id="Group 63">
-										<path
-											id="Vector"
-											d="M7.71436 14.5713L9.42864 26.5713L26.5715 26.5713L28.2858 14.5713"
-											fill-rule="nonzero"
-											stroke="var(--action-main, rgba(14, 13, 15, 0.64))"
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											stroke-width="1.000000"
+										fill="none"
+										customFrame="url(#clipPath_2)"
+									>
+										<defs>
+											<clipPath id="clipPath_2">
+												<rect
+													width="36.000000"
+													height="36.000000"
+													x="0.000000"
+													y="0.000000"
+													rx="18.000000"
+													fill="rgb(255,255,255)"
+												/>
+											</clipPath>
+										</defs>
+										<rect
+											id="IconButton / switch theme"
+											width="36.000000"
+											height="36.000000"
+											x="0.000000"
+											y="0.000000"
+											rx="18.000000"
+											fill="rgb(255,255,255)"
+											fill-opacity="0"
 										/>
-										<path
-											id="Vector"
-											d="M12.8574 16.2859L14.5717 9.42871"
-											stroke="var(--action-main, rgba(14, 13, 15, 0.64))"
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											stroke-width="1.000000"
-										/>
-										<path
-											id="Vector"
-											d="M23.143 16.2859L21.4287 9.42871"
-											stroke="var(--action-main, rgba(14, 13, 15, 0.64))"
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											stroke-width="1.000000"
-										/>
-										<path
-											id="Vector"
-											d="M6 14.5713L30 14.5713"
-											stroke="var(--action-main, rgba(14, 13, 15, 0.64))"
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											stroke-width="1.000000"
-										/>
-									</g>
-								</svg>
+										<g id="Group 63">
+											<path
+												id="Vector"
+												d="M7.71436 14.5713L9.42864 26.5713L26.5715 26.5713L28.2858 14.5713"
+												fill-rule="nonzero"
+												stroke="var(--action-main, rgba(14, 13, 15, 0.64))"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="1.000000"
+											/>
+											<path
+												id="Vector"
+												d="M12.8574 16.2859L14.5717 9.42871"
+												stroke="var(--action-main, rgba(14, 13, 15, 0.64))"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="1.000000"
+											/>
+											<path
+												id="Vector"
+												d="M23.143 16.2859L21.4287 9.42871"
+												stroke="var(--action-main, rgba(14, 13, 15, 0.64))"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="1.000000"
+											/>
+											<path
+												id="Vector"
+												d="M6 14.5713L30 14.5713"
+												stroke="var(--action-main, rgba(14, 13, 15, 0.64))"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="1.000000"
+											/>
+										</g>
+									</svg>
+								</a>
 							</div>
 						)}
 						{memberLink && (
