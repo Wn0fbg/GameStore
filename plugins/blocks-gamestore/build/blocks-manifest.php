@@ -86,8 +86,19 @@ return array(
 				'selector' => 'a'
 			),
 			'video' => array(
-				'type' => 'string',
-				'default' => ''
+				'type' => 'string'
+			),
+			'image' => array(
+				'type' => 'string'
+			),
+			'isVideo' => array(
+				'type' => 'string'
+			),
+			'slides' => array(
+				'type' => 'array',
+				'default' => array(
+					
+				)
 			)
 		),
 		'textdomain' => 'blocks-gamestore',

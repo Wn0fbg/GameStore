@@ -34,8 +34,17 @@
       "selector": "a"
     },
     "video": {
-      "type": "string",
-      "default": ""
+      "type": "string"
+    },
+    "image": {
+      "type": "string"
+    },
+    "isVideo": {
+      "type": "string"
+    },
+    "slides": {
+      "type": "array",
+      "default": []
     }
   },
   "textdomain": "blocks-gamestore",
