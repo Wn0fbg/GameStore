@@ -36,7 +36,7 @@ export default function save({ attributes }) {
 					className="hero-description"
 					value={description}
 				/>
-				<a href={link} className="hero-button">
+				<a href={link} className="hero-button shadow">
 					{linkAnchor}
 				</a>
 			</div>

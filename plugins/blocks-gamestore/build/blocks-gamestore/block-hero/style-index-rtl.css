@@ -11,6 +11,7 @@ body .is-layout-constrained .wp-block-blocks-gamestore-block-hero {
   margin-right: calc(var(--wp--style--root--padding-left) * -1) !important;
   position: relative;
 }
+body .is-layout-constrained .wp-block-blocks-gamestore-block-hero .image-bg,
 body .is-layout-constrained .wp-block-blocks-gamestore-block-hero .video-bg {
   position: absolute;
   top: 0;
@@ -42,7 +43,66 @@ body .is-layout-constrained .wp-block-blocks-gamestore-block-hero .hero-content 
   justify-content: center;
   position: relative;
   gap: 24px;
-  z-index: 5;
+  z-index: 2;
   padding-right: var(--wp--style--root--padding-left);
   padding-left: var(--wp--style--root--padding-right);
+}
+body .is-layout-constrained .wp-block-blocks-gamestore-block-hero .hero-content .hero-title {
+  color: var(--white-contrast);
+}
+body .is-layout-constrained .wp-block-blocks-gamestore-block-hero .hero-content .hero-title strong {
+  background: var(--accent-gradient, linear-gradient(-90deg, #3dafe2 0%, #6f76c0 100%));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+body .is-layout-constrained .wp-block-blocks-gamestore-block-hero .hero-content .hero-description {
+  color: var(--white-contrast);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0%;
+}
+body .is-layout-constrained .wp-block-blocks-gamestore-block-hero .hero-slider {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--mask-gradient-second, linear-gradient(-270deg, rgba(250, 250, 250, 0) 0%, rgb(250, 250, 250) 100%));
+}
+body .is-layout-constrained .wp-block-blocks-gamestore-block-hero .hero-slider .slider-container {
+  width: 100%;
+  max-width: 1540px;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 3;
+}
+body .is-layout-constrained .wp-block-blocks-gamestore-block-hero .hero-slider .slider-container .swiper-wrapper {
+  display: flex;
+}
+body .is-layout-constrained .wp-block-blocks-gamestore-block-hero .hero-slider .slider-container .swiper-wrapper .slide-item {
+  margin-left: 120px;
+  max-width: fit-content;
+  margin-right: 0;
+}
+body .is-layout-constrained .wp-block-blocks-gamestore-block-hero .hero-slider .slider-container .swiper-wrapper .slide-item img.dark-logo {
+  display: none;
+}
+body .is-layout-constrained .wp-block-blocks-gamestore-block-hero .hero-slider .slider-container .swiper-wrapper .slide-item img.light-logo {
+  display: block;
+}
+
+.dark-mode-gamestore .wp-block-blocks-gamestore-block-hero .hero-slider .slider-container .swiper-wrapper .slide-item img.dark-logo {
+  display: block !important;
+}
+.dark-mode-gamestore .wp-block-blocks-gamestore-block-hero .hero-slider .slider-container .swiper-wrapper .slide-item img.light-logo {
+  display: none !important;
 }

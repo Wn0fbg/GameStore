@@ -211,9 +211,29 @@ export default function Edit({ attributes, setAttributes }) {
 						value={description}
 						onChange={(val) => setAttributes({ description: val })}
 					/>
-					<a href={link} className="hero-button">
+					<a href={link} className="hero-button shadow">
 						{linkAnchor}
 					</a>
+				</div>
+				<div className="hero-slider">
+					<div className="slider-container">
+						<div className="swiper-wrapper">
+							{slides.map((slide, index) => (
+								<div className="swiper-slide slide-item" key={index}>
+									<img
+										src={slide.lightImage}
+										alt="Light Logo"
+										className="light-logo"
+									/>
+									<img
+										src={slide.darkImage}
+										alt="Dark Logo"
+										className="dark-logo"
+									/>
+								</div>
+							))}
+						</div>
+					</div>
 				</div>
 			</div>
 		</>

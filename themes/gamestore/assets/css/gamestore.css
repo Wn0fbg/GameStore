@@ -116,8 +116,8 @@ body {
   --action-main: rgba(14, 13, 15, 0.64);
   --divider-main: rgba(14, 13, 15, 0.08);
   --text-primary: #0e0d0f;
-  --text-secondary: rgba(14, 13, 15, 0.7)
-    --secondary-48: rgba(250, 250, 250, 0.48);
+  --text-secondary: rgba(14, 13, 15, 0.7);
+  --secondary-48: rgba(250, 250, 250, 0.48);
   --white-contrast: #0a090a;
   --purple-main: #6f76c0;
   --mask-gradient: linear-gradient(
@@ -125,6 +125,12 @@ body {
     rgba(14, 13, 15, 0) 0%,
     rgba(236, 236, 236, 1) 79.5%
   );
+  --mask-gradient-second: linear-gradient(
+    180deg,
+    rgba(250, 250, 250, 0) 0%,
+    rgba(250, 250, 250, 1) 100%
+  );
+  --accent-gradient: linear-gradient(90deg, #3dafe2 0%, #6f76c0 100%);
 }
 
 .dark-mode-gamestore {
@@ -140,10 +146,17 @@ body {
     rgba(14, 13, 15, 0) 0%,
     rgba(12.86, 10.85, 14.88, 1) 79.5%
   );
+  --mask-gradient-second: linear-gradient(
+    180deg,
+    rgba(14, 13, 15, 0) 0%,
+    rgba(14.41, 13.32, 14.92, 1) 100%
+  );
 }
 
 body {
   font-family: Urbanist;
+  font-style: normal;
+  font-size: clamp(1rem, calc(0.93rem + 0.33vw), 1.25rem);
 }
 
 .wrapper {
@@ -192,4 +205,37 @@ h5 {
 
 h6 {
   font-size: clamp(1.25rem, calc(1.15rem + 0.49vw), 1.63rem);
+}
+
+.hero-button {
+  text-decoration: none;
+  padding: 20px 32px;
+  border-radius: 5px;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 15%;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(
+    --accent-gradient,
+    linear-gradient(90deg, #3dafe2 0%, #6f76c0 100%)
+  );
+  transition: all 0.3s ease-in-out;
+
+  &.shadow {
+    box-shadow: 0px 16px 24px 0px rgba(61, 175, 226, 0.48);
+  }
+
+  &:hover {
+    background: linear-gradient(90deg, #6f76c0 0%, #3f48a5 100%);
+    transition: all 300ms ease-in-out;
+
+    &.shadow {
+      box-shadow: 0px 8px 12px -20px rgba(61, 175, 226, 0.48);
+    }
+  }
 }
