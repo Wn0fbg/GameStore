@@ -157,6 +157,7 @@ body {
   font-family: Urbanist;
   font-style: normal;
   font-size: clamp(1rem, calc(0.93rem + 0.33vw), 1.25rem);
+  background: var(--background-default, #fafafa);
 }
 
 .wrapper {

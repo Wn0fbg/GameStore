@@ -1,14 +1,25 @@
-import { __ } from '@wordpress/i18n';
-import { useBlockProps } from '@wordpress/block-editor';
-import './editor.scss';
+import { __ } from "@wordpress/i18n";
+import { useBlockProps, InspectorControls } from "@wordpress/block-editor";
+import { PanelBody, TextControl } from "@wordpress/components";
+import "./editor.scss";
+import gamesLine from "./img/gamesLine.png";
 
-export default function Edit() {
+export default function Edit({ attributes, setAttributes }) {
+	const { count } = attributes;
 	return (
-		<p { ...useBlockProps() }>
-			{ __(
-				'Blocks Gamestore – hello from the editor!',
-				'blocks-gamestore'
-			) }
-		</p>
+		<>
+			<InspectorControls>
+				<PanelBody title={__("Setting", "blocks-gamestore")}>
+					<TextControl
+						label={__("Count", "blocks-gamestore")}
+						value={count}
+						onChange={(val) => setAttributes({ count: parseInt(val, 10) || 0 })}
+					/>
+				</PanelBody>
+			</InspectorControls>
+			<div {...useBlockProps()}>
+				<img src={gamesLine} />
+			</div>
+		</>
 	);
 }

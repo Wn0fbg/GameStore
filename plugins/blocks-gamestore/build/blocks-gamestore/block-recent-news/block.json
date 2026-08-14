@@ -1,12 +1,12 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "blocks-gamestore/games-line",
+  "name": "blocks-gamestore/resent-news",
   "version": "0.1.0",
-  "title": "Games Line",
+  "title": "Recent News",
   "category": "gamestore",
   "icon": "smiley",
-  "description": "Dynamic Animated Line with Games.",
+  "description": "Recent News Section.",
   "example": {},
   "supports": {
     "html": false
@@ -14,12 +14,20 @@
   "attributes": {
     "count": {
       "type": "number",
-      "default": 12
+      "default": 3
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "image": {
+      "type": "string"
     }
   },
   "textdomain": "blocks-gamestore",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
-  "style": "file:./style-index.css",
-  "viewScript": "file:./view.js"
+  "style": "file:./style-index.css"
 }

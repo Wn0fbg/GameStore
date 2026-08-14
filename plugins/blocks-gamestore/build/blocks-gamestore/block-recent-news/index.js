@@ -2,10 +2,10 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/blocks-gamestore/block-games-line/edit.js"
-/*!*******************************************************!*\
-  !*** ./src/blocks-gamestore/block-games-line/edit.js ***!
-  \*******************************************************/
+/***/ "./src/blocks-gamestore/block-recent-news/edit.js"
+/*!********************************************************!*\
+  !*** ./src/blocks-gamestore/block-recent-news/edit.js ***!
+  \********************************************************/
 (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -18,11 +18,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.scss */ "./src/blocks-gamestore/block-games-line/editor.scss");
-/* harmony import */ var _img_gamesLine_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./img/gamesLine.png */ "./src/blocks-gamestore/block-games-line/img/gamesLine.png");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__);
-
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.scss */ "./src/blocks-gamestore/block-recent-news/editor.scss");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__);
 
 
 
@@ -33,44 +31,67 @@ function Edit({
   setAttributes
 }) {
   const {
-    count
+    count,
+    title,
+    description,
+    image
   } = attributes;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
         title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Setting", "blocks-gamestore"),
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
           label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Count", "blocks-gamestore"),
           value: count,
           onChange: val => setAttributes({
             count: parseInt(val, 10) || 0
           })
-        })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Title", "blocks-gamestore"),
+          value: title,
+          onChange: title => setAttributes({
+            title
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextareaControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Description", "blocks-gamestore"),
+          value: description,
+          onChange: description => setAttributes({
+            description
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaPlaceholder, {
+          icon: "format-image",
+          labels: {
+            title: "Image"
+          },
+          onSelect: media => setAttributes({
+            image: media.url
+          }),
+          accept: "image/*",
+          allowedTypes: ["image"],
+          notices: ["Image"]
+        })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-      ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
-        src: _img_gamesLine_png__WEBPACK_IMPORTED_MODULE_4__
-      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)()
     })]
   });
 }
 
 /***/ },
 
-/***/ "./src/blocks-gamestore/block-games-line/index.js"
-/*!********************************************************!*\
-  !*** ./src/blocks-gamestore/block-games-line/index.js ***!
-  \********************************************************/
+/***/ "./src/blocks-gamestore/block-recent-news/index.js"
+/*!*********************************************************!*\
+  !*** ./src/blocks-gamestore/block-recent-news/index.js ***!
+  \*********************************************************/
 (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/blocks-gamestore/block-games-line/style.scss");
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/blocks-gamestore/block-games-line/edit.js");
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/blocks-gamestore/block-games-line/save.js");
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/blocks-gamestore/block-games-line/block.json");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/blocks-gamestore/block-recent-news/style.scss");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/blocks-gamestore/block-recent-news/edit.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/blocks-gamestore/block-recent-news/save.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/blocks-gamestore/block-recent-news/block.json");
 
 
 
@@ -83,10 +104,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ },
 
-/***/ "./src/blocks-gamestore/block-games-line/save.js"
-/*!*******************************************************!*\
-  !*** ./src/blocks-gamestore/block-games-line/save.js ***!
-  \*******************************************************/
+/***/ "./src/blocks-gamestore/block-recent-news/save.js"
+/*!********************************************************!*\
+  !*** ./src/blocks-gamestore/block-recent-news/save.js ***!
+  \********************************************************/
 (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -102,37 +123,27 @@ function save() {
 
 /***/ },
 
-/***/ "./src/blocks-gamestore/block-games-line/editor.scss"
+/***/ "./src/blocks-gamestore/block-recent-news/editor.scss"
+/*!************************************************************!*\
+  !*** ./src/blocks-gamestore/block-recent-news/editor.scss ***!
+  \************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ },
+
+/***/ "./src/blocks-gamestore/block-recent-news/style.scss"
 /*!***********************************************************!*\
-  !*** ./src/blocks-gamestore/block-games-line/editor.scss ***!
+  !*** ./src/blocks-gamestore/block-recent-news/style.scss ***!
   \***********************************************************/
 (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
-
-/***/ },
-
-/***/ "./src/blocks-gamestore/block-games-line/style.scss"
-/*!**********************************************************!*\
-  !*** ./src/blocks-gamestore/block-games-line/style.scss ***!
-  \**********************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ },
-
-/***/ "./src/blocks-gamestore/block-games-line/img/gamesLine.png"
-/*!*****************************************************************!*\
-  !*** ./src/blocks-gamestore/block-games-line/img/gamesLine.png ***!
-  \*****************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "images/gamesLine.63f580e1.png";
 
 /***/ },
 
@@ -186,13 +197,13 @@ module.exports = window["wp"]["i18n"];
 
 /***/ },
 
-/***/ "./src/blocks-gamestore/block-games-line/block.json"
-/*!**********************************************************!*\
-  !*** ./src/blocks-gamestore/block-games-line/block.json ***!
-  \**********************************************************/
+/***/ "./src/blocks-gamestore/block-recent-news/block.json"
+/*!***********************************************************!*\
+  !*** ./src/blocks-gamestore/block-recent-news/block.json ***!
+  \***********************************************************/
 (module) {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"blocks-gamestore/games-line","version":"0.1.0","title":"Games Line","category":"gamestore","icon":"smiley","description":"Dynamic Animated Line with Games.","example":{},"supports":{"html":false},"attributes":{"count":{"type":"number","default":12}},"textdomain":"blocks-gamestore","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"blocks-gamestore/resent-news","version":"0.1.0","title":"Recent News","category":"gamestore","icon":"smiley","description":"Recent News Section.","example":{},"supports":{"html":false},"attributes":{"count":{"type":"number","default":3},"title":{"type":"string"},"description":{"type":"string"},"image":{"type":"string"}},"textdomain":"blocks-gamestore","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ }
 
@@ -319,29 +330,6 @@ module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/tru
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/publicPath */
-/******/ 	(() => {
-/******/ 		let scriptUrl;
-/******/ 		if (globalThis.importScripts) scriptUrl = globalThis.location + "";
-/******/ 		const document = globalThis.document;
-/******/ 		if (!scriptUrl && document) {
-/******/ 			if (document.currentScript?.tagName.toUpperCase() === 'SCRIPT')
-/******/ 				scriptUrl = document.currentScript.src;
-/******/ 			if (!scriptUrl) {
-/******/ 				const scripts = document.getElementsByTagName("script");
-/******/ 				if(scripts.length) {
-/******/ 					let i = scripts.length - 1;
-/******/ 					while (i > -1 && (!scriptUrl || !/^http(s?):/.test(scriptUrl))) scriptUrl = scripts[i--].src;
-/******/ 				}
-/******/ 			}
-/******/ 		}
-/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
-/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
-/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
-/******/ 		scriptUrl = scriptUrl.replace(/^blob:/, "").replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
-/******/ 		__webpack_require__.p = scriptUrl + "../../";
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */
 /******/ 	(() => {
 /******/ 		// no baseURI
@@ -350,8 +338,8 @@ module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/tru
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		const installedChunks = {
-/******/ 			"blocks-gamestore/block-games-line/index": 0,
-/******/ 			"blocks-gamestore/block-games-line/style-index": 0
+/******/ 			"blocks-gamestore/block-recent-news/index": 0,
+/******/ 			"blocks-gamestore/block-recent-news/style-index": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -401,7 +389,7 @@ module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/tru
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	let __webpack_exports__ = __webpack_require__.O(undefined, ["blocks-gamestore/block-games-line/style-index"], () => (__webpack_require__("./src/blocks-gamestore/block-games-line/index.js")))
+/******/ 	let __webpack_exports__ = __webpack_require__.O(undefined, ["blocks-gamestore/block-recent-news/style-index"], () => (__webpack_require__("./src/blocks-gamestore/block-recent-news/index.js")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
