@@ -6,6 +6,7 @@ import {
 } from "@wordpress/block-editor";
 import { PanelBody, TextControl, TextareaControl } from "@wordpress/components";
 import "./editor.scss";
+import ServerSideRender from "@wordpress/server-side-render";
 
 export default function Edit({ attributes, setAttributes }) {
 	const { count, title, description, image } = attributes;
@@ -28,6 +29,7 @@ export default function Edit({ attributes, setAttributes }) {
 						value={description}
 						onChange={(description) => setAttributes({ description })}
 					/>
+					{image && <img src={image} className="bg-image" />}
 					<MediaPlaceholder
 						icon="format-image"
 						labels={{ title: "Image" }}
@@ -38,7 +40,12 @@ export default function Edit({ attributes, setAttributes }) {
 					/>
 				</PanelBody>
 			</InspectorControls>
-			<div {...useBlockProps()}></div>
+			<div {...useBlockProps()}>
+				<ServerSideRender
+					block="blocks-gamestore/recent-news"
+					attributes={attributes}
+				/>
+			</div>
 		</>
 	);
 }

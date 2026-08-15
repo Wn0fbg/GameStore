@@ -137,7 +137,7 @@ return array(
 	'block-recent-news' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
-		'name' => 'blocks-gamestore/resent-news',
+		'name' => 'blocks-gamestore/recent-news',
 		'version' => '0.1.0',
 		'title' => 'Recent News',
 		'category' => 'gamestore',

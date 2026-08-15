@@ -45,3 +45,43 @@ function fix_svg_admin_display() {
     </style>';
 }
 add_action('admin_head', 'fix_svg_admin_display');
+
+function register_news_post_type() {
+    register_post_type('news', [
+        'labels' => [
+            'name'               => 'News',
+            'singular_name'      => 'News',
+            'add_new'            => 'Add News',
+            'add_new_item'       => 'Add New News',
+            'edit_item'          => 'Edit News',
+            'all_items'          => 'All News',
+        ],
+        'public'             => true,
+        'menu_icon'          => 'dashicons-megaphone',
+        'menu_position'      => 5,
+        'supports'           => ['title', 'editor', 'thumbnail', 'excerpt'],
+        'has_archive'        => true,
+        'rewrite'            => ['slug' => 'news'],
+        'show_in_rest'       => true,
+        'show_ui'            => true,
+    ]);
+}
+add_action('init', 'register_news_post_type');
+
+function register_news_category_taxonomy() {
+    register_taxonomy('news_category', 'news', [
+        'labels' => [
+            'name'              => 'News Categories',
+            'singular_name'     => 'News Category',
+            'add_new_item'      => 'Add New Category',
+            'edit_item'         => 'Edit Category',
+            'all_items'         => 'All Categories',
+        ],
+        'hierarchical'       => true,
+        'public'             => true,
+        'show_admin_column'  => true,
+        'rewrite'            => ['slug' => 'news-category'],
+        'show_in_rest'       => true,
+    ]);
+}
+add_action('init', 'register_news_category_taxonomy');
