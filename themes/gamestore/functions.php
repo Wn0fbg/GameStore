@@ -15,6 +15,13 @@ function gamestore_styles() {
 		true	
 	);
 
+	wp_localize_script(
+		'gamestore-theme-related', 
+		'gamestore_params', 
+		array(
+		'ajaxurl' => admin_url('admin-ajax.php'),
+	));
+
 	// Swiper slider
 	wp_enqueue_style(
 		'swiper-bundle',

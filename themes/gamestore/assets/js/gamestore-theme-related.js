@@ -26,3 +26,72 @@ if (styleToggle) {
 if (styleMode === "dark") {
   enableDarkStyle();
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const searchContainer = document.querySelector(
+    ".popup-games-search-container",
+  );
+  // ✅ Fixed selector - should target the results container
+  const searchResult = document.querySelector(".popup-search-results");
+  const searchInput = document.getElementById("popup-search-input");
+  const openButton = document.querySelector(".header-search");
+  const closeButton = document.getElementById("close-search");
+  const titleElement = document.querySelector(".search-popup-title");
+
+  openButton.addEventListener("click", function () {
+    searchContainer.style.display = "block";
+    titleElement.textContent = "You might be interested";
+
+    showPlaceholder();
+
+    fetch(gamestore_params.ajaxurl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({
+        action: "load_latest_games",
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          renderGames(data.data);
+        }
+      })
+      .catch((error) => console.log("Error fetching latest games", error));
+  });
+
+  closeButton.addEventListener("click", function () {
+    searchContainer.style.display = "none";
+    searchResult.innerHTML = "";
+  });
+
+  function showPlaceholder() {
+    searchResult.innerHTML = "";
+    for (let i = 0; i < 12; i++) {
+      const placeholder = document.createElement("div");
+      placeholder.className = "game-placeholder";
+      searchResult.appendChild(placeholder);
+    }
+  }
+
+  function renderGames(games) {
+    searchResult.innerHTML = "";
+    games.forEach(function (game) {
+      const gameDiv = document.createElement("div");
+      gameDiv.className = "game-result";
+
+      gameDiv.innerHTML = `
+        <a href="${game.link}">
+          <div class="game-featured-image">${game.thumbnail}</div>
+          <div class="game-meta">
+            ${game.price}
+            <h3>${game.title}</h3>
+          </div>
+        </a>
+      `;
+      searchResult.appendChild(gameDiv);
+    });
+  }
+});
