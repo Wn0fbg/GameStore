@@ -1,1 +1,86 @@
-.wp-block-blocks-gamestore-subscribe {}
+.wp-block-blocks-gamestore-subscribe {
+	min-height: 500px;
+	// 120px - desktop; 60px - mobile
+	padding-top: clamp(3.75rem, calc(2.77rem + 4.92vw), 7.5em);
+	padding-bottom: clamp(3.75rem, calc(2.77rem + 4.92vw), 7.5em);
+	box-sizing: border-box;
+	position: relative;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+
+	&::before {
+		content: "";
+		width: 80%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 0;
+		background: var(--mask-gradient);
+	}
+
+	.subscribe-inner {
+		position: relative;
+		z-index: 1;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: center;
+		gap: 16px;
+
+		.subscribe-title {
+			// 64px - desktop; 54px - mobile
+			font-size: clamp(3.38rem, calc(3.21rem + 0.82vw), 4rem);
+			max-width: 800px;
+			color: var(--white-contrast);
+
+			strong {
+				background: var(
+					--accent-gradient,
+					linear-gradient(90deg, #3dafe2 0%, #6f76c0 100%)
+				);
+				background-clip: text;
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+		}
+
+		.subscribe-description {
+			color: var(--text-secondary, rgba(14, 13, 15, 0.7));
+			max-width: 800px;
+			line-height: 1.6;
+		}
+
+		.subscribe-shortcode {
+			margin-top: 16px;
+			max-width: 800px;
+
+			.mc4wp-response {
+				margin-top: 16px;
+				color: var(--text-secondary, rgba(14, 13, 15, 0.7));
+			}
+
+			p {
+				display: none;
+			}
+
+			.mc4wp-form-fields {
+				display: flex;
+				align-items: center;
+				gap: 24px;
+
+				input[type="submit"] {
+					height: 60px;
+					padding: 20px 32px;
+					box-shadow: 0px 8px 12px 0px rgba(61, 175, 226, 0.48);
+
+					&:hover {
+						box-shadow: 0px 8px 12px -6px rgba(61, 175, 226, 0.48);
+					}
+				}
+			}
+		}
+	}
+}

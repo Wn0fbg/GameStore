@@ -132,6 +132,7 @@ body {
     rgba(250, 250, 250, 1) 100%
   );
   --accent-gradient: linear-gradient(90deg, #3dafe2 0%, #6f76c0 100%);
+  --divider-input: rgba(14, 13, 15, 0.24);
 }
 
 .dark-mode-gamestore {
@@ -153,6 +154,7 @@ body {
     rgba(14, 13, 15, 0) 0%,
     rgba(14.41, 13.32, 14.92, 1) 100%
   );
+  --divider-input: rgba(255, 255, 255, 0.24);
 }
 
 body {
@@ -210,7 +212,34 @@ h6 {
   font-size: clamp(1.25rem, calc(1.15rem + 0.49vw), 1.63rem);
 }
 
-.hero-button {
+input[type="text"],
+input[type="email"] {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 60px;
+  box-sizing: border-box;
+  padding: 16px 24px;
+  border-radius: 5px;
+  border: 1px solid var(--divider-input, rgba(14, 13, 15, 0.24));
+  background-color: transparent;
+  color: var(-text-secondary, rgba(14, 13, 15, 0.7));
+  font-style: Medium;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0%;
+}
+
+input[type="text"],
+input[type="email"]::placeholder {
+  color: var(--text-secondary, rgba(14, 13, 15, 0.7));
+}
+
+.hero-button,
+input[type="submit"] {
+  border: 0;
+  outline: 0;
   text-decoration: none;
   padding: 20px 32px;
   border-radius: 5px;
@@ -228,6 +257,7 @@ h6 {
     linear-gradient(90deg, #3dafe2 0%, #6f76c0 100%)
   );
   transition: all 0.3s ease-in-out;
+  cursor: pointer;
 
   &.shadow {
     box-shadow: 0px 16px 24px 0px rgba(61, 175, 226, 0.48);
@@ -358,6 +388,7 @@ h6 {
 .game-result .game-featured-image {
   width: 100%;
   height: 340px;
+  margin-bottom: 8px;
 }
 
 .game-result .game-featured-image img {

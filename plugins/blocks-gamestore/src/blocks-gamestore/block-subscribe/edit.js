@@ -33,6 +33,8 @@ export default function Edit({ attributes, setAttributes }) {
 						allowedTypes={["image"]}
 						notices={["Image"]}
 					/>
+					<br />
+					<br />
 					<TextControl
 						label={__("Shortcode", "blocks-gamestore")}
 						value={shortcode}
