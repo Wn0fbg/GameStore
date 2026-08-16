@@ -88,3 +88,15 @@ function view_block_resent_news($attributes) {
 
     return ob_get_clean();
 }
+
+function view_block_subscribe($attributes) {
+    //$image_bg = ($attributes['image']) ? 'style="background-image: url(' .$attributes['image']. ')"' : '';
+    //.$image_bg
+
+    ob_start();
+        echo 'div'.get_block_wrapper_attributes().'>';
+            echo 'test';
+        echo '</div>';
+    
+    return ob_get_clean();
+}
