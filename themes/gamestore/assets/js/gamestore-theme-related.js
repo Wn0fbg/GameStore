@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const searchContainer = document.querySelector(
     ".popup-games-search-container",
   );
-  // ✅ Fixed selector - should target the results container
   const searchResult = document.querySelector(".popup-search-results");
   const searchInput = document.getElementById("popup-search-input");
   const openButton = document.querySelector(".header-search");
@@ -43,6 +42,13 @@ document.addEventListener("DOMContentLoaded", function () {
     titleElement.textContent = "You might be interested";
 
     showPlaceholder();
+    loadDefaultGames();
+  });
+
+  searchInput.addEventListener("input", function () {
+    const searchItem = searchInput.value;
+    titleElement.textContent = "Search Results";
+    showPlaceholder();
 
     fetch(gamestore_params.ajaxurl, {
       method: "POST",
@@ -50,13 +56,20 @@ document.addEventListener("DOMContentLoaded", function () {
         "Content-Type": "application/x-www-form-urlencoded",
       },
       body: new URLSearchParams({
-        action: "load_latest_games",
+        action: "search_games_by_title",
+        search: searchItem,
       }),
     })
       .then((response) => response.json())
       .then((data) => {
-        if (data.success) {
+        if (data.success && data.data.length > 0) {
+          titleElement.textContent = "Search Results";
           renderGames(data.data);
+        } else {
+          titleElement.textContent =
+            "Nothing was found. You might be interested in";
+          showPlaceholder();
+          loadDefaultGames();
         }
       })
       .catch((error) => console.log("Error fetching latest games", error));
@@ -65,6 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
   closeButton.addEventListener("click", function () {
     searchContainer.style.display = "none";
     searchResult.innerHTML = "";
+    searchInput.value = "";
   });
 
   function showPlaceholder() {
@@ -86,12 +100,31 @@ document.addEventListener("DOMContentLoaded", function () {
         <a href="${game.link}">
           <div class="game-featured-image">${game.thumbnail}</div>
           <div class="game-meta">
-            ${game.price}
+            <div class="game-price">${game.price}</div>
             <h3>${game.title}</h3>
           </div>
         </a>
       `;
       searchResult.appendChild(gameDiv);
     });
+  }
+
+  function loadDefaultGames() {
+    fetch(gamestore_params.ajaxurl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({
+        action: "load_latest_games",
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          renderGames(data.data);
+        }
+      })
+      .catch((error) => console.log("Error fetching latest games", error));
   }
 });
