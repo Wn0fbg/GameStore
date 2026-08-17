@@ -38,12 +38,25 @@ function load_latest_games() {
         while ($games_query->have_posts()) {
             $games_query->the_post();
             $product = wc_get_product(get_the_ID());
+            $platforms = array('Xbox', 'PC', 'PlayStation');
+            $platforms_html = '';
+
+
+            foreach ($platforms as $platform) {
+                    $platforms_html .= (get_post_meta(
+                        get_the_ID(), 
+                        '_platform_'.strtolower($platform), 
+                        true) == 'yes') ? 
+                            '<div class="platform_'.strtolower($platform).'"></div>' 
+                            : null;
+                    }
 
             $result[] = array(
                 'link' => get_the_permalink(),
                 'thumbnail' => $product->get_image('full'),
                 'price' => $product->get_price_html(),
                 'title' => get_the_title(),
+                'platforms' => $platforms_html
             );
         }
     }
@@ -72,12 +85,25 @@ function search_games_by_title() {
         while ($games_query->have_posts()) {
             $games_query->the_post();
             $product = wc_get_product(get_the_ID());
+            $platforms = array('Xbox', 'PC', 'PlayStation');
+            $platforms_html = '';
+
+
+            foreach ($platforms as $platform) {
+                        $platforms_html .= (get_post_meta(
+                        get_the_ID(), 
+                        '_platform_'.strtolower($platform), 
+                        true) == 'yes') ? 
+                            '<div class="platform_'.strtolower($platform).'"></div>' 
+                            : null;
+                    }
 
             $result[] = array(
                 'link' => get_the_permalink(),
                 'thumbnail' => $product->get_image('full'),
                 'price' => $product->get_price_html(),
                 'title' => get_the_title(),
+                'platforms' => $platforms_html
             );
         }
     }
@@ -85,6 +111,5 @@ function search_games_by_title() {
 
     wp_send_json_success($result);
 }
-// ПРАВИЛЬНО - привязываем функцию к правильному action
 add_action('wp_ajax_search_games_by_title', 'search_games_by_title');
 add_action('wp_ajax_nopriv_search_games_by_title', 'search_games_by_title');

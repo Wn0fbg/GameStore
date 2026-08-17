@@ -39,8 +39,12 @@ function create_block_blocks_gamestore_block_init() {
 	register_block_type(__DIR__ . '/build/blocks-gamestore/block-recent-news', array(
 		'render_callback' => 'view_block_resent_news',
 	));
-		register_block_type(__DIR__ . '/build/blocks-gamestore/block-subscribe', array(
+	register_block_type(__DIR__ . '/build/blocks-gamestore/block-subscribe', array(
 		'render_callback' => 'view_block_subscribe',
 	));
+	register_block_type(__DIR__ . '/build/blocks-gamestore/block-featured-products', array(
+		'render_callback' => 'view_block_featured_products',
+	));
 }
+
 add_action( 'init', 'create_block_blocks_gamestore_block_init' );
