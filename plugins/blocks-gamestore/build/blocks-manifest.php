@@ -85,30 +85,20 @@ return array(
 			'title' => array(
 				'type' => 'string',
 				'source' => 'html',
-				'selector' => '.cta-title'
+				'selector' => '.faq-title'
 			),
-			'description' => array(
-				'type' => 'string',
-				'source' => 'html',
-				'selector' => '.cta-description'
-			),
-			'links' => array(
+			'faqs' => array(
 				'type' => 'array',
 				'default' => array(
 					
 				)
-			),
-			'image' => array(
-				'type' => 'string'
-			),
-			'imageBg' => array(
-				'type' => 'string'
 			)
 		),
 		'textdomain' => 'blocks-gamestore',
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
-		'style' => 'file:./style-index.css'
+		'style' => 'file:./style-index.css',
+		'viewScript' => 'file:./view.js'
 	),
 	'block-featured-products' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
