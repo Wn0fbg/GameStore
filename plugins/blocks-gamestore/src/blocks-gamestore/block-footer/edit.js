@@ -9,6 +9,7 @@ import {
 	TextControl,
 	TextareaControl,
 	Button,
+	__experimentalDivider as Divider,
 } from "@wordpress/components";
 import "./editor.scss";
 
@@ -65,7 +66,7 @@ const LinkRepeater = ({ links, setLinks }) => {
 
 const LogoRepeater = ({ logos, setLogos }) => {
 	const addLogo = () => {
-		setLogos([...logos, { url: "", image: "" }]);
+		setLogos([...logos, { url: "", image: "", imageDark: "" }]);
 	};
 
 	const removeLogo = (index) => {
@@ -74,7 +75,7 @@ const LogoRepeater = ({ logos, setLogos }) => {
 	};
 
 	const updateLogo = (index, key, value) => {
-		const updatedLogos = [...links];
+		const updatedLogos = [...logos];
 		updatedLogos[index][key] = value;
 		setLogos(updatedLogos);
 	};
@@ -91,10 +92,22 @@ const LogoRepeater = ({ logos, setLogos }) => {
 						onChange={(value) => updateLogo(index, "url", value)}
 						placeholder="https://example.com"
 					/>
+					{logo.image && <img src={logo.image} alt="Light Logo" />}
 					<MediaPlaceholder
 						icon="format-image"
-						labels={{ title: "Logo" }}
+						labels={{ title: "Logo Light" }}
 						onSelect={(media) => updateLogo(index, "image", media.url)}
+						onChange={(media) => updateLogo(index, "image", media.url)}
+						accept="image/*"
+						allowedTypes={["image"]}
+					/>
+					<br />
+					{logo.imageDark && <img src={logo.imageDark} alt="Dark Logo" />}
+					<MediaPlaceholder
+						icon="format-image"
+						labels={{ title: "Logo Dark" }}
+						onSelect={(media) => updateLogo(index, "imageDark", media.url)}
+						onChange={(media) => updateLogo(index, "imageDark", media.url)}
 						accept="image/*"
 						allowedTypes={["image"]}
 					/>
@@ -128,19 +141,54 @@ export default function Edit({ attributes, setAttributes }) {
 					<TextareaControl
 						label="copyrights"
 						value={copyrights}
-						onChange={(value) => setAttributes({ memberLink: value })}
+						onChange={(copyrights) => setAttributes({ copyrights })}
 					/>
-					<br />
-					<hr />
+					<Divider margin={8} />
 					<LinkRepeater links={links} setLinks={setLinks} />
-					<br />
-					<hr />
+					<Divider margin={8} />
 					<LogoRepeater logos={logos} setLogos={setLogos} />
 				</PanelBody>
 			</InspectorControls>
 			<div {...useBlockProps()}>
-				<div className="inner-footer">
+				<div className="wrapper inner-footer">
 					<InnerBlocks />
+					<div className="footer-line"></div>
+					<div className="footer-bottom">
+						<div className="left-part">
+							{copyrights && <p>{copyrights}</p>}
+							{logos && (
+								<div className="footer-logos">
+									{logos.map((logo, index) => (
+										<a
+											key={index}
+											href={logo.url}
+											target="_blank"
+											rel="nofollow noreferrer"
+										>
+											<img
+												src={logo.image}
+												className="logo-light" 
+												alt="Logo Light"
+											/>
+											<img
+												src={logo.imageDark}
+												className="logo-dark"
+												alt="Logo Dark"
+											/>
+										</a>
+									))}
+								</div>
+							)}
+						</div>
+						<div className="right-part">
+							{links &&
+								links.map((link, index) => (
+									<a key={index} href={link.url}>
+										{link.anchor}
+									</a>
+								))}
+						</div>
+					</div>
 				</div>
 			</div>
 		</>

@@ -79,7 +79,8 @@ const LogoRepeater = ({
   const addLogo = () => {
     setLogos([...logos, {
       url: "",
-      image: ""
+      image: "",
+      imageDark: ""
     }]);
   };
   const removeLogo = index => {
@@ -87,7 +88,7 @@ const LogoRepeater = ({
     setLogos(updatedLogos);
   };
   const updateLogo = (index, key, value) => {
-    const updatedLogos = [...links];
+    const updatedLogos = [...logos];
     updatedLogos[index][key] = value;
     setLogos(updatedLogos);
   };
@@ -102,12 +103,28 @@ const LogoRepeater = ({
         value: logo.url,
         onChange: value => updateLogo(index, "url", value),
         placeholder: "https://example.com"
+      }), logo.image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+        src: logo.image,
+        alt: "Light Logo"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.MediaPlaceholder, {
         icon: "format-image",
         labels: {
-          title: "Logo"
+          title: "Logo Light"
         },
         onSelect: media => updateLogo(index, "image", media.url),
+        onChange: media => updateLogo(index, "image", media.url),
+        accept: "image/*",
+        allowedTypes: ["image"]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), logo.imageDark && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+        src: logo.imageDark,
+        alt: "Dark Logo"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.MediaPlaceholder, {
+        icon: "format-image",
+        labels: {
+          title: "Logo Dark"
+        },
+        onSelect: media => updateLogo(index, "imageDark", media.url),
+        onChange: media => updateLogo(index, "imageDark", media.url),
         accept: "image/*",
         allowedTypes: ["image"]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
@@ -146,22 +163,58 @@ function Edit({
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextareaControl, {
           label: "copyrights",
           value: copyrights,
-          onChange: value => setAttributes({
-            memberLink: value
+          onChange: copyrights => setAttributes({
+            copyrights
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(LinkRepeater, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalDivider, {
+          margin: 8
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(LinkRepeater, {
           links: links,
           setLinks: setLinks
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(LogoRepeater, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalDivider, {
+          margin: 8
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(LogoRepeater, {
           logos: logos,
           setLogos: setLogos
         })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
       ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps)(),
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        className: "inner-footer",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InnerBlocks, {})
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        className: "wrapper inner-footer",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InnerBlocks, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          className: "footer-line"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: "footer-bottom",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            className: "left-part",
+            children: [copyrights && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+              children: copyrights
+            }), logos && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+              className: "footer-logos",
+              children: logos.map((logo, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("a", {
+                href: logo.url,
+                target: "_blank",
+                rel: "nofollow noreferrer",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+                  src: logo.image,
+                  className: "logo-light",
+                  alt: "Logo Light"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+                  src: logo.imageDark,
+                  className: "logo-dark",
+                  alt: "Logo Dark"
+                })]
+              }, index))
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "right-part",
+            children: links && links.map((link, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
+              href: link.url,
+              children: link.anchor
+            }, index))
+          })]
+        })]
       })
     })]
   });
@@ -214,241 +267,45 @@ function save({
   attributes
 }) {
   const {
-    memberLink,
-    cartLink
+    copyrights,
+    logos,
+    links
   } = attributes;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save(),
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "inner-header",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InnerBlocks.Content, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "right-section",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-          className: "header-search",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
-            viewBox: "0 0 36 36",
-            xmlns: "http://www.w3.org/2000/svg",
-            width: "36.000000",
-            height: "36.000000",
-            fill: "none",
-            customFrame: "#000000",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("defs", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("clipPath", {
-                id: "clipPath_1",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("rect", {
-                  width: "24.000000",
-                  height: "24.000000",
-                  x: "6.000000",
-                  y: "6.000000",
-                  fill: "rgb(255,255,255)"
-                })
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("rect", {
-              id: "search-normal",
-              width: "36.000000",
-              height: "36.000000",
-              x: "0.000000",
-              y: "0.000000",
-              fill: "rgb(255,255,255)",
-              "fill-opacity": "0"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("g", {
-              id: "2199092_search_find_glass_magnifier_zoom_icon 1",
-              "clip-path": "url(#clipPath_1)",
-              customFrame: "url(#clipPath_1)",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("rect", {
-                id: "2199092_search_find_glass_magnifier_zoom_icon 1",
-                width: "24.000000",
-                height: "24.000000",
-                x: "6.000000",
-                y: "6.000000",
-                fill: "rgb(255,255,255)",
-                "fill-opacity": "0"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("g", {
-                id: "Layer_2",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("g", {
-                  id: "Layer_3",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-                    id: "Vector",
-                    d: "M28.29 27.66L23.61 22.95C26.97 19.2 26.7 13.44 22.95 10.05C19.2 6.66002 13.44 6.96002 10.05 10.71C6.66002 14.46 6.96002 20.22 10.71 23.61C14.19 26.76 19.5 26.76 22.98 23.61L27.69 28.32L28.29 27.66ZM16.83 25.05C12.3 25.05 8.61002 21.36 8.61002 16.83C8.61002 12.27 12.3 8.61002 16.83 8.61002C21.36 8.61002 25.05 12.3 25.05 16.83C25.05 21.36 21.36 25.05 16.83 25.05Z",
-                    fill: "var(--action-main, rgba(14, 13, 15, 0.64))",
-                    "fill-rule": "nonzero"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-                    id: "Vector",
-                    d: "M16.8301 9.83984L16.8301 10.7398C20.1901 10.7398 22.9201 13.4698 22.9201 16.8298L23.8201 16.8298C23.8201 12.9598 20.7001 9.83984 16.8301 9.83984Z",
-                    fill: "var(--action-main, rgba(14, 13, 15, 0.64))",
-                    "fill-rule": "nonzero"
-                  })]
-                })
+      className: "wrapper inner-footer",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InnerBlocks.Content, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "footer-line"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "footer-bottom",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "left-part",
+          children: [copyrights && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            children: copyrights
+          }), logos && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            className: "footer-logos",
+            children: logos.map((logo, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
+              href: logo.url,
+              target: "_blank",
+              rel: "nofollow noreferrer",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+                src: logo.image,
+                className: "logo-light",
+                alt: "Logo Light"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+                src: logo.imageDark,
+                className: "logo-dark",
+                alt: "Logo Dark"
               })]
-            })]
-          })
+            }, index))
+          })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-          className: "header-mode-switcher",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
-            viewBox: "0 0 36 36",
-            xmlns: "http://www.w3.org/2000/svg",
-            width: "36.000000",
-            height: "36.000000",
-            fill: "none",
-            customFrame: "url(#clipPath_0)",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("defs", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("clipPath", {
-                id: "clipPath_0",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("rect", {
-                  width: "36.000000",
-                  height: "36.000000",
-                  x: "0.000000",
-                  y: "0.000000",
-                  rx: "18.000000",
-                  fill: "rgb(255,255,255)"
-                })
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("rect", {
-              id: "IconButton / switch theme",
-              width: "36.000000",
-              height: "36.000000",
-              x: "0.000000",
-              y: "0.000000",
-              rx: "18.000000",
-              fill: "rgb(255,255,255)",
-              "fill-opacity": "0"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("g", {
-              id: "Group 64",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-                id: "Vector",
-                d: "M12 0L0 0",
-                stroke: "var(--action-main, rgba(14, 13, 15, 0.64))",
-                "stroke-opacity": "0.639999986",
-                "stroke-linecap": "round",
-                "stroke-linejoin": "round",
-                "stroke-width": "1.000000",
-                transform: "matrix(0,1,-1,0,21,12)"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-                id: "Vector",
-                d: "M9 18L12 18",
-                stroke: "var(--action-main, rgba(14, 13, 15, 0.64))",
-                "stroke-opacity": "0.639999986",
-                "stroke-linecap": "round",
-                "stroke-linejoin": "round",
-                "stroke-width": "1.000000"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-                id: "Vector",
-                d: "M12.5098 9.51025L14.6398 11.6403",
-                stroke: "var(--action-main, rgba(14, 13, 15, 0.64))",
-                "stroke-opacity": "0.639999986",
-                "stroke-linecap": "round",
-                "stroke-linejoin": "round",
-                "stroke-width": "1.000000"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-                id: "Vector",
-                d: "M0 0L3 0",
-                stroke: "var(--action-main, rgba(14, 13, 15, 0.64))",
-                "stroke-opacity": "0.639999986",
-                "stroke-linecap": "round",
-                "stroke-linejoin": "round",
-                "stroke-width": "1.000000",
-                transform: "matrix(0,1,-1,0,21,6)"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-                id: "Vector",
-                d: "M3 0L0 0",
-                stroke: "var(--action-main, rgba(14, 13, 15, 0.64))",
-                "stroke-opacity": "0.639999986",
-                "stroke-linecap": "round",
-                "stroke-linejoin": "round",
-                "stroke-width": "1.000000",
-                transform: "matrix(0,1,-1,0,21,27)"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-                id: "Vector",
-                d: "M12.5098 26.4899L14.6398 24.3599",
-                stroke: "var(--action-main, rgba(14, 13, 15, 0.64))",
-                "stroke-opacity": "0.639999986",
-                "stroke-linecap": "round",
-                "stroke-linejoin": "round",
-                "stroke-width": "1.000000"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-                id: "Vector",
-                d: "M21 24C17.6863 24 15 21.3137 15 18C15 14.6863 17.6863 12 21 12C24.3137 12 27 14.6863 27 18C27 21.3137 24.3137 24 21 24Z",
-                stroke: "var(--action-main, rgba(14, 13, 15, 0.64))",
-                "stroke-opacity": "0.639999986",
-                "stroke-linecap": "round",
-                "stroke-linejoin": "round",
-                "stroke-width": "1.000000"
-              })]
-            })]
-          })
-        }), cartLink && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-          className: "header-cart-link",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-            href: cartLink,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
-              viewBox: "0 0 36 36",
-              xmlns: "http://www.w3.org/2000/svg",
-              width: "36.000000",
-              height: "36.000000",
-              fill: "none",
-              customFrame: "url(#clipPath_2)",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("defs", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("clipPath", {
-                  id: "clipPath_2",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("rect", {
-                    width: "36.000000",
-                    height: "36.000000",
-                    x: "0.000000",
-                    y: "0.000000",
-                    rx: "18.000000",
-                    fill: "rgb(255,255,255)"
-                  })
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("rect", {
-                id: "IconButton / switch theme",
-                width: "36.000000",
-                height: "36.000000",
-                x: "0.000000",
-                y: "0.000000",
-                rx: "18.000000",
-                fill: "rgb(255,255,255)",
-                "fill-opacity": "0"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("g", {
-                id: "Group 63",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-                  id: "Vector",
-                  d: "M7.71436 14.5713L9.42864 26.5713L26.5715 26.5713L28.2858 14.5713",
-                  "fill-rule": "nonzero",
-                  stroke: "var(--action-main, rgba(14, 13, 15, 0.64))",
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round",
-                  "stroke-width": "1.000000"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-                  id: "Vector",
-                  d: "M12.8574 16.2859L14.5717 9.42871",
-                  stroke: "var(--action-main, rgba(14, 13, 15, 0.64))",
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round",
-                  "stroke-width": "1.000000"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-                  id: "Vector",
-                  d: "M23.143 16.2859L21.4287 9.42871",
-                  stroke: "var(--action-main, rgba(14, 13, 15, 0.64))",
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round",
-                  "stroke-width": "1.000000"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-                  id: "Vector",
-                  d: "M6 14.5713L30 14.5713",
-                  stroke: "var(--action-main, rgba(14, 13, 15, 0.64))",
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round",
-                  "stroke-width": "1.000000"
-                })]
-              })]
-            })
-          })
-        }), memberLink && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-          className: "header-member-link",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-            href: memberLink,
-            children: "Member Link"
-          })
+          className: "right-part",
+          children: links && links.map((link, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+            href: link.url,
+            children: link.anchor
+          }, index))
         })]
       })]
     })

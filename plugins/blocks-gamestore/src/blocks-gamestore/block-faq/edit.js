@@ -87,6 +87,11 @@ export default function Edit({ attributes, setAttributes }) {
 						value={title}
 						onChange={(val) => setAttributes({ title: val })}
 					/>
+					<ToggleControl
+						label="Margin Zero"
+						checked={margin}
+						onChange={(margin) => setAttributes({ margin })}
+					/>
 				</PanelBody>
 				<PanelBody title="Manage FAQS">
 					{faqs.map((faq, index) => (
