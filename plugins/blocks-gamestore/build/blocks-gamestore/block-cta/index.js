@@ -135,7 +135,7 @@ function Edit({
           notices: ["Image"]
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
-        title: "Managr Links",
+        title: "Manage Links",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(LinkRepeater, {
           links: links,
           setLinks: setLinks

@@ -103,7 +103,7 @@ export default function Edit({ attributes, setAttributes }) {
 						notices={["Image"]}
 					/>
 				</PanelBody>
-				<PanelBody title="Managr Links">
+				<PanelBody title="Manage Links">
 					<LinkRepeater links={links} setLinks={setLinks} />
 				</PanelBody>
 			</InspectorControls>
