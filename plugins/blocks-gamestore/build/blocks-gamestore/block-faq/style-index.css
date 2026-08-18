@@ -9,5 +9,56 @@
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
+.wp-block-blocks-gamestore-block-faq .faq-title {
+  margin-top: 0;
+  margin-bottom: 24px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.wp-block-blocks-gamestore-block-faq .faq-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.wp-block-blocks-gamestore-block-faq .faq-item {
+  border: 1px solid var(--divider-main, rgba(14, 13, 15, 0.08));
+  border-radius: 5px;
+  padding: 24px;
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+}
+.wp-block-blocks-gamestore-block-faq .faq-item .faq-item-title {
+  color: var(--text-primary, rgb(14, 13, 15));
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.wp-block-blocks-gamestore-block-faq .faq-item .faq-item-title::after {
+  content: "";
+  width: 30px;
+  height: 31px;
+  display: block;
+  background: url("data:image/svg+xml,<svg viewBox=\"0 0 30 27.5\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"30.000000\" height=\"27.500000\" fill=\"none\" customFrame=\"%23000000\"><defs><linearGradient id=\"paint_linear_1\" x1=\"-1.2037664e-07\" x2=\"30\" y1=\"12.2916679\" y2=\"12.2916679\" gradientUnits=\"userSpaceOnUse\"><stop stop-color=\"rgb%2861,175,226%29\" offset=\"0\" stop-opacity=\"1\" /><stop stop-color=\"rgb%28111,118,192%29\" offset=\"1\" stop-opacity=\"1\" /></linearGradient></defs><path id=\"+\" d=\"M13.75 27.5L13.75 15.75L2 15.75L2 14.25L13.75 14.25L13.75 2.5L15.25 2.5L15.25 14.25L27 14.25L27 15.75L15.25 15.75L15.25 27.5L13.75 27.5Z\" fill=\"url%28%23paint_linear_1%29\" fill-rule=\"nonzero\" /></svg>") center center no-repeat;
+}
+.wp-block-blocks-gamestore-block-faq .faq-item .faq-item-title.open::after {
+  background: url("data:image/svg+xml,<svg viewBox=\"0 0 30 25\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"30.000000\" height=\"25.000000\" fill=\"none\" customFrame=\"%23000000\"><defs><linearGradient id=\"paint_linear_0\" x1=\"-1.2037664e-07\" x2=\"30\" y1=\"12.2916679\" y2=\"12.2916679\" gradientUnits=\"userSpaceOnUse\"><stop stop-color=\"rgb%2861,175,226%29\" offset=\"0\" stop-opacity=\"1\" /><stop stop-color=\"rgb%28111,118,192%29\" offset=\"1\" stop-opacity=\"1\" /></linearGradient></defs><path id=\"-\" d=\"M3 14.25L19 14.25L19 15.75L3 15.75L3 14.25Z\" fill=\"url%28%23paint_linear_0%29\" fill-rule=\"nonzero\" /></svg>") center center no-repeat;
+}
+.wp-block-blocks-gamestore-block-faq .faq-item .faq-item-description {
+  color: var(--text-secondary, rgba(14, 13, 15, 0.7));
+  line-height: 1.6;
+  display: none;
+}
+.wp-block-blocks-gamestore-block-faq .faq-item .faq-item-description.show {
+  display: block;
+}
+.wp-block-blocks-gamestore-block-faq .faq-item .faq-item-description a {
+  color: var(--purple-main, #6f76c0);
+  text-decoration: none;
+}
 
 /*# sourceMappingURL=style-index.css.map*/

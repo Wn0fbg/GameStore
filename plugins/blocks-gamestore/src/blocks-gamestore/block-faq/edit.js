@@ -7,6 +7,7 @@ import {
 	PanelBody,
 	TextControl,
 	TextareaControl,
+	ToggleControl,
 	Button,
 } from "@wordpress/components";
 import { useState } from "@wordpress/element";
@@ -20,7 +21,8 @@ const FAQItem = ({
 	onRemove,
 }) => {
 	return (
-		<div className="faq-item">
+		<div className="gutenberg-faq-item">
+			<br />
 			<TextControl
 				label="Question"
 				value={faq.title}
@@ -43,7 +45,7 @@ const FAQItem = ({
 };
 
 export default function Edit({ attributes, setAttributes }) {
-	const { title } = attributes;
+	const { title, margin } = attributes;
 	const [faqs, setFaqs] = useState(attributes.faqs || []);
 
 	const onFAQChange = (updatedFAQ, index) => {
@@ -103,14 +105,16 @@ export default function Edit({ attributes, setAttributes }) {
 					</Button>
 				</PanelBody>
 			</InspectorControls>
-			<div {...useBlockProps()}>
+			<div {...useBlockProps({ className: `${margin ? "no-margin" : ""}` })}>
 				<div className="wrapper faq-inner">
-					<RichText
-						tagName="h2"
-						className="faq-title"
-						value={title}
-						onChange={(title) => setAttributes({ title })}
-					/>
+					{title && (
+						<RichText
+							tagName="h2"
+							className="faq-title"
+							value={title}
+							onChange={(title) => setAttributes({ title })}
+						/>
+					)}
 					{faqs.map((faq, index) => (
 						<div key={index} className="faq-item">
 							<RichText

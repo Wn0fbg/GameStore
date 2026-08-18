@@ -1,18 +1,15 @@
 import { useBlockProps, RichText } from "@wordpress/block-editor";
 
 export default function save({ attributes }) {
-	const { title, faqs } = attributes;
+	const { title, faqs, margin } = attributes;
 
 	return (
-		<div {...useBlockProps.save()}>
+		<div {...useBlockProps.save({ className: `${margin ? "no-margin" : ""}` })}>
 			<div className="wrapper faq-inner">
-				<RichText.Content
-					tagName="h2"
-					className="faq-title"
-					value={title}
-					onChange={(title) => setAttributes({ title })}
-				/>
-				{faqs.map((faq, index) => {
+				{title && (
+					<RichText.Content tagName="h2" className="faq-title" value={title} />
+				)}
+				{faqs.map((faq, index) => (
 					<div key={index} className="faq-item">
 						<RichText.Content
 							tagName="div"
@@ -24,8 +21,8 @@ export default function save({ attributes }) {
 							className="faq-item-description"
 							value={faq.description}
 						/>
-					</div>;
-				})}
+					</div>
+				))}
 			</div>
 		</div>
 	);

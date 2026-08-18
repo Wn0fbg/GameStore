@@ -20,6 +20,10 @@
 		"faqs": {
 			"type": "array",
 			"default": []
+		},
+		"margin": {
+			"type": "boolean",
+			"default": false
 		}
 	},
 	"textdomain": "blocks-gamestore",
