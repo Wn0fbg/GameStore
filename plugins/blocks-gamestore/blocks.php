@@ -172,3 +172,36 @@ function view_block_featured_products($attributes) {
 
     return ob_get_clean();
 }
+
+function view_block_single_news() {
+    ob_start();
+
+    echo '<div '
+        . get_block_wrapper_attributes((array('class' => 'alignfull'))) .
+    '>';
+        echo '<div class="featured-image">';
+            echo '<div class="wrapper">';
+                echo '<h2>'.get_the_title().'</h2>';
+                echo '<div class="news-meta">';
+                    echo '<div class="news-date">
+                        '.get_the_date().'
+                    </div>';
+                    echo '<div class="news-authoe">
+                        '.get_the_author().'
+                    </div>';
+                echo '</div>';
+            echo '</div>';
+        echo '</div>';
+
+        echo '<div class="wrapper news-container">';
+            echo '<div class="news-social-share">
+                '.gamestore_social_share().'
+            </div>';
+            echo '<article class="'.implode('', get_post_class('news-post')).'">
+                '.get_the_content().'
+            </article>';
+        echo '</div>';
+    echo '<div/>';
+
+    return ob_get_clean();
+}

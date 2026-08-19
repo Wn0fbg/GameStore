@@ -48,6 +48,10 @@ function create_block_blocks_gamestore_block_init() {
 	register_block_type(__DIR__ . '/build/blocks-gamestore/block-featured-products', array(
 		'render_callback' => 'view_block_featured_products',
 	));
+	register_block_type(__DIR__ . '/build/blocks-gamestore/block-single-news', array(
+		'render_callback' => 'view_block_single_news',
+	));
 }
+
 
 add_action( 'init', 'create_block_blocks_gamestore_block_init' );
