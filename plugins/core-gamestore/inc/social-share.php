@@ -10,9 +10,27 @@ function gamestore_social_share($url, $title) {
 
     return "
         <div class='social-share-buttons'>
-            <a href={$twiter_url} target='_blank'>Share on Twiter</a>
-            <a href={$facebook_url} target='_blank'>Share on Facebook</a>
-            <a href={$pinterest_url} target='_blank'>Share on Pinterest</a>
+            <a 
+                href={$twiter_url} 
+                class='twiter-icon' 
+                target='_blank'
+            >
+                Share on Twiter
+            </a>
+            <a 
+                href={$facebook_url} 
+                target='_blank'
+                class='facebook-icon'
+            >
+            Share on Facebook
+            </a>
+            <a 
+                href={$pinterest_url} 
+                target='_blank'
+                class='pinterest-icon'
+            >
+                Share on Pinterest
+            </a>
         </div>
     ";
 }
