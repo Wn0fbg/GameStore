@@ -71,12 +71,22 @@ function gamestore_theme_setup() {
 }
 add_action('after_setup_theme', 'gamestore_theme_setup');
 
+// 2. Регистрация Google Font для редактора
 function gamestore_gutenberg_styles() {
+    // Регистрируем Google Font
     wp_enqueue_style(
         'gamestore-google-font', 
         gamestore_google_font(), 
         [], 
         '1.0.0'
+    );
+    
+    // Теперь подключаем editor-style с правильной зависимостью
+    wp_enqueue_style(
+        'gamestore-editor-style', 
+        get_template_directory_uri() . '/assets/css/editor-style.css',
+        ['gamestore-google-font'],
+        wp_get_theme()->get('Version')
     );
 }
 add_action('enqueue_block_editor_assets', 'gamestore_gutenberg_styles');

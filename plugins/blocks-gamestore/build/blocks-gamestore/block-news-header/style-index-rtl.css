@@ -5,6 +5,8 @@
   text-align: center;
   position: relative;
   background-size: cover;
+  padding-top: clamp(3.75rem, 2.77rem + 4.92vw, 7.5em);
+  padding-bottom: clamp(3.75rem, 2.77rem + 4.92vw, 7.5em);
 }
 .wp-block-blocks-gamestore-news-header::before {
   content: "";
@@ -31,6 +33,7 @@
   z-index: 1;
 }
 .wp-block-blocks-gamestore-news-header p {
+  margin-top: 0;
   max-width: 980px;
   margin-right: auto;
   margin-left: auto;
