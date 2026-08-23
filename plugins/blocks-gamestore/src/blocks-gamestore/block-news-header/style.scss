@@ -21,6 +21,11 @@
 		z-index: 0;
 	}
 
+	.wrapper {
+		position: relative;
+		z-index: 1;
+	}
+
 	h1 {
 		font-size: clamp(2.25rem, calc(1.95rem + 1.48vw), 3.38rem);
 		display: inline-flex;
