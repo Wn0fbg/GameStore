@@ -255,24 +255,25 @@ function view_block_news_header($attributes) {
                 echo '<p class="news-header-description">' . $attributes['description'] . '</p>';
             } 
 
-            $terms_news = get_terms(
-                array(
-                    'taxonomy' => 'news_category',
-                    'hide_empty' => true
+            $terms_news = get_terms(array(
+                'taxonomy' => 'news_category',
+                'hide_empty' => false,
             ));
-
-            if (empty($terms_news)) {
-    echo '<!-- НЕТ КАТЕГОРИЙ В ТАКСОНОМИИ news_category -->';
-}
 
             if (!empty($terms_news) && !is_wp_error($terms_news)) {
                 echo '<div class="news-categories">';
                     foreach($terms_news as $term) {
-                        echo '<div>
-                            <a href="'.get_term_link($term).'">
-                                '.$term->name.'
-                            </a>
-                        </div>';
+                        $icon_id = get_term_meta($term->term_id, 'icon', true);
+                        $icon_url = $icon_id ? wp_get_attachment_url($icon_id) : '';
+                        
+                        echo '<div class="news-cat-item">';
+                            echo '<a href="' . esc_url(get_term_link($term)) . '">';
+                                echo esc_html($term->name);
+                            echo '</a>';
+                                if ($icon_url) {
+                                echo '<img src="' . esc_url($icon_url) . '" alt="' . esc_attr($term->name) . '">';
+                            }
+                        echo '</div>';
                     }
                 echo '</div>';
             }
