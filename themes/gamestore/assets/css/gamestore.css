@@ -119,8 +119,9 @@ body {
   --divider-main: rgba(14, 13, 15, 0.08);
   --text-primary: #0e0d0f;
   --text-secondary: rgba(14, 13, 15, 0.7);
-  --secondary-48: rgba(250, 250, 250, 0.48);
+  --secondary-48: #fafafa7a;
   --white-contrast: #0a090a;
+  --black-contrast: #fff;
   --purple-main: #6f76c0;
   --mask-gradient: linear-gradient(
     270deg,
@@ -146,6 +147,7 @@ body {
   --text-secondary: rgba(255, 255, 255, 0.7);
   --secondary-48: rgba(14, 13, 15, 0.68);
   --white-contrast: #fff;
+  --black-contrast: #0a090a;
   --mask-gradient: linear-gradient(
     270deg,
     rgba(14, 13, 15, 0) 0%,
