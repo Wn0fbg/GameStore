@@ -90,3 +90,19 @@ function gamestore_gutenberg_styles() {
     );
 }
 add_action('enqueue_block_editor_assets', 'gamestore_gutenberg_styles');
+
+function gutenberg_activate_on_products($can_edit, $post_type) {
+	if ($post_type === 'product') {
+		return	true;
+	}
+	return $can_edit;
+}
+add_filter('use_block_editor_for_post_type', 'gutenberg_activate_on_products', 10, 2);
+
+function enable_taxonomy_rest($args) {
+	$args['show_in_rest'] = true;
+	return $args;
+}
+add_filter('woocommerce_taxonomy_args_product_cat', 'enable_taxonomy_rest');
+add_filter('woocommerce_taxonomy_args_product_tag', 'enable_taxonomy_rest');
+add_filter('woocommerce_product_description_heading', '__return_null');
