@@ -313,3 +313,7 @@ function view_block_news_box() {
 
     return ob_get_clean();    
 }
+
+function view_block_single_game() {
+    return 'Single game';
+}

@@ -57,6 +57,9 @@ function create_block_blocks_gamestore_block_init() {
 	register_block_type(__DIR__ . '/build/blocks-gamestore/block-news-box', array(
 		'render_callback' => 'view_block_news_box',
 	));
+	register_block_type(__DIR__ . '/build/blocks-gamestore/block-single-game', array(
+		'render_callback' => 'view_block_single_game',
+	));
 }
 
 add_action( 'init', 'create_block_blocks_gamestore_block_init' );
