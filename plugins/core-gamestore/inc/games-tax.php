@@ -1,61 +1,48 @@
 <?php
 
 function register_product_custom_taxonomies() {
-    // Languages
-    register_taxonomy('product_language', 'product', [
-        'labels' => [
-            'name'              => 'Languages',
-            'singular_name'     => 'Language',
-            'add_new_item'      => 'Add New Language',
-            'edit_item'         => 'Edit Language',
-            'all_items'         => 'All Languages',
-            'search_items'      => 'Search Languages'
-        ],
-        'hierarchical'      => true,
-        'public'            => true,
-        'show_ui'           => true,
-        'show_in_rest'      => true,
-        'show_admin_column' => false,
-        'rewrite'           => ['slug' => 'language']
-    ]);
+    // Проверяем все возможные варианты
+    $product_types = ['product', 'product', 'wc_product'];
+    $product_type = null;
     
-    // Genres
-    register_taxonomy('product_genre', 'product', [
-        'labels' => [
-            'name'              => 'Genres',
-            'singular_name'     => 'Genre',
-            'add_new_item'      => 'Add New Genre',
-            'edit_item'         => 'Edit Genre',
-            'all_items'         => 'All Genres',
-            'search_items'      => 'Search Genres'
-        ],
-        'hierarchical'      => true,
-        'public'            => true,
-        'show_ui'           => true,
-        'show_in_rest'      => true,
-        'show_admin_column' => false,
-        'rewrite'           => ['slug' => 'genre']
-    ]);
+    foreach ($product_types as $type) {
+        if (post_type_exists($type)) {
+            $product_type = $type;
+            break;
+        }
+    }
     
-    // Platform
-    register_taxonomy('product_platform', 'product', [
-        'labels' => [
-            'name'              => 'Platforms',
-            'singular_name'     => 'Platform',
-            'add_new_item'      => 'Add New Platform',
-            'edit_item'         => 'Edit Platform',
-            'all_items'         => 'All Platforms',
-            'search_items'      => 'Search Platforms'
-        ],
-        'hierarchical'      => true,
-        'public'            => true,
-        'show_ui'           => true,
-        'show_in_rest'      => true,
-        'show_admin_column' => false,
-        'rewrite'           => ['slug' => 'platform']
-    ]);
+    // Если ни один тип не найден, выходим
+    if (null === $product_type) {
+        return;
+    }
+    
+    // Регистрируем таксономии для найденного типа
+    $taxonomies = [
+        'product_language' => ['Languages', 'Language', 'language'],
+        'product_genre' => ['Genres', 'Genre', 'genre'],
+        'product_platform' => ['Platforms', 'Platform', 'platform']
+    ];
+    
+    foreach ($taxonomies as $taxonomy_id => $data) {
+        if (!taxonomy_exists($taxonomy_id)) {
+            register_taxonomy($taxonomy_id, $product_type, [
+                'labels' => [
+                    'name' => $data[0],
+                    'singular_name' => $data[1],
+                    'add_new_item' => 'Add New ' . $data[1],
+                    'edit_item' => 'Edit ' . $data[1],
+                    'all_items' => 'All ' . $data[0],
+                    'search_items' => 'Search ' . $data[0]
+                ],
+                'hierarchical' => true,
+                'public' => true,
+                'show_ui' => true,
+                'show_in_rest' => true,
+                'show_admin_column' => false,
+                'rewrite' => ['slug' => $data[2]]
+            ]);
+        }
+    }
 }
-add_action('init', 'register_product_custom_taxonomies');
-
-// Flush rewrite rules on activation
-add_action('after_switch_theme', 'flush_rewrite_rules');
+add_action('init', 'register_product_custom_taxonomies', 20);

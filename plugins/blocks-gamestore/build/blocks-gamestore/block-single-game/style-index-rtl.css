@@ -1,7 +1,15 @@
 /*!**************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/blocks-gamestore/block-single-game/style.scss ***!
   \**************************************************************************************************************************************************************************************************************************************************************************/
+.wc-block-store-notices {
+  width: 100%;
+  max-width: 1540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .wp-block-blocks-gamestore-single-news {
-  margin-top: 40px;
+  margin-top: 48px;
   margin-bottom: clamp(3.75rem, 2.77rem + 4.92vw, 7.5em);
+  width: 100%;
 }
