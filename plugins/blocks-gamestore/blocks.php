@@ -316,63 +316,85 @@ function view_block_news_box() {
 
 function view_block_single_game() {
     $game = wc_get_product(get_the_ID());
+    if (!$game) return '';
 
-    $game_badge = (get_post_meta(
-        $game->get_ID(), 
-        '_gamestore_game_cover', 
-        true
-    )) ? '<img src="'.esc_url(get_post_meta(
-            $game->get_ID(), 
-            '_gamestore_game_cover', 
-            true
-    )).'" alt=""/>' : null;
+    $game_id = $game->get_id();
+    
+    $game_badge = get_post_meta($game_id, '_gamestore_game_cover', true);
+    $game_badge_html = $game_badge ? '<img src="'.esc_url($game_badge).'" alt=""/>' : '';
 
-    $languages = wp_get_post_terms($game->get_ID(), 'product_language'); 
+    $languages = wp_get_post_terms($game->get_ID(), 'product_language');
     $languages_html = '';
-    {
-        if (!empty($languages) && !is_wp_error($languages)) {
-                echo '<ul>';
-                    foreach($languages as $language) {
-                        $languages_html .= '<div class="language-item">
-                            '.esc_html($language->name).'
-                        </div>';
-                    }
-                echo '</ul>';
+    if (!empty($languages) && !is_wp_error($languages)) {
+        foreach ($languages as $language) {
+            $languages_html .= '<div class="language-item">'.
+                esc_html($language->name).
+            '</div>';
         }
-    };
+    }
+
+    $platforms = wp_get_post_terms($game->get_ID(), 'product_platform');
+    $platforms_terms_html = '';
+    if (!empty($platforms) && !is_wp_error($platforms)) {
+        $platforms_terms_html .= '<div class="platform-label">Platforms</div>';
+
+        foreach ($platforms as $platform) {
+            $platforms_terms_html .= '<div class="platform-item">'.
+                esc_html($platform->name).
+            '</div>';
+        }
+    }
+
+    $genres = wp_get_post_terms($game->get_ID(), 'product_genre');
+    $genres_html = '';
+    if (!empty($genres) && !is_wp_error($genres)) {
+        $genres_html .= '<div class="genre-label">Genres</div>';
+        
+        foreach ($genres as $genre) {
+            $genres_html .= '<div class="genre-item">'.
+                esc_html($genre->name).
+            '</div>';
+        }
+    }
 
     ob_start();
-
-    echo '<div '. get_block_wrapper_attributes() . '>';
+    echo '<div '.get_block_wrapper_attributes().'>';
         echo '<div class="wrapper">';
             echo '<aside class="game-image">';
                 echo '<div class="game-image-container">';
                     echo $game->get_image('large');
-                echo '</div>';
+                echo '</div>';                
                 echo '<div class="game-platforms">';
-                    $platforms = array('Xbox', 'PC', 'PlayStation');
-                    foreach ($platforms as $platform) {
-                        $platforms_html .= (get_post_meta(
-                        $game->get_ID(), 
-                        '_platform_'.strtolower($platform), 
-                        true) == 'yes') ? 
-                        '<div class="platform_'.strtolower($platform).'"></div>' 
-                        : null;
+                    $platforms_icons_html = '';
+                    foreach (['Xbox', 'PC', 'PlayStation'] as $platform) {
+                        if (get_post_meta($game_id, '_platform_'.strtolower($platform), true) == 'yes') {
+                            $platforms_icons_html .= '<div class="platform_'.strtolower($platform).'"></div>';
+                        }
                     }
-                    echo $platforms_html;
+                    echo $platforms_icons_html;
                 echo '</div>';
             echo '</aside>';
             echo '<div class="game-content">';
-                echo '<div class="product_description">';
+                echo '<div class="game-description-top">';
                     echo '<h1>'.$game->get_name().'</h1>';
-                    echo $game_badge;
+                    echo $game_badge_html;
+                echo '</div>';                
+                echo '<div class="game-languages">';
+                    echo $languages_html;
                 echo '</div>';
-                echo '<div class="product-languages">';
-                    echo $platforms_html;
-                echo '</div>';
+                echo '<div class="game-description">';
+                    echo $game->get_short_description();
+                echo '</div>';    
+                echo '<div class="game-meta-data">';
+                    echo '<div class="game-platforms-list">';
+                        echo $platforms_terms_html;
+                    echo '</div>';
+                    echo '<div class="game-genres-list">';
+                        echo $genres_html;
+                    echo '</div>';
+                echo '</div>';            
             echo '</div>';
         echo '</div>';
     echo '</div>';
-
-    return ob_get_clean(); 
+    return ob_get_clean();
 }
