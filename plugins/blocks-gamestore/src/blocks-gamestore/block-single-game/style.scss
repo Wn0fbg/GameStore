@@ -5,8 +5,173 @@
 	margin-left: auto;
 }
 
-.wp-block-blocks-gamestore-single-news {
+body.single-product {
+	overflow: visible !important;
+}
+
+.wp-block-blocks-gamestore-single-game {
 	margin-top: 48px;
 	margin-bottom: clamp(3.75rem, calc(2.77rem + 4.92vw), 7.5em);
 	width: 100%;
+
+	.wrapper {
+		display: flex;
+		gap: 48px;
+		justify-content: space-between;
+
+		aside.game-image {
+			width: 440px;
+			height: 650px;
+			min-height: 200px;
+			position: -webkit-sticky;
+			position: sticky;
+			top: 48px;
+
+			.game-image-container {
+				width: 100%;
+				height: 600px;
+				margin-bottom: 24px;
+
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+					border-radius: 24px;
+				}
+			}
+
+			.game-platforms {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 24px;
+
+				.platform_xbox {
+					background: url('data:image/svg+xml,<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20.000000" height="20.000000" fill="none"><rect id="8666514_xbox_icon" width="20.000000" height="20.000000" x="0.000000" y="0.000000" fill="rgb(255,255,255)" fill-opacity="0" /><path id="Vector" d="M14.4492 12.4296C16.1797 14.5507 16.9766 16.289 16.5742 17.0664C16.2656 17.6562 14.3594 18.8085 12.957 19.25C11.8008 19.6132 10.2852 19.7695 9.03517 19.6484C7.54298 19.5039 6.03126 18.9687 4.73439 18.125C3.64454 17.414 3.39845 17.121 3.39845 16.539C3.39845 15.371 4.68361 13.3242 6.88282 10.9882C8.13282 9.66401 9.87111 8.10933 10.0625 8.15229C10.4297 8.23433 13.3555 11.0859 14.4492 12.4296ZM7.3672 5.61714C6.20704 4.56636 5.09767 3.51167 3.9922 3.14058C3.39845 2.94136 3.35548 2.95308 2.87111 3.45698C1.73048 4.64448 0.781262 6.57026 0.515637 8.23823C0.3047 9.57417 0.277356 9.94917 0.351575 10.6015C0.570325 12.5742 1.02736 13.9375 1.93361 15.3242C2.3047 15.8945 2.40626 16 2.29689 15.7109C2.13282 15.2812 2.28517 14.246 2.66798 13.2109C3.22658 11.6875 4.77345 8.80073 7.3672 5.61714ZM19.5391 8.09761C18.8789 4.97261 16.9024 3.00776 16.625 3.00776C16.3399 3.00776 15.6797 3.26167 15.2188 3.55073C14.3086 4.11714 13.6172 4.77729 12.707 5.61323C14.3633 7.69526 16.6992 11.0585 17.5078 13.5156C17.7735 14.3242 17.8867 15.121 17.7969 15.5585C17.7305 15.8906 17.7305 15.8906 17.8516 15.7382C18.0899 15.4375 18.6289 14.5156 18.8438 14.039C19.1328 13.4062 19.4297 12.4687 19.5703 11.746C19.7383 10.8671 19.7227 8.98042 19.5391 8.09761ZM5.51954 1.67964C7.38283 1.58198 9.8047 3.02729 9.98439 3.06245C10.0117 3.06636 10.3906 2.89839 10.8281 2.68354C13.3242 1.4687 14.5 1.67573 15.0235 1.69917C12.5274 0.164013 9.05861 -0.253956 5.88673 1.24214C4.97267 1.67573 4.94923 1.70698 5.51954 1.67964Z" fill="rgb(14, 13, 15)" fill-rule="nonzero" /></svg>')
+						center center no-repeat;
+				}
+
+				.platform_pc {
+					background: url('data:image/svg+xml,<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24.000000" height="24.000000" fill="none"><rect id="104472_windows_microsoft_icon 1" width="24.000000" height="24.000000" x="0.000000" y="0.000000" fill="rgb(255,255,255)" fill-opacity="0" /><g id="Group"><path id="Vector" d="M1.59375 19.6263L9.99098 20.8425L9.99098 12.8085L1.59375 12.8085L1.59375 19.6263ZM1.59375 11.6609L9.99098 11.6609L9.99098 3.62602L1.59375 4.84225L1.59375 11.6609ZM11.1386 21.0089L22.4061 22.6409L22.4061 12.8085L11.1386 12.8085L11.1386 21.0089ZM11.1386 3.45923L11.1386 11.6609L22.4061 11.6609L22.4061 1.82812L11.1386 3.45923Z" fill="rgb(14,13,15)" fill-rule="nonzero" /></g></svg>')
+						center center no-repeat;
+				}
+
+				.platform_playstation {
+					background: url('data:image/svg+xml,<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24.000000" height="24.000000" fill="none" customFrame="%23000000"><rect id="9041231_playstation_icon 1" width="24.000000" height="24.000000" x="0.000000" y="0.000000" fill="rgb(255,255,255)" fill-opacity="0" /><path id="Vector" d="M23.7868 17.1765C23.3173 17.769 22.1683 18.1905 22.1683 18.1905L13.6243 21.2595L13.6243 18.996L19.9123 16.7565C20.6263 16.5015 20.7358 16.1385 20.1553 15.9495C19.5763 15.759 18.5278 15.8145 17.8153 16.0695L13.6243 17.5455L13.6243 15.1965L13.8658 15.1155C13.8658 15.1155 15.0763 14.6865 16.7788 14.4975C18.4813 14.31 20.5663 14.523 22.2028 15.1425C24.0478 15.7275 24.2548 16.5855 23.7868 17.1765ZM14.4373 13.3245L14.4373 7.5345C14.4373 6.855 14.3128 6.2295 13.6753 6.0525C13.1863 5.895 12.8833 6.3495 12.8833 7.0275L12.8833 21.5235L8.97429 20.283L8.97429 3C10.6363 3.309 13.0573 4.038 14.3593 4.4775C17.6698 5.613 18.7918 7.0275 18.7918 10.215C18.7918 13.3215 16.8748 14.499 14.4373 13.323L14.4373 13.3245ZM1.80129 18.762C-0.091711 18.225 -0.406711 17.115 0.455789 16.476C1.25379 15.885 2.60979 15.441 2.60979 15.441L8.21529 13.446L8.21529 15.7185L4.18029 17.163C3.46929 17.418 3.35979 17.7795 3.93879 17.97C4.51779 18.159 5.56629 18.105 6.27879 17.85L8.21379 17.1465L8.21379 19.1805L7.82829 19.245C5.80961 19.5718 3.74184 19.4056 1.80129 18.7605L1.80129 18.762Z" fill="rgb(14,13,15)" fill-rule="nonzero" /></svg>')
+						center center no-repeat;
+				}
+			}
+		}
+
+		.game-content {
+			// game-image + gap
+			width: calc(100% - 488px);
+			display: flex;
+			flex-direction: column;
+			gap: 32px;
+
+			.game-description-top {
+				display: flex;
+				align-items: flex-start;
+				justify-content: space-between;
+				gap: 48px;
+
+				h1 {
+					font-size: clamp(2.25rem, calc(1.95rem + 1.48vw), 3.38rem);
+					color: var(--text-primary, rgba(14, 13, 15, 1));
+					line-height: 1.4;
+					max-width: 644px;
+				}
+			}
+
+			.game-languages {
+				display: flex;
+				align-items: center;
+				flex-wrap: wrap;
+				gap: 8px;
+
+				.language-item {
+					padding: 8px 16px;
+					border-radius: 24px;
+					background: rgba(61, 175, 226, 0.08);
+					color: var(--text-primary, rgba(14, 13, 15, 1));
+					font-size: 14px;
+					font-weight: 500;
+					line-height: 1;
+					box-sizing: border-box;
+				}
+			}
+
+			.game-meta-data {
+				display: flex;
+				flex-direction: column;
+				width: 100%;
+				gap: 16px;
+
+				> div {
+					border-bottom: 1px dashed var(--divider-main, rgba(14, 13, 15, 0.08));
+					color: var(--text-secondary, rgba(14, 13, 15, 0.7));
+					font-size: 14px;
+					font-style: normal;
+					font-weight: 500;
+					line-height: 1.2;
+					display: flex;
+					align-items: center;
+					justify-content: flex-end;
+					gap: 24px;
+					padding-bottom: 16px;
+
+					&:last-child {
+						border: 0;
+						padding: 0;
+					}
+
+					.item-text {
+						white-space: nowrap;
+						color: var(--text-secondary, rgba(14, 13, 15, 0.7));
+						font-size: 16px;
+						line-height: 1.2;
+
+						a {
+							color: var(--purple-main, rgba(111, 118, 192, 1));
+							text-decoration: none;
+						}
+					}
+
+					.label-text {
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+}
+
+body.dark-mode-gamestore {
+	.wp-block-blocks-gamestore-single-game
+		.wrapper
+		aside.game-image
+		.game-platforms
+		.platform_xbox {
+		background: url('data:image/svg+xml,<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20.000000" height="20.000000" fill="none"><rect id="8666514_xbox_icon" width="20.000000" height="20.000000" x="0.000000" y="0.000000" fill="rgb(255,255,255)" fill-opacity="0" /><path id="Vector" d="M14.4492 12.4296C16.1797 14.5507 16.9766 16.289 16.5742 17.0664C16.2656 17.6562 14.3594 18.8085 12.957 19.25C11.8008 19.6132 10.2852 19.7695 9.03517 19.6484C7.54298 19.5039 6.03126 18.9687 4.73439 18.125C3.64454 17.414 3.39845 17.121 3.39845 16.539C3.39845 15.371 4.68361 13.3242 6.88282 10.9882C8.13282 9.66401 9.87111 8.10933 10.0625 8.15229C10.4297 8.23433 13.3555 11.0859 14.4492 12.4296ZM7.3672 5.61714C6.20704 4.56636 5.09767 3.51167 3.9922 3.14058C3.39845 2.94136 3.35548 2.95308 2.87111 3.45698C1.73048 4.64448 0.781262 6.57026 0.515637 8.23823C0.3047 9.57417 0.277356 9.94917 0.351575 10.6015C0.570325 12.5742 1.02736 13.9375 1.93361 15.3242C2.3047 15.8945 2.40626 16 2.29689 15.7109C2.13282 15.2812 2.28517 14.246 2.66798 13.2109C3.22658 11.6875 4.77345 8.80073 7.3672 5.61714ZM19.5391 8.09761C18.8789 4.97261 16.9024 3.00776 16.625 3.00776C16.3399 3.00776 15.6797 3.26167 15.2188 3.55073C14.3086 4.11714 13.6172 4.77729 12.707 5.61323C14.3633 7.69526 16.6992 11.0585 17.5078 13.5156C17.7735 14.3242 17.8867 15.121 17.7969 15.5585C17.7305 15.8906 17.7305 15.8906 17.8516 15.7382C18.0899 15.4375 18.6289 14.5156 18.8438 14.039C19.1328 13.4062 19.4297 12.4687 19.5703 11.746C19.7383 10.8671 19.7227 8.98042 19.5391 8.09761ZM5.51954 1.67964C7.38283 1.58198 9.8047 3.02729 9.98439 3.06245C10.0117 3.06636 10.3906 2.89839 10.8281 2.68354C13.3242 1.4687 14.5 1.67573 15.0235 1.69917C12.5274 0.164013 9.05861 -0.253956 5.88673 1.24214C4.97267 1.67573 4.94923 1.70698 5.51954 1.67964Z" fill="rgb(255, 255, 255)" fill-rule="nonzero" /></svg>')
+			center center no-repeat;
+	}
+
+	.wp-block-blocks-gamestore-single-game
+		.wrapper
+		aside.game-image
+		.game-platforms
+		.platform_playstation {
+		background: url('data:image/svg+xml,<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24.000000" height="24.000000" fill="none" customFrame="%23000000"><rect id="9041231_playstation_icon 1" width="24.000000" height="24.000000" x="0.000000" y="0.000000" fill="rgb(255,255,255)" fill-opacity="0" /><path id="Vector" d="M23.7868 17.1765C23.3173 17.769 22.1683 18.1905 22.1683 18.1905L13.6243 21.2595L13.6243 18.996L19.9123 16.7565C20.6263 16.5015 20.7358 16.1385 20.1553 15.9495C19.5763 15.759 18.5278 15.8145 17.8153 16.0695L13.6243 17.5455L13.6243 15.1965L13.8658 15.1155C13.8658 15.1155 15.0763 14.6865 16.7788 14.4975C18.4813 14.31 20.5663 14.523 22.2028 15.1425C24.0478 15.7275 24.2548 16.5855 23.7868 17.1765ZM14.4373 13.3245L14.4373 7.5345C14.4373 6.855 14.3128 6.2295 13.6753 6.0525C13.1863 5.895 12.8833 6.3495 12.8833 7.0275L12.8833 21.5235L8.97429 20.283L8.97429 3C10.6363 3.309 13.0573 4.038 14.3593 4.4775C17.6698 5.613 18.7918 7.0275 18.7918 10.215C18.7918 13.3215 16.8748 14.499 14.4373 13.323L14.4373 13.3245ZM1.80129 18.762C-0.091711 18.225 -0.406711 17.115 0.455789 16.476C1.25379 15.885 2.60979 15.441 2.60979 15.441L8.21529 13.446L8.21529 15.7185L4.18029 17.163C3.46929 17.418 3.35979 17.7795 3.93879 17.97C4.51779 18.159 5.56629 18.105 6.27879 17.85L8.21379 17.1465L8.21379 19.1805L7.82829 19.245C5.80961 19.5718 3.74184 19.4056 1.80129 18.7605L1.80129 18.762Z" fill="rgb(255, 255, 255)" fill-rule="nonzero" /></svg>')
+			center center no-repeat;
+	}
+
+	.wp-block-blocks-gamestore-single-game
+		.wrapper
+		aside.game-image
+		.game-platforms
+		.platform_pc {
+		background: url('data:image/svg+xml,<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24.000000" height="24.000000" fill="none"><rect id="104472_windows_microsoft_icon 1" width="24.000000" height="24.000000" x="0.000000" y="0.000000" fill="rgb(255,255,255)" fill-opacity="0" /><g id="Group"><path id="Vector" d="M1.59375 19.6263L9.99098 20.8425L9.99098 12.8085L1.59375 12.8085L1.59375 19.6263ZM1.59375 11.6609L9.99098 11.6609L9.99098 3.62602L1.59375 4.84225L1.59375 11.6609ZM11.1386 21.0089L22.4061 22.6409L22.4061 12.8085L11.1386 12.8085L11.1386 21.0089ZM11.1386 3.45923L11.1386 11.6609L22.4061 11.6609L22.4061 1.82812L11.1386 3.45923Z" fill="rgb(255, 255, 255)" fill-rule="nonzero" /></g></svg>')
+			center center no-repeat;
+	}
 }

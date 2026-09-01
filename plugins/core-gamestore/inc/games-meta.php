@@ -164,27 +164,27 @@ function woo_custom_description_metabox() {
 function woo_custom_description_metabox_content($post) {
     $content = get_post_meta(
         $post->ID, 
-        'gamestore_full_description', 
+        '_gamestore_full_description', 
         true
     );
     wp_editor(
         $content, 
-        'gamestore_full_description', 
-        array('textarea_name' => 'gamestore_full_description')
+        '_gamestore_full_description', 
+        array('textarea_name' => '_gamestore_full_description')
     );
 }
 add_action('add_meta_boxes', 'woo_custom_description_metabox');
 
 function save_cuctom_description($post_id) {
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
-    if (!isset($_POST['gamestore_full_description'])) return;
+    if (!isset($_POST['_gamestore_full_description'])) return;
     if (!current_user_can('edit_post', $post_id)) return;
 
-    if (isset($_POST['gamestore_full_description'])) {
+    if (isset($_POST['_gamestore_full_description'])) {
         update_post_meta(
             $post_id, 
-            'gamestore_full_description', 
-            wp_kses_post($_POST['gamestore_full_description'])
+            '_gamestore_full_description', 
+            wp_kses_post($_POST['_gamestore_full_description'])
         );
     }
 

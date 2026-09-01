@@ -321,7 +321,47 @@ function view_block_single_game() {
     $game_id = $game->get_id();
     
     $game_badge = get_post_meta($game_id, '_gamestore_game_cover', true);
-    $game_badge_html = $game_badge ? '<img src="'.esc_url($game_badge).'" alt=""/>' : '';
+    $game_badge_html = $game_badge ? '<img src="'.esc_url($game_badge).'" alt=""/>' : null;
+
+    $publisher = get_post_meta($game_id, '_gamestore_publisher', true);
+    $publisher_html = $publisher ? '
+            <div class="game-publisher">   
+                <div class="label-text">Publisher</div> 
+                <div class="item-text">
+                    '.esc_html($publisher).'
+                </div>
+            </div>' 
+    : null;
+
+    $single_player = get_post_meta($game_id, '_gamestore_single_player', true);
+    $single_player_html = $single_player ? '
+            <div class="game-single-player">   
+                <div class="label-text">Single Player</div> 
+                <div class="item-text">
+                    '.esc_html($single_player).'
+                </div>
+            </div>' 
+    : null;
+
+    $release_date = get_post_meta($game_id, '_gamestore_release_date', true);
+    $release_date_html = $release_date ? '
+            <div class="game-release-date">   
+                <div class="label-text">Release Date</div> 
+                <div class="item-text">
+                    '.esc_html(
+                        date('j F Y', strtotime($release_date))
+                    ).'
+                </div>
+            </div>' 
+    : null;
+
+    $game_full_description = get_post_meta($game_id, '_gamestore_full_description', true);
+    $game_full_description_html = $game_full_description ? '
+            <div class="game-release-date">   
+                <h4>Game Description:</h4> 
+                '.wp_kses_post($game_full_description).'
+            </div>' 
+    : null;
 
     $languages = wp_get_post_terms($game->get_ID(), 'product_language');
     $languages_html = '';
@@ -336,25 +376,54 @@ function view_block_single_game() {
     $platforms = wp_get_post_terms($game->get_ID(), 'product_platform');
     $platforms_terms_html = '';
     if (!empty($platforms) && !is_wp_error($platforms)) {
-        $platforms_terms_html .= '<div class="platform-label">Platforms</div>';
+        $platforms_terms_html .= '
+            <div class="game-platforms-list">
+                <div class="label-text">
+                    Platforms
+                </div>';
 
         foreach ($platforms as $platform) {
-            $platforms_terms_html .= '<div class="platform-item">'.
-                esc_html($platform->name).
-            '</div>';
+            $platforms_terms_html .= '<div class="item-text">
+                <a href="'.get_term_link($platform).'">
+                    '.esc_html($platform->name).'
+                </a>
+            </div>';
         }
+        $platforms_terms_html .= '</div>';
     }
 
     $genres = wp_get_post_terms($game->get_ID(), 'product_genre');
     $genres_html = '';
     if (!empty($genres) && !is_wp_error($genres)) {
-        $genres_html .= '<div class="genre-label">Genres</div>';
+        $genres_html .= '
+            <div class="game-genres-list">
+                <div class="label-text">
+                    Genres
+                </div>';
         
         foreach ($genres as $genre) {
-            $genres_html .= '<div class="genre-item">'.
-                esc_html($genre->name).
-            '</div>';
+            $genres_html .= '<div class="item-text">
+                <a href="'.get_term_link($genre).'">
+                    '.esc_html($genre->name).'
+                </a>
+                </div>';
         }
+        $genres_html .= '</div>';
+    }
+
+    $game_screens_images = $game->get_gallery_image_ids();
+    $game_screens_html = '';
+
+    if (!empty($game_screens_images)) {
+        $game_screens_html .= '<div class="game-screens">
+            <h4>Videos & Game Play:</h4>
+                <div class="game-single-slider">';
+        foreach($game_screens_images as $image_id) {
+            $game_screens_html .= '<div class="game-screen slide-item">
+                '.wp_get_attachment_image($image_id, 'full').'
+            </div>';
+        }
+        $game_screens_html .= '</div></div>';
     }
 
     ob_start();
@@ -386,15 +455,25 @@ function view_block_single_game() {
                     echo $game->get_short_description();
                 echo '</div>';    
                 echo '<div class="game-meta-data">';
-                    echo '<div class="game-platforms-list">';
-                        echo $platforms_terms_html;
-                    echo '</div>';
-                    echo '<div class="game-genres-list">';
-                        echo $genres_html;
-                    echo '</div>';
-                echo '</div>';            
+                    echo $platforms_terms_html;
+                    echo $genres_html;
+                    echo $publisher_html;
+                    echo $single_player_html;
+                    echo $release_date_html;
+                echo '</div>'; 
+                echo '<div class="game-price-button">';
+                    echo '<div class="game-price">
+                        '.$game->get_price_html().'
+                    </div>';
+                    echo '<div class="game-add-to-cart">
+                        <a href="add-to-cart='.$game->get_id().'">Purchase the Game</a>
+                    </div>';
+                    echo $game_screens_html;
+                    echo $game_full_description_html;
+                echo '</div>';           
             echo '</div>';
         echo '</div>';
     echo '</div>';
+
     return ob_get_clean();
 }
