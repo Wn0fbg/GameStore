@@ -385,7 +385,9 @@ return array(
 		),
 		'textdomain' => 'blocks-gamestore',
 		'editorScript' => 'file:./index.js',
-		'style' => 'file:./style-index.css'
+		'editorStyle' => 'file:./index.css',
+		'style' => 'file:./style-index.css',
+		'viewScript' => 'file:./view.js'
 	),
 	'block-single-news' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
@@ -406,6 +408,45 @@ return array(
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
 		'style' => 'file:./style-index.css'
+	),
+	'block-slider' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'blocks-gamestore/block-slider',
+		'version' => '0.1.0',
+		'title' => 'Slider Block',
+		'category' => 'gamestore',
+		'icon' => 'smiley',
+		'description' => 'Slider Block',
+		'example' => array(
+			
+		),
+		'supports' => array(
+			'html' => false
+		),
+		'attributes' => array(
+			'title' => array(
+				'type' => 'string',
+				'source' => 'html',
+				'selector' => '.slider-title'
+			),
+			'description' => array(
+				'type' => 'string',
+				'source' => 'html',
+				'selector' => '.slider-description'
+			),
+			'slides' => array(
+				'type' => 'array',
+				'default' => array(
+					
+				)
+			)
+		),
+		'textdomain' => 'blocks-gamestore',
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'style' => 'file:./style-index.css',
+		'viewScript' => 'file:./view.js'
 	),
 	'block-subscribe' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',

@@ -1,0 +1,11 @@
+.wp-block-blocks-gamestore-single-game
+	.wrapper
+	.game-content
+	.game-single-slider
+	.game-screen {
+	display: none !important;
+
+	&:first-child {
+		display: block !important;
+	}
+}

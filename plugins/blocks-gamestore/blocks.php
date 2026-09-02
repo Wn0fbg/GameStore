@@ -415,16 +415,29 @@ function view_block_single_game() {
     $game_screens_html = '';
 
     if (!empty($game_screens_images)) {
-        $game_screens_html .= '<div class="game-screens">
-            <h4>Videos & Game Play:</h4>
-                <div class="game-single-slider">';
-        foreach($game_screens_images as $image_id) {
-            $game_screens_html .= '<div class="game-screen slide-item">
-                '.wp_get_attachment_image($image_id, 'full').'
-            </div>';
+    $game_screens_html .= '<div class="game-screens">
+        <h4>Videos & Game Play:</h4>
+            <div class="game-single-slider">
+                <div class="swiper-wrapper">';
+    foreach($game_screens_images as $image_id) {
+        $image_url = wp_get_attachment_image_url($image_id, 'full');
+        if ($image_url) {
+            $game_screens_html .= 
+                '<div class="game-screen swiper-slide">
+                    <img 
+                        class="swiper-image" 
+                        src="'.esc_url($image_url).'"
+                        alt="Game screenshot"
+                    />
+                </div>';
         }
-        $game_screens_html .= '</div></div>';
     }
+    $game_screens_html .= '
+                </div>
+            <div class="swiper-game-next"></div>
+            <div class="swiper-game-prev"></div>
+        </div></div>';
+}
 
     ob_start();
     echo '<div '.get_block_wrapper_attributes().'>';
@@ -466,11 +479,16 @@ function view_block_single_game() {
                         '.$game->get_price_html().'
                     </div>';
                     echo '<div class="game-add-to-cart">
-                        <a href="add-to-cart='.$game->get_id().'">Purchase the Game</a>
+                        <a 
+                            class="hero-button shadow"
+                            href="add-to-cart='.$game->get_id().'"
+                        >
+                            Purchase the Game
+                        </a>
                     </div>';
-                    echo $game_screens_html;
-                    echo $game_full_description_html;
                 echo '</div>';           
+                echo $game_screens_html;
+                echo $game_full_description_html;
             echo '</div>';
         echo '</div>';
     echo '</div>';

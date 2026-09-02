@@ -13,7 +13,7 @@ body.single-product {
 }
 
 .wp-block-blocks-gamestore-single-game {
-  margin-top: 48px;
+  margin-top: 48px !important;
   margin-bottom: clamp(3.75rem, 2.77rem + 4.92vw, 7.5em);
   width: 100%;
 }
@@ -61,6 +61,52 @@ body.single-product {
   flex-direction: column;
   gap: 32px;
 }
+.wp-block-blocks-gamestore-single-game .wrapper .game-content h4 {
+  color: var(--text-primary, rgb(14, 13, 15));
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+.wp-block-blocks-gamestore-single-game .wrapper .game-content .game-single-slider {
+  overflow: hidden;
+  position: relative;
+}
+.wp-block-blocks-gamestore-single-game .wrapper .game-content .game-single-slider .swiper-image {
+  width: 1053px;
+  height: 594px;
+  border-radius: 30px;
+}
+.wp-block-blocks-gamestore-single-game .wrapper .game-content .game-single-slider .swiper-game-next,
+.wp-block-blocks-gamestore-single-game .wrapper .game-content .game-single-slider .swiper-game-prev {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: var(--accent-gradient);
+  border-radius: 100%;
+  display: block;
+  width: 64px;
+  height: 64px;
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.wp-block-blocks-gamestore-single-game .wrapper .game-content .game-single-slider .swiper-game-next::before,
+.wp-block-blocks-gamestore-single-game .wrapper .game-content .game-single-slider .swiper-game-prev::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  display: block;
+  background: url("data:image/svg+xml,<svg viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"24.000000\" height=\"24.000000\" fill=\"none\" customFrame=\"%23000000\"><rect id=\"arrow-left\" width=\"24.000000\" height=\"24.000000\" x=\"0.000000\" y=\"0.000000\" fill=\"rgb%28255,255,255%29\" fill-opacity=\"0\" /><g id=\"vuesax/linear/arrow-left\"><g id=\"arrow-left\"><path id=\"Vector\" d=\"M14.9998 19.9201L8.47984 13.4001C7.70984 12.6301 7.70984 11.3701 8.47984 10.6001L14.9998 4.08008\" fill-rule=\"nonzero\" stroke=\"rgb%28255,255,255%29\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.500000\" /><path id=\"Vector\" opacity=\"0\" transform=\"matrix%28-1,-1.22465e-16,1.22465e-16,-1,24,24%29\" /></g></g></svg>") center center no-repeat;
+}
+.wp-block-blocks-gamestore-single-game .wrapper .game-content .game-single-slider .swiper-game-next {
+  bottom: 84px;
+}
+.wp-block-blocks-gamestore-single-game .wrapper .game-content .game-single-slider .swiper-game-next::before {
+  background: url("data:image/svg+xml,<svg viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"24.000000\" height=\"24.000000\" fill=\"none\" customFrame=\"%23000000\"><rect id=\"arrow-right\" width=\"24.000000\" height=\"24.000000\" x=\"0.000000\" y=\"0.000000\" fill=\"rgb%28255,255,255%29\" fill-opacity=\"0\" /><g id=\"vuesax/linear/arrow-right\"><g id=\"arrow-right\"><path id=\"Vector\" d=\"M7.0975 15.84L0.5775 9.32C-0.1925 8.55 -0.1925 7.29 0.5775 6.52L7.0975 0\" fill-rule=\"nonzero\" stroke=\"rgb%28255,255,255%29\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.500000\" transform=\"matrix%28-1,0,0,1,15,4.08008%29\" /><path id=\"Vector\" opacity=\"0\" transform=\"matrix%28-1,-1.22465e-16,1.22465e-16,-1,24,24%29\" /></g></g></svg>") center center no-repeat;
+}
 .wp-block-blocks-gamestore-single-game .wrapper .game-content .game-description-top {
   display: flex;
   align-items: flex-start;
@@ -68,10 +114,14 @@ body.single-product {
   gap: 48px;
 }
 .wp-block-blocks-gamestore-single-game .wrapper .game-content .game-description-top h1 {
+  margin: 0;
   font-size: clamp(2.25rem, 1.95rem + 1.48vw, 3.38rem);
   color: var(--text-primary, rgb(14, 13, 15));
   line-height: 1.4;
   max-width: 644px;
+}
+.wp-block-blocks-gamestore-single-game .wrapper .game-content .game-description p {
+  margin-top: 0;
 }
 .wp-block-blocks-gamestore-single-game .wrapper .game-content .game-languages {
   display: flex;
@@ -124,6 +174,39 @@ body.single-product {
 }
 .wp-block-blocks-gamestore-single-game .wrapper .game-content .game-meta-data > div .label-text {
   width: 100%;
+}
+.wp-block-blocks-gamestore-single-game .wrapper .game-content .game-price-button {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--divider-main, rgba(14, 13, 15, 0.08));
+}
+.wp-block-blocks-gamestore-single-game .wrapper .game-content .game-price-button .game-price {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+.wp-block-blocks-gamestore-single-game .wrapper .game-content .game-price-button .game-price del {
+  order: 2;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--text-secondary, rgba(14, 13, 15, 0.7));
+  line-height: 32px;
+}
+.wp-block-blocks-gamestore-single-game .wrapper .game-content .game-price-button .game-price ins {
+  order: 1;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: var(--accent-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 body.dark-mode-gamestore .wp-block-blocks-gamestore-single-game .wrapper aside.game-image .game-platforms .platform_xbox {
