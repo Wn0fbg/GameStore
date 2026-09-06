@@ -495,3 +495,7 @@ function view_block_single_game() {
 
     return ob_get_clean();
 }
+
+function view_block_similar_products($attributes) {
+    return 'similar products';
+}

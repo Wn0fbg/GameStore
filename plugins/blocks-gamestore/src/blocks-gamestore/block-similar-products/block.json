@@ -1,12 +1,12 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "blocks-gamestore/featured-products",
+	"name": "blocks-gamestore/similar-products",
 	"version": "0.1.0",
-	"title": "Featured Products",
+	"title": "Similar Products",
 	"category": "gamestore",
 	"icon": "smiley",
-	"description": "Reatured Products Section.",
+	"description": "Similar Products.",
 	"example": {},
 	"supports": {
 		"html": false
@@ -14,17 +14,21 @@
 	"attributes": {
 		"count": {
 			"type": "number",
-			"default": 6
+			"default": 12
 		},
 		"title": {
 			"type": "string"
 		},
-		"description": {
+		"link": {
+			"type": "string"
+		},
+		"linkAnchor": {
 			"type": "string"
 		}
 	},
 	"textdomain": "blocks-gamestore",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
-	"style": "file:./style-index.css"
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js"
 }

@@ -1,11 +1,11 @@
 import { __ } from "@wordpress/i18n";
 import { useBlockProps, InspectorControls } from "@wordpress/block-editor";
-import { PanelBody, TextControl, TextareaControl } from "@wordpress/components";
+import { PanelBody, TextControl } from "@wordpress/components";
 import "./editor.scss";
 import ServerSideRender from "@wordpress/server-side-render";
 
 export default function Edit({ attributes, setAttributes }) {
-	const { count, title, description } = attributes;
+	const { count, title, link, linkAnchor } = attributes;
 	return (
 		<>
 			<InspectorControls>
@@ -20,16 +20,21 @@ export default function Edit({ attributes, setAttributes }) {
 						value={title}
 						onChange={(title) => setAttributes({ title })}
 					/>
-					<TextareaControl
-						label={__("Description", "blocks-gamestore")}
-						value={description}
-						onChange={(description) => setAttributes({ description })}
+					<TextControl
+						label={__("Link", "blocks-gamestore")}
+						value={link}
+						onChange={(link) => setAttributes({ link })}
+					/>
+					<TextControl
+						label={__("Link Anchor", "blocks-gamestore")}
+						value={linkAnchor}
+						onChange={(linkAnchor) => setAttributes({ linkAnchor })}
 					/>
 				</PanelBody>
 			</InspectorControls>
 			<div {...useBlockProps()}>
 				<ServerSideRender
-					block="blocks-gamestore/featured-products"
+					block="blocks-gamestore/similar-products"
 					attributes={attributes}
 				/>
 			</div>
