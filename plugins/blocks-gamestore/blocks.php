@@ -557,18 +557,26 @@ function view_block_similar_products($attributes) {
         if ($attributes['title']) {
             echo '<h2>' . $attributes['title'] . '</h2>';
         }
-        echo '<div class="right-similar">';
+        echo '<div class="right-similar-top">';
             echo $link_html;
+            if (count($similar_games) > 6) {
+                echo '<div class="similar-navigation">';
+                    echo '<div class="similar-left">';
+                    echo '</div>';
+                    echo '<div class="similar-right">';
+                    echo '</div>';
+                echo '</div>';
+            }
         echo '</div>';
     echo '</div>';
 
     $platforms = array('Xbox', 'PC', 'PlayStation');
 
     if (!empty($similar_games)) {
-        echo '<div class="games-list">';
+        echo '<div class="games-list similar-games-list"><div class="swiper-wrapper">';
             forEach($similar_games as $game) {
                 $platforms_html = '';
-                echo '<div class="game-result">';
+                echo '<div class="game-result swiper-slide">';
                     echo '<a href="'
                         .esc_url($game->get_permalink()).
                     '">';
@@ -595,7 +603,7 @@ function view_block_similar_products($attributes) {
                     echo '</a>';
                 echo '</div>';
             }
-        echo '</div>';
+        echo '</div></div>';
     } else {
         echo '<p>No games found.</p>';
     }
