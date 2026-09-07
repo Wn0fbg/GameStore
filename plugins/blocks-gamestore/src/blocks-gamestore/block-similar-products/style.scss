@@ -1,7 +1,9 @@
-.wp-block-blocks-gamestore-similar-products {
-	margin-top: clamp(3.75rem, calc(2.77rem + 4.92vw), 7.5rem) !important;
+.wp-site-blocks > .wp-block-blocks-gamestore-similar-products {
+	//	margin-top: clamp(3.75rem, calc(2.77rem + 4.92vw), 7.5rem) !important;
 	margin-bottom: clamp(3.75rem, calc(2.77rem + 4.92vw), 7.5rem) !important;
+}
 
+.wp-block-blocks-gamestore-similar-products {
 	h2 {
 		display: block;
 		background: var(--accent-gradient);
