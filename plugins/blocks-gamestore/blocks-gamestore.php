@@ -67,6 +67,12 @@ function create_block_blocks_gamestore_block_init() {
 	register_block_type(__DIR__ . '/build/blocks-gamestore/block-product-header', array(
 		'render_callback' => 'view_block_product_header',
 	));
+	register_block_type(__DIR__ . '/build/blocks-gamestore/block-bestseller-products', array(
+		'render_callback' => 'view_block_bestseller_products',
+	));
+	register_block_type(__DIR__ . '/build/blocks-gamestore/block-games-box', array(
+		'render_callback' => 'view_block_games_box',
+	));
 }
 
 add_action( 'init', 'create_block_blocks_gamestore_block_init' );
