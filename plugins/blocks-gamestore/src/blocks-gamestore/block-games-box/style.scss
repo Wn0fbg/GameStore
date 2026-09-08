@@ -1,1 +1,15 @@
-.wp-block-blocks-gamestore-games-box {}
+.wp-block-blocks-gamestore-games-box {
+	.games-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 16px;
+
+		.game-result {
+			max-width: 243px;
+
+			.game-meta h3 {
+				color: var(--text-primary, #0e0d0f);
+			}
+		}
+	}
+}

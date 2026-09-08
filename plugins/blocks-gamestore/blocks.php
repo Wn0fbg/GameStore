@@ -728,5 +728,76 @@ function view_block_bestseller_products($attributes) {
 }
 
 function view_block_games_box($attributes) {
-    return 'block archive games';
+    $count =   
+        isset($attributes['count']) 
+            ? (int) $attributes['count'] 
+            : 8;
+    $title =  
+        isset($attributes['title']) 
+            ? $attributes['title'] 
+            : '';
+    $html = '';
+    $games_posts = wc_get_products(
+        array(
+            'status' => 'publish',
+            'limit' => $count,
+        )
+    );
+
+    $platforms = array('Xbox', 'PC', 'PlayStation');
+
+
+    $html .= '<div '. get_block_wrapper_attributes() .'>';
+        $html .= '<div class="wrapper">';
+
+        if ($title) {
+            $html .= '<h2 class="games-box-title">'.$title.'</h2>';
+            $html = '<div class="custom-sort"></div>';
+        }
+
+            $html .= '<div class="games-box-filter">';
+                $html .= '<div class="games-filter">';
+                    $html .= 'Filter Code';
+                $html .= '<div/>';
+                $html .= '<div class="games-list">';
+
+                    if (!empty($games_posts)) {
+                        $html .= '<div class="games-list">';
+                            foreach($games_posts as $game) {
+                                $platforms_html = '';
+                                $html .= '<div class="game-result">';
+                                    $html .= '<a href="'.esc_url($game->get_permalink()).'">';
+                                    $html .= '<div class="game-featured-image">
+                                        '.$game->get_image('full').'
+                                    </div>';
+                                    $html .= '<div class="game-meta">';
+                                        $html .= '<div class="game-price">
+                                            '.$game->get_price_html().'
+                                        </div>';
+                                        $html .= '<h3>'.$game->get_name().'</h3>';
+                                        $html .= '<div class="game-platforms">';
+                                            foreach ($platforms as $platform) {
+                                                $platforms_html .= (get_post_meta(
+                                                    $game->get_ID(), 
+                                                    '_platform_'.strtolower($platform), 
+                                                    true) == 'yes') ? 
+                                                        '<div class="platform_'.strtolower($platform).'"></div>' 
+                                                        : null;
+                                            }
+                                            $html .= $platforms_html;
+                                        $html .= '</div>';
+                                    $html .= '</div>';
+                                    $html .= '</a>';
+                                $html .= '</div>';
+                            }
+                        $html .= '</div>';
+                    } else {
+                        $html .= '<p>No Games Found.</p>';
+                    }
+                $html .= '</div>';
+            $html .= '</div>';
+        $html .= '</div>';
+    $html .= '</div>';
+
+    return $html;
 }
