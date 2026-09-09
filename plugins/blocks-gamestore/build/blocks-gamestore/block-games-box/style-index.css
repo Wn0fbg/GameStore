@@ -1,6 +1,34 @@
 /*!************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/blocks-gamestore/block-games-box/style.scss ***!
   \************************************************************************************************************************************************************************************************************************************************************************/
+.wp-site-blocks > .wp-block-blocks-gamestore-games-box {
+  margin-top: clamp(3.75rem, 2.77rem + 4.92vw, 7.5rem) !important;
+  margin-bottom: clamp(3.75rem, 2.77rem + 4.92vw, 7.5rem) !important;
+}
+
+.wp-block-blocks-gamestore-games-box .games-box-filter {
+  display: flex;
+  gap: 48px;
+  align-items: start;
+}
+.wp-block-blocks-gamestore-games-box .games-box-filter .games-filter {
+  width: 400px;
+}
+.wp-block-blocks-gamestore-games-box .games-box-filter .games-box-list {
+  width: calc(100% - 448px);
+}
+.wp-block-blocks-gamestore-games-box .games-box-filter .games-box-list .load-more-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 24px;
+}
+.wp-block-blocks-gamestore-games-box .games-box-filter .games-box-list .load-more-container a {
+  min-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .wp-block-blocks-gamestore-games-box .games-list {
   display: flex;
   flex-wrap: wrap;
@@ -8,6 +36,7 @@
 }
 .wp-block-blocks-gamestore-games-box .games-list .game-result {
   max-width: 243px;
+  min-width: 243px;
 }
 .wp-block-blocks-gamestore-games-box .games-list .game-result .game-meta h3 {
   color: var(--text-primary, #0e0d0f);
