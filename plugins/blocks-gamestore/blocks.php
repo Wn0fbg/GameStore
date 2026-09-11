@@ -744,6 +744,8 @@ function view_block_games_box($attributes) {
         'taxonomy' => 'product_platform',
         'hide_empty' => false
     ));
+    $publishers = ['Ubisoft', 'RockStar Games',];
+    $singleplayer = ['Yes', 'No'];
     $years = range(date('Y'), date('Y') - 20);
     $games_posts = wc_get_products(array(
         'status' => 'publish',
@@ -762,55 +764,91 @@ function view_block_games_box($attributes) {
 
             $html .= '<div class="games-box-filter">';
                 $html .= '<div class="games-filter">';
-                
-                    if (!empty($languages) && !is_wp_error($languages)) {
-                        $html .= '<div class="games-filter-item">';
-                            $html .= '<h5>Languages</h5>';
-                            foreach($languages as $language) {
-                                $html .= '<div class="filter-item">';
-                                    $html .= '<input type="checkbox" id="language-' . $language->term_id . '" name="language-' . $language->term_id . '">';
-                                    $html .= '<label for="language-' . $language->term_id . '">' . $language->name . '</label>';
-                                $html .= '</div>';
-                            }
-                        $html .= '</div>';
-                    }
-
-                    if (!empty($genres) && !is_wp_error($genres)) {
-                        $html .= '<div class="games-filter-item">';
-                            $html .= '<h5>Genre</h5>';
-                            foreach($genres as $genre) {
-                                $html .= '<div class="filter-item">';
-                                    $html .= '<input type="checkbox" id="genre-' . $genre->term_id . '" name="genre-' . $genre->term_id . '">';
-                                    $html .= '<label for="genre-' . $genre->term_id . '">' . $genre->name . '</label>';
-                                $html .= '</div>';
-                            }
-                        $html .= '</div>';
-                    }
-
-                    if (!empty($game_platforms) && !is_wp_error($game_platforms)) {
-                        $html .= '<div class="games-filter-item">';
-                            $html .= '<select name="platforms">';
-                                $html .= '<option value="">Platform</option>';
-                                foreach($game_platforms as $game_platform) {
-                                    $html .= '<option value="' . $game_platform->term_id . '">' . $game_platform->name . '</option>';
+                    $html .= '<form method="POST" action="">';                
+                        if (!empty($languages) && !is_wp_error($languages)) {
+                            $html .= '<div class="games-filter-item">';
+                                $html .= '<h5>Languages</h5>';
+                                foreach($languages as $language) {
+                                    $html .= '<div class="filter-item">';
+                                        $html .= '<input type="checkbox" id="language-' . $language->term_id . '" name="language-' . $language->term_id . '">';
+                                        $html .= '<label for="language-' . $language->term_id . '">' . $language->name . '</label>';
+                                    $html .= '</div>';
                                 }
-                            $html .= '</select>';
-                        $html .= '</div>';
-                    }
+                            $html .= '</div>';
+                        }
 
-                    if (!empty($years) && !is_wp_error($years)) {
-                        $html .= '<div class="games-filter-item">';
-                            $html .= '<select name="released">';
-                                $html .= '<option value="">Released</option>';
-                                foreach($years as $year) {
-                                    $html .= '<option value="' . $year . '">' . $year . '</option>';
+                        if (!empty($genres) && !is_wp_error($genres)) {
+                            $html .= '<div class="games-filter-item">';
+                                $html .= '<h5>Genre</h5>';
+                                foreach($genres as $genre) {
+                                    $html .= '<div class="filter-item">';
+                                        $html .= '<input type="checkbox" id="genre-' . $genre->term_id . '" name="genre-' . $genre->term_id . '">';
+                                        $html .= '<label for="genre-' . $genre->term_id . '">' . $genre->name . '</label>';
+                                    $html .= '</div>';
                                 }
-                            $html .= '</select>';
-                        $html .= '</div>';
-                    }
+                            $html .= '</div>';
+                        }
 
-                $html .= '</div>';
-                
+                        if (!empty($game_platforms) && !is_wp_error($game_platforms)) {
+                            $html .= '<div class="games-filter-item">';
+                                $html .= '<select name="platforms" id="platforms">';
+                                    $html .= '<option value="">Platform</option>';
+                                    foreach($game_platforms as $game_platform) {
+                                        $html .= '<option value="' . $game_platform->term_id . '">' . $game_platform->name . '</option>';
+                                    }
+                                $html .= '</select>';
+                            $html .= '</div>';
+                        }
+
+                        if (!empty($publishers) && !is_wp_error($publishers)) {
+                            $html .= '<div class="games-filter-item">';
+                                $html .= '<select name="publisher" id="publisher">';
+                                    $html .= '<option value="">Publisher</option>';
+                                    foreach($publishers as $publisher) {
+                                        $html .= '<option value="' . $publisher . '">' . $publisher . '</option>';
+                                    }
+                                $html .= '</select>';
+                            $html .= '</div>';
+                        }
+
+                        if (!empty($singleplayer) && !is_wp_error($singleplayer)) {
+                            $html .= '<div class="games-filter-item">';
+                                $html .= '<select name="singleplayer" id="singleplayer">';
+                                    $html .= '<option value="">Single Player</option>';
+                                    foreach($singleplayer as $player) {
+                                        $html .= '<option value="' . $player . '">' . $player . '</option>';
+                                    }
+                                $html .= '</select>';
+                            $html .= '</div>';
+                        }
+
+                        if (!empty($years) && !is_wp_error($years)) {
+                            $html .= '<div class="games-filter-item">';
+                                $html .= '<select name="released" id="released">';
+                                    $html .= '<option value="">Released</option>';
+                                    foreach($years as $year) {
+                                        $html .= '<option value="' . $year . '">' . $year . '</option>';
+                                    }
+                                $html .= '</select>';
+                            $html .= '</div>';
+                        }
+
+                        $html .= '<div class="load-more-container">';
+                            $html .= '<button 
+                                type="reset" 
+                                class="load-more-button"
+                            >
+                                Reset filters
+                            </button>';
+                        $html .= '</div>';
+                    $html .= '</div>';
+                    $html .= '<input 
+                        type="hidden" 
+                        name="posts_per_page" 
+                        value="'.esc_attr($count).'"
+                    >';
+                $html .= '</form>';
+
                 $html .= '<div class="games-box-list">';
                     if (!empty($games_posts)) {
                         $html .= '<div class="games-list">';
