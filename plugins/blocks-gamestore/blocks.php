@@ -846,7 +846,7 @@ function view_block_games_box($attributes) {
 
                         if (!empty($years) && !is_wp_error($years)) {
                             $html .= '<div class="games-filter-item">';
-                                $html .= '<select name="years" id="years">';
+                                $html .= '<select name="released" id="released">';
                                     $html .= '<option value="">Released</option>';
                                     foreach($years as $year) {
                                         $html .= '<option value="'.$year.'">'.$year.'</option>';
@@ -900,9 +900,8 @@ function view_block_games_box($attributes) {
                             }
                         $html .= '</div>';
                         $html .= '<div class="load-more-container">';
-                            $html .= '<a 
-                                class="hero-button shadow" 
-                                href=""
+                            $html .= '<a
+                                class="load-more-button hero-button shadow"   
                             >
                                 Load More
                             </a>';
