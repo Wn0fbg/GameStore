@@ -208,7 +208,7 @@ return array(
 		'title' => 'Games box',
 		'category' => 'gamestore',
 		'icon' => 'smiley',
-		'description' => 'Games Box Section.',
+		'description' => 'Games box Section.',
 		'example' => array(
 			
 		),
