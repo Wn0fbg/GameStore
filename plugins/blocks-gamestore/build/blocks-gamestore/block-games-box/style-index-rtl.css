@@ -6,6 +6,70 @@
   margin-bottom: clamp(3.75rem, 2.77rem + 4.92vw, 7.5rem) !important;
 }
 
+.wp-block-blocks-gamestore-games-box .filter-title-top {
+  margin-bottom: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.wp-block-blocks-gamestore-games-box .filter-title-top h2 {
+  margin-bottom: 24px;
+  line-height: 1.4;
+  text-align: center;
+  width: fit-content;
+  position: relative;
+  z-index: 1;
+}
+.wp-block-blocks-gamestore-games-box .filter-title-top h2 span {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.wp-block-blocks-gamestore-games-box .filter-title-top .custom-sort {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.wp-block-blocks-gamestore-games-box .filter-title-top .custom-sort span {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+.wp-block-blocks-gamestore-games-box .filter-title-top .custom-sort select {
+  appearance: none;
+  box-sizing: border-box;
+  border: 1px solid var(--divider-main, rgba(14, 13, 15, 0.08));
+  border-radius: 5px;
+  background: var(--secondary-4, rgba(14, 13, 15, 0.04));
+  color: var(--text-primary, rgb(14, 13, 15));
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+  min-height: 60px;
+  padding: 0 24px;
+  background-image: url("data:image/svg+xml,<svg viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"24.000000\" height=\"24.000000\" fill=\"none\" customFrame=\"%23000000\"><defs><clipPath id=\"clipPath_0\"><rect width=\"24.000000\" height=\"24.000000\" x=\"0.000000\" y=\"0.000000\" fill=\"rgb%28255,255,255%29\" /></clipPath></defs><rect id=\"Icon\" width=\"24.000000\" height=\"24.000000\" x=\"0.000000\" y=\"0.000000\" fill=\"rgb%28255,255,255%29\" fill-opacity=\"0\" /><g id=\"arrow-default-down\" customFrame=\"url%28%23clipPath_0%29\"><rect id=\"arrow-default-down\" width=\"24.000000\" height=\"24.000000\" x=\"0.000000\" y=\"0.000000\" fill=\"rgb%28255,255,255%29\" fill-opacity=\"0\" /><g id=\"vuesax/linear/arrow-circle-down\"><g id=\"arrow-circle-down\"><path id=\"Vector\" d=\"M8.46973 10.7402L11.9997 14.2602L15.5297 10.7402\" fill-rule=\"nonzero\" stroke=\"rgb%2814,13,15%29\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.500000\" /><path id=\"Vector\" d=\"M24 0L0 0L0 24L24 24L24 0ZM1 23L1 1L23 1L23 23L1 23Z\" opacity=\"0\" fill=\"rgb%2814,13,15%29\" fill-rule=\"evenodd\" /></g></g></g></svg>");
+  background-position: 5% center;
+  background-repeat: no-repeat;
+}
+.wp-block-blocks-gamestore-games-box select {
+  width: 304px;
+  appearance: none;
+  box-sizing: border-box;
+  border: 1px solid var(--divider-main, rgba(14, 13, 15, 0.08));
+  border-radius: 5px;
+  background: var(--secondary-4, rgba(14, 13, 15, 0.04));
+  color: var(--text-primary, rgb(14, 13, 15));
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+  min-height: 60px;
+  padding: 0 24px;
+  background-image: url("data:image/svg+xml,<svg viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"24.000000\" height=\"24.000000\" fill=\"none\" customFrame=\"%23000000\"><defs><clipPath id=\"clipPath_0\"><rect width=\"24.000000\" height=\"24.000000\" x=\"0.000000\" y=\"0.000000\" fill=\"rgb%28255,255,255%29\" /></clipPath></defs><rect id=\"Icon\" width=\"24.000000\" height=\"24.000000\" x=\"0.000000\" y=\"0.000000\" fill=\"rgb%28255,255,255%29\" fill-opacity=\"0\" /><g id=\"arrow-default-down\" customFrame=\"url%28%23clipPath_0%29\"><rect id=\"arrow-default-down\" width=\"24.000000\" height=\"24.000000\" x=\"0.000000\" y=\"0.000000\" fill=\"rgb%28255,255,255%29\" fill-opacity=\"0\" /><g id=\"vuesax/linear/arrow-circle-down\"><g id=\"arrow-circle-down\"><path id=\"Vector\" d=\"M8.46973 10.7402L11.9997 14.2602L15.5297 10.7402\" fill-rule=\"nonzero\" stroke=\"rgb%2814,13,15%29\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.500000\" /><path id=\"Vector\" d=\"M24 0L0 0L0 24L24 24L24 0ZM1 23L1 1L23 1L23 23L1 23Z\" opacity=\"0\" fill=\"rgb%2814,13,15%29\" fill-rule=\"evenodd\" /></g></g></g></svg>");
+  background-position: 5% center;
+  background-repeat: no-repeat;
+}
 .wp-block-blocks-gamestore-games-box .games-box-filter {
   display: flex;
   gap: 48px;
@@ -13,6 +77,60 @@
 }
 .wp-block-blocks-gamestore-games-box .games-box-filter .games-filter {
   width: 400px;
+  border-radius: 16px;
+  background: var(--blue-4, rgba(61, 175, 226, 0.04));
+  padding: 48px;
+  box-sizing: border-box;
+}
+.wp-block-blocks-gamestore-games-box .games-box-filter .games-filter form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.wp-block-blocks-gamestore-games-box .games-box-filter .games-filter form .games-filter-item-select select,
+.wp-block-blocks-gamestore-games-box .games-box-filter .games-filter form .games-filter-item-select .select-button {
+  width: 304px;
+}
+.wp-block-blocks-gamestore-games-box .games-box-filter .games-filter form .games-filter-item-select .select-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wp-block-blocks-gamestore-games-box .games-box-filter .games-filter form .games-filter-item {
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--divider-main, rgba(255, 255, 255, 0.12));
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.wp-block-blocks-gamestore-games-box .games-box-filter .games-filter form .games-filter-item h5 {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+.wp-block-blocks-gamestore-games-box .games-box-filter .games-filter form .games-filter-item .filter-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.wp-block-blocks-gamestore-games-box .games-box-filter .games-filter form .games-filter-item .filter-item label {
+  margin-bottom: 0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.wp-block-blocks-gamestore-games-box .games-box-filter .games-filter form .games-filter-item .filter-item input[type=checkbox] {
+  appearance: none;
+  background: transparent;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  background-image: url("data:image/svg+xml,<svg viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"20.000000\" height=\"20.000000\" fill=\"none\" customFrame=\"%23000000\"><defs><clipPath id=\"clipPath_1\"><rect width=\"20.000000\" height=\"20.000000\" x=\"0.000000\" y=\"0.000000\" fill=\"rgb%28255,255,255%29\" /></clipPath></defs><rect id=\"check\" width=\"20.000000\" height=\"20.000000\" x=\"0.000000\" y=\"0.000000\" fill=\"rgb%28255,255,255%29\" fill-opacity=\"0\" /><g id=\"tick-square\" customFrame=\"url%28%23clipPath_1%29\"><rect id=\"tick-square\" width=\"20.000000\" height=\"20.000000\" x=\"0.000000\" y=\"0.000000\" fill=\"rgb%28255,255,255%29\" fill-opacity=\"0\" /><g id=\"vuesax/outline/tick-square\"><g id=\"tick-square\"><path id=\"Vector\" d=\"M12.5003 18.9582L7.50033 18.9582C2.97533 18.9582 1.04199 17.0248 1.04199 12.4998L1.04199 7.49984C1.04199 2.97484 2.97533 1.0415 7.50033 1.0415L12.5003 1.0415C17.0253 1.0415 18.9587 2.97484 18.9587 7.49984L18.9587 12.4998C18.9587 17.0248 17.0253 18.9582 12.5003 18.9582ZM7.50033 2.2915C3.65866 2.2915 2.29199 3.65817 2.29199 7.49984L2.29199 12.4998C2.29199 16.3415 3.65866 17.7082 7.50033 17.7082L12.5003 17.7082C16.342 17.7082 17.7087 16.3415 17.7087 12.4998L17.7087 7.49984C17.7087 3.65817 16.342 2.2915 12.5003 2.2915L7.50033 2.2915Z\" fill=\"rgb%2814,13,15%29\" fill-opacity=\"0.639999986\" fill-rule=\"nonzero\" /><path id=\"Vector\" d=\"M8.81719 12.9832C8.65052 12.9832 8.49219 12.9165 8.37552 12.7998L6.01719 10.4415C5.77552 10.1998 5.77552 9.79984 6.01719 9.55817C6.25885 9.3165 6.65885 9.3165 6.90052 9.55817L8.81719 11.4748L13.1005 7.1915C13.3422 6.94984 13.7422 6.94984 13.9839 7.1915C14.2255 7.43317 14.2255 7.83317 13.9839 8.07484L9.25885 12.7998C9.14219 12.9165 8.98385 12.9832 8.81719 12.9832Z\" opacity=\"0\" fill=\"rgb%2815,12,12%29\" fill-rule=\"nonzero\" /><path id=\"Vector\" opacity=\"0\" /></g></g></g></svg>");
+  background-size: contain;
+}
+.wp-block-blocks-gamestore-games-box .games-box-filter .games-filter form .games-filter-item .filter-item input[type=checkbox]:checked {
+  background-image: url("data:image/svg+xml,<svg viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"20.000000\" height=\"20.000000\" fill=\"none\" customFrame=\"%23000000\"><defs><clipPath id=\"clipPath_2\"><rect width=\"20.000000\" height=\"20.000000\" x=\"0.000000\" y=\"0.000000\" fill=\"rgb%28255,255,255%29\" /></clipPath></defs><rect id=\"check\" width=\"20.000000\" height=\"20.000000\" x=\"0.000000\" y=\"0.000000\" fill=\"rgb%28255,255,255%29\" fill-opacity=\"0\" /><g id=\"tick-square\" customFrame=\"url%28%23clipPath_2%29\"><rect id=\"tick-square\" width=\"20.000000\" height=\"20.000000\" x=\"0.000000\" y=\"0.000000\" fill=\"rgb%28255,255,255%29\" fill-opacity=\"0\" /><g id=\"vuesax/bold/tick-square\"><g id=\"tick-square\"><path id=\"Vector\" d=\"M13.492 1.6665L6.50866 1.6665C3.47533 1.6665 1.66699 3.47484 1.66699 6.50817L1.66699 13.4832C1.66699 16.5248 3.47533 18.3332 6.50866 18.3332L13.4837 18.3332C16.517 18.3332 18.3253 16.5248 18.3253 13.4915L18.3253 6.50817C18.3337 3.47484 16.5253 1.6665 13.492 1.6665ZM13.9837 8.08317L9.25866 12.8082C9.14199 12.9248 8.98366 12.9915 8.81699 12.9915C8.65033 12.9915 8.49199 12.9248 8.37533 12.8082L6.01699 10.4498C5.77533 10.2082 5.77533 9.80817 6.01699 9.5665C6.25866 9.32484 6.65866 9.32484 6.90033 9.5665L8.81699 11.4832L13.1003 7.19984C13.342 6.95817 13.742 6.95817 13.9837 7.19984C14.2253 7.4415 14.2253 7.83317 13.9837 8.08317Z\" fill=\"rgb%28111,118,192%29\" fill-rule=\"nonzero\" /><path id=\"Vector\" opacity=\"0\" transform=\"matrix%28-1,-1.22465e-16,1.22465e-16,-1,20,20%29\" /></g></g></g></svg>");
 }
 .wp-block-blocks-gamestore-games-box .games-box-filter .games-box-list {
   width: calc(100% - 448px);
@@ -35,23 +153,8 @@
   gap: 16px;
 }
 .wp-block-blocks-gamestore-games-box .games-list .game-result {
-  width: 243px;
+  width: 261px;
 }
 .wp-block-blocks-gamestore-games-box .games-list .game-result .game-meta h3 {
   color: var(--text-primary, #0e0d0f);
-}
-.wp-block-blocks-gamestore-games-box h2 {
-  color: var(--text-primary, #0e0d0f);
-  margin-bottom: 24px;
-  line-height: 1.4;
-  text-align: center;
-  width: fit-content;
-  position: relative;
-  z-index: 1;
-}
-.wp-block-blocks-gamestore-games-box h2 span {
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }

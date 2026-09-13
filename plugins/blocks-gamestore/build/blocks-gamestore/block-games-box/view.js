@@ -4,6 +4,7 @@
   \******************************************************/
 document.addEventListener("DOMContentLoaded", function () {
   const filterForm = document.querySelector(".games-filter form");
+  const sortingForm = document.querySelector(".custom-sort form");
   const loadMoreButton = document.querySelector(".load-more-button");
   let currentPage = "";
   filterForm.addEventListener("change", function () {
@@ -20,8 +21,13 @@ document.addEventListener("DOMContentLoaded", function () {
     currentPage++;
     submitForm(true);
   });
+  sortingForm.addEventListener("change", function () {
+    currentPage = 1;
+    submitForm(false);
+  });
   function submitForm(append = false) {
     const formData = new FormData(filterForm);
+    const formSortingData = new FormData(sortingForm);
     const selectedLanguages = [];
     document.querySelectorAll('input[name^="language-"]:checked').forEach(checkbox => {
       selectedLanguages.push(checkbox.name.replace("language-", ""));
@@ -41,7 +47,8 @@ document.addEventListener("DOMContentLoaded", function () {
         singleplayer: formData.get("singleplayer"),
         released: formData.get("released"),
         languages: selectedLanguages.join(","),
-        genres: selectedGenres.join(",")
+        genres: selectedGenres.join(","),
+        sort: formSortingData.get("sorting")
       })
     }).then(response => response.text()).then(data => {
       const gamesListContainer = document.querySelector(".games-list");

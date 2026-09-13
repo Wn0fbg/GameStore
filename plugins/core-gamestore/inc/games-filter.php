@@ -9,6 +9,7 @@ function filter_games_ajax_handler() {
     $released = isset($_POST['released']) ? sanitize_text_field($_POST['released']) : '';
     $languages = isset($_POST['languages']) ? sanitize_text_field($_POST['languages']) : '';
     $genres = isset($_POST['genres']) ? sanitize_text_field($_POST['genres']) : '';
+    $sort = isset($_POST['sort']) ? sanitize_text_field($_POST['sort']) : '';
 
     $args = array(
         'post_type' => 'product',
@@ -66,6 +67,31 @@ function filter_games_ajax_handler() {
             'field' => 'term_id',
             'terms' => $genres
         );
+    }
+
+    switch($sort) {
+        case 'latest':
+            $args['orderby']  = 'date';
+            $args['order']    = 'DESC';
+            break;
+        case 'price_low_high': 
+            $args['meta_key'] = '_price';
+            $args['orderby']  = 'meta_value_num';
+            $args['order']    = 'ASC';
+            break;
+        case 'price_high_low':
+            $args['meta_key'] = '_price';
+            $args['orderby']  = 'meta_value_num';
+            $args['order']    = 'DESC';
+            break;
+        case 'popularity':
+            $args['meta_key'] = 'total_sales';
+            $args['orderby']  = 'meta_value_num';
+            $args['order']    = 'DESC';
+            break;
+        default: 
+            $args['orderby']  = 'date';
+            $args['order']    = 'DESC';
     }
 
     $filtered_games = get_posts($args);

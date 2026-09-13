@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 	const filterForm = document.querySelector(".games-filter form");
+	const sortingForm = document.querySelector(".custom-sort form");
 	const loadMoreButton = document.querySelector(".load-more-button");
 	let currentPage = "";
 
@@ -18,8 +19,14 @@ document.addEventListener("DOMContentLoaded", function () {
 		submitForm(true);
 	});
 
+	sortingForm.addEventListener("change", function () {
+		currentPage = 1;
+		submitForm(false);
+	});
+
 	function submitForm(append = false) {
 		const formData = new FormData(filterForm);
+		const formSortingData = new FormData(sortingForm);
 
 		const selectedLanguages = [];
 		document
@@ -47,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				released: formData.get("released"),
 				languages: selectedLanguages.join(","),
 				genres: selectedGenres.join(","),
+				sort: formSortingData.get("sorting"),
 			}),
 		})
 			.then((response) => response.text())

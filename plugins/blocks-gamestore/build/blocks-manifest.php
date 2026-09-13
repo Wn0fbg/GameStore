@@ -414,6 +414,15 @@ return array(
 			),
 			'image' => array(
 				'type' => 'string'
+			),
+			'styleType' => array(
+				'type' => 'string'
+			),
+			'links' => array(
+				'type' => 'array',
+				'default' => array(
+					
+				)
 			)
 		),
 		'textdomain' => 'blocks-gamestore',

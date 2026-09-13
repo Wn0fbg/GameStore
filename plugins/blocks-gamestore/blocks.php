@@ -629,23 +629,37 @@ function view_block_product_header($attributes) {
                 echo '<h1 class="games-header-title">' . $attributes['title'] . '</h1>';
             }
 
-            $terms_news = get_terms(array(
-                'taxonomy' => 'product_genre',
-                // Если в жанре нету продуктов,то жанр не будет отображаться
-                // false (все жанры показываются,даже те где нету продуктов)
-                'hide_empty' => false,
-            ));
+            if ($attributes['styleType'] == 'archive') {
+                $terms_news = get_terms(array(
+                    'taxonomy' => 'product_genre',
+                    // Если в жанре нету продуктов,то жанр не будет отображаться
+                    // false (все жанры показываются,даже те где нету продуктов)
+                    'hide_empty' => false,
+                ));
 
-            if (!empty($terms_news) && !is_wp_error($terms_news)) {
-                echo '<div class="games-categories">';
-                    foreach($terms_news as $term) {                        
-                        echo '<div class="games-cat-item">';
-                            echo '<a href="' . esc_url(get_term_link($term)) . '">';
-                                echo esc_html($term->name);
+                if (!empty($terms_news) && !is_wp_error($terms_news)) {
+                    echo '<div class="games-categories">';
+                        foreach($terms_news as $term) {                        
+                            echo '<div class="games-cat-item">';
+                                echo '<a href="' . esc_url(get_term_link($term)) . '">';
+                                    echo esc_html($term->name);
+                                echo '</a>';
+                            echo '</div>';
+                        }
+                    echo '</div>';
+                }
+            } else {
+               if(!empty($attributes['links'])) {
+                echo '<div class="cart-link">';
+                    foreach($attributes['links'] as $link) {
+                        echo '<div class="cart-link-item">';
+                            echo '<a href="'.$link['url'].'">';
+                                echo $link['anchor'];
                             echo '</a>';
                         echo '</div>';
                     }
                 echo '</div>';
+               }
             }
         echo '</div>';
     echo '</div>';
@@ -761,8 +775,20 @@ function view_block_games_box($attributes) {
     $html .= '<div ' . get_block_wrapper_attributes() . '>';
         $html .= '<div class="wrapper">';
             if ($title) {
-                $html .= '<h2 class="games-box-title">'.$title.'</h2>';
-                $html .= '<div class="custom-sort">';
+                $html .= '<div class="filter-title-top">';
+                    $html .= '<h2 class="games-box-title">'.$title.'</h2>';
+                    $html .= '<div class="custom-sort">';
+                        $html .= '<span class="label">Sort by:</span>';
+                        $html .= '<form action="" method="POST">';
+                            $html .= '<select name="sorting" id="sorting">';
+                                $html .= '<option value="">Default Sorting</option>';
+                                $html .= '<option value="latest">Sort by latest</option>';
+                                $html .= '<option value="price_low_high">Sort by (low to high)</option>';
+                                $html .= '<option value="price_high_low">Sort by (high to low)</option>';
+                                $html .= '<option value="popularity">Sort by Popularity</option>';
+                            $html .= '</select>';
+                        $html .= '</form>';
+                    $html .= '</div>';
                 $html .= '</div>';
             }
 
@@ -808,7 +834,7 @@ function view_block_games_box($attributes) {
                         }
 
                         if (!empty($platforms) && !is_wp_error($platforms)) {
-                            $html .= '<div class="games-filter-item">';
+                            $html .= '<div class="games-filter-item-select">';
                                 $html .= '<select name="platforms" id="platforms">';
                                     $html .= '<option value="">Platform</option>';
                                     foreach($platforms as $platform) {
@@ -823,7 +849,7 @@ function view_block_games_box($attributes) {
                         }
 
                         if (!empty($singleplayers) && !is_wp_error($singleplayers)) {
-                            $html .= '<div class="games-filter-item">';
+                            $html .= '<div class="games-filter-item-select">';
                                 $html .= '<select name="singleplayer" id="singleplayer">';
                                     $html .= '<option value="">Single player</option>';
                                     foreach($singleplayers as $singleplayer) {
@@ -834,7 +860,7 @@ function view_block_games_box($attributes) {
                         }
 
                         if (!empty($publishers) && !is_wp_error($publishers)) {
-                            $html .= '<div class="games-filter-item">';
+                            $html .= '<div class="games-filter-item-select">';
                                 $html .= '<select name="publisher" id="publisher">';
                                     $html .= '<option value="">Publisher</option>';
                                     foreach($publishers as $publisher) {
@@ -845,7 +871,7 @@ function view_block_games_box($attributes) {
                         }
 
                         if (!empty($years) && !is_wp_error($years)) {
-                            $html .= '<div class="games-filter-item">';
+                            $html .= '<div class="games-filter-item-select">';
                                 $html .= '<select name="released" id="released">';
                                     $html .= '<option value="">Released</option>';
                                     foreach($years as $year) {
@@ -855,8 +881,8 @@ function view_block_games_box($attributes) {
                             $html .= '</div>';
                         }
 
-                        $html .= '<div class="games-filter-item">
-                            <button class="hero-button shadow" type="reset">
+                        $html .= '<div class="games-filter-item-select">
+                            <button class="hero-button shadow select-button" type="reset">
                                 Reset filters
                             </button>
                         </div>';
