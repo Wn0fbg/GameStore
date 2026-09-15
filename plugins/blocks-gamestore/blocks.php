@@ -481,7 +481,7 @@ function view_block_single_game() {
                     echo '<div class="game-add-to-cart">
                         <a 
                             class="hero-button shadow"
-                            href="add-to-cart='.$game->get_id().'"
+                            href="' . esc_url( $game->add_to_cart_url() ) . '"
                         >
                             Purchase the Game
                         </a>
