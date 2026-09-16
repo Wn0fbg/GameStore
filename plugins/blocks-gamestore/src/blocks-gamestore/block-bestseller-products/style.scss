@@ -100,6 +100,10 @@
 		margin-left: -8px;
 		margin-right: -8px;
 
+		.swiper-wrapper {
+			display: flex;
+		}
+
 		.swiper-slide {
 			padding: 0 8px;
 		}

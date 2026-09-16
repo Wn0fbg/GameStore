@@ -88,6 +88,9 @@
   margin-right: -8px;
   margin-left: -8px;
 }
+.wp-block-blocks-gamestore-bestseller-products .bestseller-games-list .swiper-wrapper {
+  display: flex;
+}
 .wp-block-blocks-gamestore-bestseller-products .bestseller-games-list .swiper-slide {
   padding: 0 8px;
 }
