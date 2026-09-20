@@ -1,9 +1,29 @@
-<!-- wp:template-part {"slug":"header","tagName":"header","className":"site-header"} /-->
+<!-- wp:template-part {"slug":"header","theme":"gamestore","tagName":"header","className":"site-header"} /-->
 
-<!-- wp:group {"tagName":"main","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|50"}}},"layout":{"type":"constrained"}} -->
-<main class="wp-block-group" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--50);">
-	<!-- wp:pattern {"slug":"gamestore/404"} /-->
-</main>
-<!-- /wp:group -->
+<!-- wp:blocks-gamestore/block-not-found {"image":"http://localhost:8000/wp-content/uploads/2026/09/405.png","imageBg":"http://localhost:8000/wp-content/uploads/2026/09/SECTION.png"} -->
+<div
+  class="wp-block-blocks-gamestore-block-not-found alignfull"
+  style="
+    background: url(http://localhost:8000/wp-content/uploads/2026/09/SECTION.png);
+  "
+>
+  <div class="wrapper not-found-inner">
+    <div class="not-found-top">
+      <h2 class="not-found-title"><span>Page Not Found</span></h2>
+      <p class="not-found-description">
+        Oops! This page is missing, but our games collection isn't. Dive in and
+        find your next game!
+      </p>
+    </div>
+    <div class="not-found-bottom">
+      <img
+        class="image-not-found"
+        src="http://localhost:8000/wp-content/uploads/2026/09/405.png"
+        alt="not-found"
+      /><a href="/" class="hero-button shadow not-found-button">go back</a>
+    </div>
+  </div>
+</div>
+<!-- /wp:blocks-gamestore/block-not-found -->
 
-<!-- wp:template-part {"slug":"footer","tagName":"footer","className":"site-footer"} /-->
+<!-- wp:template-part {"slug":"footer","theme":"gamestore","tagName":"footer","className":"site-footer"} /-->

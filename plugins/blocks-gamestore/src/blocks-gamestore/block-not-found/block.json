@@ -1,0 +1,36 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "blocks-gamestore/block-not-found",
+	"version": "0.1.0",
+	"title": "Not found Block",
+	"category": "gamestore",
+	"icon": "smiley",
+	"description": "Not found Section.",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"title": {
+			"type": "string",
+			"source": "html",
+			"selector": ".not-found-title"
+		},
+		"description": {
+			"type": "string",
+			"source": "html",
+			"selector": ".not-found-description"
+		},
+		"image": {
+			"type": "string"
+		},
+		"imageBg": {
+			"type": "string"
+		}
+	},
+	"textdomain": "blocks-gamestore",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}
