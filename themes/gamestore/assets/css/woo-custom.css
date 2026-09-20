@@ -14,7 +14,9 @@
   width: calc(100% - 495px - 24px);
 }
 
-.entry-content .wc-block-components-sidebar {
+.entry-content .wc-block-components-sidebar,
+.wp-block-woocommerce-checkout-order-summary-block {
+  margin: 0;
   width: 495px;
   padding-left: 24px;
 }
@@ -127,3 +129,5 @@ table.wc-block-cart-items
 .wc-block-cart-items thead {
   display: none;
 }
+
+/* Checkout form */

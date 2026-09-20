@@ -8,19 +8,20 @@ function gamestore_styles() {
 		wp_get_theme()->get( 'Version' )
 	);
 	wp_enqueue_script(
-		'gamestore-theme-related', 
+		'gamestore-theme-related',
 		get_template_directory_uri() . '/assets/js/gamestore-theme-related.js',
 		[],
 		wp_get_theme()->get( 'Version' ),
-		true	
+		true
 	);
 
 	wp_localize_script(
-		'gamestore-theme-related', 
-		'gamestore_params', 
+		'gamestore-theme-related',
+		'gamestore_params',
 		array(
-		'ajaxurl' => admin_url('admin-ajax.php'),
-	));
+			'ajaxurl' => admin_url('admin-ajax.php'),
+		)
+	);
 
 	// Swiper slider
 	wp_enqueue_style(
@@ -30,23 +31,25 @@ function gamestore_styles() {
 		wp_get_theme()->get( 'Version' )
 	);
 	wp_enqueue_script(
-		'swiper-bundle', 
+		'swiper-bundle',
 		get_template_directory_uri() . '/assets/js/swiper-bundle.min.js',
 		[],
 		wp_get_theme()->get( 'Version' ),
-		true	
+		true
 	);
 
-	if(is_cart()) {	
+	// ИЗМЕНЕНО: добавляем is_checkout(), чтобы стили корзины грузились и на checkout
+	if ( is_cart() || is_checkout() ) {
 		wp_enqueue_style(
-		'woo-cart',
-		get_template_directory_uri() . '/assets/css/woo-cart.css',
-		[],
-		wp_get_theme()->get( 'Version' )
-	);
+			'woo-cart',
+			get_template_directory_uri() . '/assets/css/woo-cart.css',
+			[],
+			wp_get_theme()->get( 'Version' )
+		);
 	}
 }
 add_action( 'wp_enqueue_scripts', 'gamestore_styles' );
+
 
 function gamestore_google_font() {
 	$font_url = '';
@@ -67,50 +70,77 @@ function gamestore_google_font() {
 
 function gamestore_google_font_script() {
 	wp_enqueue_style(
-		'gamestore-google-font', 
-		gamestore_google_font(), 
+		'gamestore-google-font',
+		gamestore_google_font(),
 		[], '1.0.0'
 	);
 }
 add_action('wp_enqueue_scripts', 'gamestore_google_font_script');
 
-// Load assets in Gutenberg
+
+// ИЗМЕНЕНО: add_editor_style работает только для редактора Gutenberg в админке,
+// поэтому убираем отсюда is_checkout() — он тут бессмысленен.
 function gamestore_theme_setup() {
-    add_editor_style('/assets/css/editor-style.css');
-	add_editor_style('/assets/css/woo-cart.css');
+	add_editor_style('/assets/css/editor-style.css');
+	add_editor_style('/assets/css/woo-custom.css');
 }
 add_action('after_setup_theme', 'gamestore_theme_setup');
 
-// 2. Регистрация Google Font для редактора
+
+// ИЗМЕНЕНО: эта функция теперь только для редактора блоков (админка),
+// оставляем её для стилизации Gutenberg, но убираем is_checkout().
 function gamestore_gutenberg_styles() {
-    // Регистрируем Google Font
-    wp_enqueue_style(
-        'gamestore-google-font', 
-        gamestore_google_font(), 
-        [], 
-        '1.0.0'
-    );
-    
-    // Теперь подключаем editor-style с правильной зависимостью
-    wp_enqueue_style(
-        'gamestore-editor-style', 
-        get_template_directory_uri() . '/assets/css/editor-style.css',
-        ['gamestore-google-font'],
-        wp_get_theme()->get('Version')
-    );
+	wp_enqueue_style(
+		'gamestore-google-font',
+		gamestore_google_font(),
+		[],
+		'1.0.0'
+	);
 
 	wp_enqueue_style(
-        'woo-cart-editor-style', 
-        get_template_directory_uri() . '/assets/css/woo-cart.css',
+		'gamestore-editor-style',
+		get_template_directory_uri() . '/assets/css/editor-style.css',
+		['gamestore-google-font'],
+		wp_get_theme()->get('Version')
+	);
+
+	wp_enqueue_style(
+		'woo-custom-editor-style',
+		get_template_directory_uri() . '/assets/css/woo-custom.css',
 		[],
-        wp_get_theme()->get('Version')
-    );
+		wp_get_theme()->get('Version')
+	);
 }
 add_action('enqueue_block_editor_assets', 'gamestore_gutenberg_styles');
 
+
+// ДОБАВЛЕНО: подключение стилей на фронтенде для checkout и cart.
+// Именно этого не хватало — на фронтенде editor-style/woo-custom не грузились.
+function gamestore_frontend_woo_styles() {
+	// На всякий случай подстрахуемся: если woo-cart уже подключён выше — не дублируем.
+	if ( is_checkout() ) {
+		wp_enqueue_style(
+			'gamestore-editor-style-frontend',
+			get_template_directory_uri() . '/assets/css/editor-style.css',
+			['gamestore-google-font'],
+			wp_get_theme()->get('Version')
+		);
+
+		wp_enqueue_style(
+			'woo-custom-frontend',
+			get_template_directory_uri() . '/assets/css/woo-custom.css',
+			['gamestore-general'],
+			wp_get_theme()->get('Version')
+		);
+	}
+}
+// Приоритет 20 — чтобы подключилось после основных стилей темы и WooCommerce
+add_action('wp_enqueue_scripts', 'gamestore_frontend_woo_styles', 20);
+
+
 function gutenberg_activate_on_products($can_edit, $post_type) {
 	if ($post_type === 'product') {
-		return	true;
+		return true;
 	}
 	return $can_edit;
 }

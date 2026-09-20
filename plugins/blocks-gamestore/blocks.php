@@ -671,8 +671,12 @@ function view_block_product_header($attributes) {
     return ob_get_clean();
 }
 
+
+
 function view_block_bestseller_products($attributes) {
-    $product_type = $attributes['productType'] ?? '';
+    if (isset($attributes['productType'])) {
+        $product_type = $attributes['productType'] ?? '';
+    }
     $count        = $attributes['count'] ?? 10;
     $slider_games = [];
 

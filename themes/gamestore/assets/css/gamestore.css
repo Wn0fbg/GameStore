@@ -488,6 +488,11 @@ input[type="submit"] {
     center center no-repeat;
 }
 
+.wc-block-customer-account__link,
+.wc-block-mini-cart {
+  display: none;
+}
+
 @keyframes pulse {
   0% {
     opacity: 1;
