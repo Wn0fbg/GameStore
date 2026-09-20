@@ -21,6 +21,10 @@
   padding-left: 24px;
 }
 
+.wp-block-woocommerce-checkout-order-summary-block {
+  border: 0;
+}
+
 .wc-block-cart__main .wc-block-cart-items,
 .wc-block-cart__main .wc-block-cart-items td {
   border: 0;
@@ -131,3 +135,89 @@ table.wc-block-cart-items
 }
 
 /* Checkout form */
+.entry-content .wc-block-components-sidebar,
+.wp-block-woocommerce-checkout-order-summary-block {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.wc-block-components-text-input.is-active label {
+  display: none;
+}
+
+.wc-block-components-form
+  .wc-block-components-text-input.is-active
+  input[type="email"],
+.wc-block-components-form
+  .wc-block-components-text-input.is-active
+  input[type="number"],
+.wc-block-components-form
+  .wc-block-components-text-input.is-active
+  input[type="password"],
+.wc-block-components-form
+  .wc-block-components-text-input.is-active
+  input[type="tel"],
+.wc-block-components-form
+  .wc-block-components-text-input.is-active
+  input[type="text"],
+.wc-block-components-form
+  .wc-block-components-text-input.is-active
+  input[type="url"],
+.wc-block-components-text-input input:-webkit-autofill,
+.wc-block-components-text-input.is-active input[type="email"],
+.wc-block-components-text-input.is-active input[type="number"],
+.wc-block-components-text-input.is-active input[type="password"],
+.wc-block-components-text-input.is-active input[type="tel"],
+.wc-block-components-text-input.is-active input[type="text"],
+.wc-block-components-text-input.is-active input[type="url"] {
+  padding: 1em 0.5em;
+  color: var(--text-secondary, rgba(14, 13, 15, 0.7));
+  font-size: 18px;
+  font-weight: 500;
+  height: 48px;
+  line-height: 120%;
+  box-sizing: border-box;
+  background: transparent;
+}
+.wc-blocks-components-select__container {
+  margin-top: 16px;
+}
+
+.wc-block-components-form .wc-block-components-text-input input[type="email"],
+.wc-block-components-form .wc-block-components-text-input input[type="number"],
+.wc-block-components-form
+  .wc-block-components-text-input
+  input[type="password"],
+.wc-block-components-form .wc-block-components-text-input input[type="tel"],
+.wc-block-components-form .wc-block-components-text-input input[type="text"],
+.wc-block-components-form .wc-block-components-text-input input[type="url"],
+.wc-block-components-text-input input:-webkit-autofill,
+.wc-block-components-text-input input[type="email"],
+.wc-block-components-text-input input[type="number"],
+.wc-block-components-text-input input[type="password"],
+.wc-block-components-text-input input[type="tel"],
+.wc-block-components-text-input input[type="text"],
+.wc-block-components-text-input input[type="url"] {
+  padding: 1em 0.5em;
+  color: var(--text-secondary, rgba(14, 13, 15, 0.7));
+  font-size: 18px;
+  font-weight: 500;
+  height: 48px;
+  line-height: 120%;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+.wc-block-components-form .wc-block-components-text-input label,
+.wc-block-components-text-input label {
+  padding: 1em 0.5em;
+  color: var(--text-secondary, rgba(14, 13, 15, 0.7));
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 120%;
+}
+
+.wp-block-woocommerce-checkout {
+  margin-top: 120px !important;
+  margin-bottom: 120px !important;
+}
