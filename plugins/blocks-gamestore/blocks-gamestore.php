@@ -40,6 +40,7 @@ function create_block_blocks_gamestore_block_init() {
 	register_block_type(__DIR__ . '/build/blocks-gamestore/block-slider');
 	register_block_type(__DIR__ . '/build/blocks-gamestore/block-not-found');
 	register_block_type(__DIR__ . '/build/blocks-gamestore/block-services-header');
+	register_block_type(__DIR__ . '/build/blocks-gamestore/block-support-contact');
 	register_block_type(__DIR__ . '/build/blocks-gamestore/block-games-line', array(
 		'render_callback' => 'view_block_games_line',
 	));

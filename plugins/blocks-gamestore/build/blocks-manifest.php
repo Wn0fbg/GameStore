@@ -683,5 +683,36 @@ return array(
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
 		'style' => 'file:./style-index.css'
+	),
+	'block-support-contact' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'blocks-gamestore/block-support-contact',
+		'version' => '0.1.0',
+		'title' => 'Support contact Block',
+		'category' => 'gamestore',
+		'icon' => 'smiley',
+		'description' => 'Support contact Section.',
+		'example' => array(
+			
+		),
+		'supports' => array(
+			'html' => false
+		),
+		'attributes' => array(
+			'title' => array(
+				'type' => 'string'
+			),
+			'description' => array(
+				'type' => 'string'
+			),
+			'image' => array(
+				'type' => 'string'
+			)
+		),
+		'textdomain' => 'blocks-gamestore',
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'style' => 'file:./style-index.css'
 	)
 );

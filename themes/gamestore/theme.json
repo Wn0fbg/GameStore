@@ -354,6 +354,11 @@
       "name": "support-page",
       "title": "Support Page",
       "postTypes": ["page"]
+    },
+    {
+      "name": "services-page",
+      "title": "Contact Page",
+      "postTypes": ["page"]
     }
   ]
 }

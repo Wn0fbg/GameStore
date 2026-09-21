@@ -493,6 +493,17 @@ input[type="submit"] {
   display: none;
 }
 
+.support-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 700px;
+}
+
+.support-image img {
+  border-radius: 24px;
+}
+
 @keyframes pulse {
   0% {
     opacity: 1;
