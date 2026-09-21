@@ -17,6 +17,9 @@
 		},
 		"image": {
 			"type": "string"
+		},
+		"description": {
+			"type": "string"
 		}
 	},
 	"textdomain": "blocks-gamestore",

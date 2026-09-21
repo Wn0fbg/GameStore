@@ -1,7 +1,7 @@
 import { useBlockProps, RichText } from "@wordpress/block-editor";
 
 export default function save({ attributes }) {
-	const { title, image } = attributes;
+	const { title, image, description } = attributes;
 
 	return (
 		<div
@@ -17,8 +17,14 @@ export default function save({ attributes }) {
 					tagName="h1"
 					className="services-header-title"
 					value={title}
-					onChange={(title) => setAttributes({ title })}
 				/>
+				{description && (
+					<RichText.Content
+						tagName="p"
+						className="services-header-description"
+						value={description}
+					/>
+				)}
 			</div>
 		</div>
 	);

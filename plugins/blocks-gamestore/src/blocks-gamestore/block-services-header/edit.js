@@ -5,11 +5,16 @@ import {
 	MediaPlaceholder,
 	RichText,
 } from "@wordpress/block-editor";
-import { PanelBody, TextControl, SelectControl } from "@wordpress/components";
+import {
+	PanelBody,
+	TextControl,
+	SelectControl,
+	TextareaControl,
+} from "@wordpress/components";
 import "./editor.scss";
 
 export default function Edit({ attributes, setAttributes }) {
-	const { title, image } = attributes;
+	const { title, image, description } = attributes;
 
 	return (
 		<>
@@ -20,7 +25,11 @@ export default function Edit({ attributes, setAttributes }) {
 						value={title}
 						onChange={(title) => setAttributes({ title })}
 					/>
-
+					<TextareaControl
+						label={__("Description", "blocks-gamestore")}
+						value={description}
+						onChange={(description) => setAttributes({ description })}
+					/>
 					{image && <img src={image} className="bg-image" />}
 					<MediaPlaceholder
 						icon="format-image"
@@ -34,12 +43,10 @@ export default function Edit({ attributes, setAttributes }) {
 			</InspectorControls>
 			<div
 				{...useBlockProps({
-					...useBlockProps({
-						className: "alignfull",
-						style: {
-							background: image ? `url(${image})` : undefined,
-						},
-					}),
+					className: "alignfull",
+					style: {
+						background: image ? `url(${image})` : undefined,
+					},
 				})}
 			>
 				<div className="wrapper">
@@ -49,6 +56,14 @@ export default function Edit({ attributes, setAttributes }) {
 						value={title}
 						onChange={(title) => setAttributes({ title })}
 					/>
+					{description && (
+						<RichText
+							tagName="p"
+							className="services-header-description"
+							value={description}
+							onChange={(description) => setAttributes({ description })}
+						/>
+					)}
 				</div>
 			</div>
 		</>

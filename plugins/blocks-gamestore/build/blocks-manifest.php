@@ -527,6 +527,9 @@ return array(
 			),
 			'image' => array(
 				'type' => 'string'
+			),
+			'description' => array(
+				'type' => 'string'
 			)
 		),
 		'textdomain' => 'blocks-gamestore',
