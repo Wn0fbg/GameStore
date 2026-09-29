@@ -8,13 +8,13 @@ import {
 	PanelBody,
 	TextControl,
 	TextareaControl,
-	Button,
+	ToggleControl,
 } from "@wordpress/components";
 import { useState } from "@wordpress/element";
 import "./editor.scss";
 
 export default function Edit({ attributes, setAttributes }) {
-	const { title, description, image } = attributes;
+	const { title, description, image, opacity, lTitle, isReverse } = attributes;
 
 	return (
 		<>
@@ -24,6 +24,21 @@ export default function Edit({ attributes, setAttributes }) {
 						label="Title"
 						value={title}
 						onChange={(val) => setAttributes({ title: val })}
+					/>
+					<ToggleControl
+						label="Opacity Zero"
+						checked={opacity}
+						onChange={(opacity) => setAttributes({ opacity })}
+					/>
+					<ToggleControl
+						label="Litle Title"
+						checked={lTitle}
+						onChange={(lTitle) => setAttributes({ lTitle })}
+					/>
+					<ToggleControl
+						label="Reversed block"
+						checked={isReverse}
+						onChange={(isReverse) => setAttributes({ isReverse })}
 					/>
 					<TextareaControl
 						label="Description"
@@ -44,11 +59,15 @@ export default function Edit({ attributes, setAttributes }) {
 				</PanelBody>
 			</InspectorControls>
 			<div {...useBlockProps()}>
-				<div className="wrapper support-contact-inner">
+				<div
+					className={`wrapper support-contact-inner ${
+						isReverse ? "is-reverse" : ""
+					}`}
+				>
 					<div className="support-contact-left">
 						<RichText
 							tagName="h2"
-							className="support-contact-title"
+							className={`support-contact-title ${lTitle ? "l-title" : ""}`}
 							value={title}
 							onChange={(title) => setAttributes({ title })}
 						/>
@@ -59,17 +78,17 @@ export default function Edit({ attributes, setAttributes }) {
 							onChange={(description) => setAttributes({ description })}
 						/>
 						<a href="/contact" className="hero-button shadow not-found-button">
-							Go to Contact page
+							Login / Register
 						</a>
 					</div>
-					<div className="support-contact-left">
-						{image && (
-							<img
-								className="image-support-contact"
-								src={image}
-								alt="support-contact"
-							/>
-						)}
+					<div className="support-contact-right">
+						<div
+							className={`image-support-wrapper ${opacity ? "no-opacity" : ""}`}
+						>
+							{image && (
+								<img className="image-support-contact" src={image} alt="" />
+							)}
+						</div>
 					</div>
 				</div>
 			</div>

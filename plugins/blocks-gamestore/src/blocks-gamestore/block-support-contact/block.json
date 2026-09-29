@@ -20,6 +20,18 @@
 		},
 		"image": {
 			"type": "string"
+		},
+		"opacity": {
+			"type": "boolean",
+			"default": false
+		},
+		"lTitle": {
+			"type": "boolean",
+			"default": false
+		},
+		"isReverse": {
+			"type": "boolean",
+			"default": false
 		}
 	},
 	"textdomain": "blocks-gamestore",

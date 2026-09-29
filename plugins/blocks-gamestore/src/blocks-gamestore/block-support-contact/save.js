@@ -1,15 +1,19 @@
 import { useBlockProps, RichText } from "@wordpress/block-editor";
 
 export default function save({ attributes }) {
-	const { title, description, image } = attributes;
+	const { title, description, image, opacity, lTitle, isReverse } = attributes;
 
 	return (
 		<div {...useBlockProps.save()}>
-			<div className="wrapper support-contact-inner">
+			<div
+				className={`wrapper support-contact-inner ${
+					isReverse ? "is-reverse" : ""
+				}`}
+			>
 				<div className="support-contact-left">
 					<RichText.Content
 						tagName="h2"
-						className="support-contact-title"
+						className={`support-contact-title ${lTitle ? "l-title" : ""}`}
 						value={title}
 					/>
 					<RichText.Content
@@ -18,17 +22,17 @@ export default function save({ attributes }) {
 						value={description}
 					/>
 					<a href="/contact" className="hero-button shadow not-found-button">
-						Go to Contact page
+						Login / Register
 					</a>
 				</div>
 				<div className="support-contact-right">
-					{image && (
-						<img
-							className="image-support-contact"
-							src={image}
-							alt="support-contact"
-						/>
-					)}
+					<div
+						className={`image-support-wrapper ${opacity ? "no-opacity" : ""}`}
+					>
+						{image && (
+							<img className="image-support-contact" src={image} alt="" />
+						)}
+					</div>
 				</div>
 			</div>
 		</div>

@@ -711,6 +711,18 @@ return array(
 			),
 			'image' => array(
 				'type' => 'string'
+			),
+			'opacity' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'lTitle' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'isReverse' => array(
+				'type' => 'boolean',
+				'default' => false
 			)
 		),
 		'textdomain' => 'blocks-gamestore',

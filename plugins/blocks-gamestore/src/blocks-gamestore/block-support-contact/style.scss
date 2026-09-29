@@ -1,8 +1,17 @@
+.wp-site-blocks > .wp-block-blocks-gamestore-block-support-contact {
+	margin-block-start: 120px !important;
+	margin-block-end: 120px !important;
+}
+
 .wp-block-blocks-gamestore-block-support-contact {
 	.support-contact-inner {
 		display: flex;
 		justify-content: space-between;
 		gap: 80px;
+
+		&.is-reverse {
+			flex-direction: row-reverse;
+		}
 
 		.support-contact-left {
 			.support-contact-title {
@@ -10,13 +19,17 @@
 				font-size: 64px;
 				font-weight: 700;
 				line-height: 1.2;
-				width: 518px;
+				width: 860px;
 
 				span {
 					background: var(--accent-gradient);
 					-webkit-background-clip: text;
 					-webkit-text-fill-color: transparent;
 					background-clip: text;
+				}
+
+				&.l-title {
+					width: 518px;
 				}
 			}
 
@@ -37,11 +50,24 @@
 		}
 
 		.support-contact-right {
-			.image-support-contact {
-				border-radius: 24px;
-				opacity: 0.4;
+			.image-support-wrapper {
 				width: 600px;
 				height: 400px;
+				border-radius: 24px;
+				overflow: hidden;
+
+				&.no-opacity .image-support-contact {
+					opacity: 1;
+				}
+			}
+
+			.image-support-contact {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+				border-radius: 24px;
+				opacity: 0.4;
 			}
 		}
 	}

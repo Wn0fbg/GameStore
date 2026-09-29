@@ -33,7 +33,10 @@ function Edit({
   const {
     title,
     description,
-    image
+    image,
+    opacity,
+    lTitle,
+    isReverse
   } = attributes;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InspectorControls, {
@@ -44,6 +47,24 @@ function Edit({
           value: title,
           onChange: val => setAttributes({
             title: val
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+          label: "Opacity Zero",
+          checked: opacity,
+          onChange: opacity => setAttributes({
+            opacity
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+          label: "Litle Title",
+          checked: lTitle,
+          onChange: lTitle => setAttributes({
+            lTitle
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+          label: "Reversed block",
+          checked: isReverse,
+          onChange: isReverse => setAttributes({
+            isReverse
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextareaControl, {
           label: "Description",
@@ -70,12 +91,12 @@ function Edit({
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps)(),
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        className: "wrapper support-contact-inner",
+        className: `wrapper support-contact-inner ${isReverse ? "is-reverse" : ""}`,
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
           className: "support-contact-left",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.RichText, {
             tagName: "h2",
-            className: "support-contact-title",
+            className: `support-contact-title ${lTitle ? "l-title" : ""}`,
             value: title,
             onChange: title => setAttributes({
               title
@@ -90,14 +111,17 @@ function Edit({
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
             href: "/contact",
             className: "hero-button shadow not-found-button",
-            children: "Go to Contact page"
+            children: "Login / Register"
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-          className: "support-contact-left",
-          children: image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
-            className: "image-support-contact",
-            src: image,
-            alt: "support-contact"
+          className: "support-contact-right",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+            className: `image-support-wrapper ${opacity ? "no-opacity" : ""}`,
+            children: image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+              className: "image-support-contact",
+              src: image,
+              alt: ""
+            })
           })
         })]
       })
@@ -183,17 +207,20 @@ function save({
   const {
     title,
     description,
-    image
+    image,
+    opacity,
+    lTitle,
+    isReverse
   } = attributes;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save(),
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "wrapper support-contact-inner",
+      className: `wrapper support-contact-inner ${isReverse ? "is-reverse" : ""}`,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
         className: "support-contact-left",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.RichText.Content, {
           tagName: "h2",
-          className: "support-contact-title",
+          className: `support-contact-title ${lTitle ? "l-title" : ""}`,
           value: title
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.RichText.Content, {
           tagName: "p",
@@ -202,14 +229,17 @@ function save({
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
           href: "/contact",
           className: "hero-button shadow not-found-button",
-          children: "Go to Contact page"
+          children: "Login / Register"
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
         className: "support-contact-right",
-        children: image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
-          className: "image-support-contact",
-          src: image,
-          alt: "support-contact"
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          className: `image-support-wrapper ${opacity ? "no-opacity" : ""}`,
+          children: image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+            className: "image-support-contact",
+            src: image,
+            alt: ""
+          })
         })
       })]
     })
@@ -298,7 +328,7 @@ module.exports = window["wp"]["element"];
   \***************************************************************/
 (module) {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"blocks-gamestore/block-support-contact","version":"0.1.0","title":"Support contact Block","category":"gamestore","icon":"smiley","description":"Support contact Section.","example":{},"supports":{"html":false},"attributes":{"title":{"type":"string"},"description":{"type":"string"},"image":{"type":"string"}},"textdomain":"blocks-gamestore","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"blocks-gamestore/block-support-contact","version":"0.1.0","title":"Support contact Block","category":"gamestore","icon":"smiley","description":"Support contact Section.","example":{},"supports":{"html":false},"attributes":{"title":{"type":"string"},"description":{"type":"string"},"image":{"type":"string"},"opacity":{"type":"boolean","default":false},"lTitle":{"type":"boolean","default":false},"isReverse":{"type":"boolean","default":false}},"textdomain":"blocks-gamestore","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ }
 
