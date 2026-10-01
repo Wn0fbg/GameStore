@@ -14,7 +14,16 @@ import { useState } from "@wordpress/element";
 import "./editor.scss";
 
 export default function Edit({ attributes, setAttributes }) {
-	const { title, description, image, opacity, lTitle, isReverse } = attributes;
+	const {
+		title,
+		description,
+		image,
+		opacity,
+		lTitle,
+		isReverse,
+		link,
+		linkAnchor,
+	} = attributes;
 
 	return (
 		<>
@@ -44,6 +53,16 @@ export default function Edit({ attributes, setAttributes }) {
 						label="Description"
 						value={description}
 						onChange={(val) => setAttributes({ description: val })}
+					/>
+					<TextControl
+						label="Link URL"
+						value={link}
+						onChange={(link) => setAttributes({ link })}
+					/>
+					<TextControl
+						label="Link Anchor"
+						value={linkAnchor}
+						onChange={(linkAnchor) => setAttributes({ linkAnchor })}
 					/>
 					<br />
 					<br />
@@ -77,8 +96,8 @@ export default function Edit({ attributes, setAttributes }) {
 							value={description}
 							onChange={(description) => setAttributes({ description })}
 						/>
-						<a href="/contact" className="hero-button shadow not-found-button">
-							Login / Register
+						<a href={link} className="hero-button shadow not-found-button">
+							{linkAnchor}
 						</a>
 					</div>
 					<div className="support-contact-right">

@@ -723,6 +723,17 @@ return array(
 			'isReverse' => array(
 				'type' => 'boolean',
 				'default' => false
+			),
+			'link' => array(
+				'type' => 'string',
+				'source' => 'attribute',
+				'selector' => 'a',
+				'attribute' => 'href'
+			),
+			'linkAnchor' => array(
+				'type' => 'string',
+				'source' => 'html',
+				'selector' => 'a'
 			)
 		),
 		'textdomain' => 'blocks-gamestore',

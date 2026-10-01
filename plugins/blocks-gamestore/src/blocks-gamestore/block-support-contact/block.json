@@ -32,6 +32,17 @@
 		"isReverse": {
 			"type": "boolean",
 			"default": false
+		},
+		"link": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "a",
+			"attribute": "href"
+		},
+		"linkAnchor": {
+			"type": "string",
+			"source": "html",
+			"selector": "a"
 		}
 	},
 	"textdomain": "blocks-gamestore",

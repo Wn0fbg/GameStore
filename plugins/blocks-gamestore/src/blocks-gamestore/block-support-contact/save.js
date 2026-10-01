@@ -1,7 +1,16 @@
 import { useBlockProps, RichText } from "@wordpress/block-editor";
 
 export default function save({ attributes }) {
-	const { title, description, image, opacity, lTitle, isReverse } = attributes;
+	const {
+		title,
+		description,
+		image,
+		opacity,
+		lTitle,
+		isReverse,
+		link,
+		linkAnchor,
+	} = attributes;
 
 	return (
 		<div {...useBlockProps.save()}>
@@ -21,8 +30,8 @@ export default function save({ attributes }) {
 						className="support-contact-description"
 						value={description}
 					/>
-					<a href="/contact" className="hero-button shadow not-found-button">
-						Login / Register
+					<a href={link} className="hero-button shadow not-found-button">
+						{linkAnchor}
 					</a>
 				</div>
 				<div className="support-contact-right">

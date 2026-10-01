@@ -36,7 +36,9 @@ function Edit({
     image,
     opacity,
     lTitle,
-    isReverse
+    isReverse,
+    link,
+    linkAnchor
   } = attributes;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InspectorControls, {
@@ -71,6 +73,18 @@ function Edit({
           value: description,
           onChange: val => setAttributes({
             description: val
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
+          label: "Link URL",
+          value: link,
+          onChange: link => setAttributes({
+            link
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
+          label: "Link Anchor",
+          value: linkAnchor,
+          onChange: linkAnchor => setAttributes({
+            linkAnchor
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
           src: image,
@@ -109,9 +123,9 @@ function Edit({
               description
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
-            href: "/contact",
+            href: link,
             className: "hero-button shadow not-found-button",
-            children: "Login / Register"
+            children: linkAnchor
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
           className: "support-contact-right",
@@ -210,7 +224,9 @@ function save({
     image,
     opacity,
     lTitle,
-    isReverse
+    isReverse,
+    link,
+    linkAnchor
   } = attributes;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save(),
@@ -227,9 +243,9 @@ function save({
           className: "support-contact-description",
           value: description
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-          href: "/contact",
+          href: link,
           className: "hero-button shadow not-found-button",
-          children: "Login / Register"
+          children: linkAnchor
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
         className: "support-contact-right",
@@ -328,7 +344,7 @@ module.exports = window["wp"]["element"];
   \***************************************************************/
 (module) {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"blocks-gamestore/block-support-contact","version":"0.1.0","title":"Support contact Block","category":"gamestore","icon":"smiley","description":"Support contact Section.","example":{},"supports":{"html":false},"attributes":{"title":{"type":"string"},"description":{"type":"string"},"image":{"type":"string"},"opacity":{"type":"boolean","default":false},"lTitle":{"type":"boolean","default":false},"isReverse":{"type":"boolean","default":false}},"textdomain":"blocks-gamestore","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"blocks-gamestore/block-support-contact","version":"0.1.0","title":"Support contact Block","category":"gamestore","icon":"smiley","description":"Support contact Section.","example":{},"supports":{"html":false},"attributes":{"title":{"type":"string"},"description":{"type":"string"},"image":{"type":"string"},"opacity":{"type":"boolean","default":false},"lTitle":{"type":"boolean","default":false},"isReverse":{"type":"boolean","default":false},"link":{"type":"string","source":"attribute","selector":"a","attribute":"href"},"linkAnchor":{"type":"string","source":"html","selector":"a"}},"textdomain":"blocks-gamestore","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ }
 
