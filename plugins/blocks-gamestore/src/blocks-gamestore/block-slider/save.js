@@ -6,16 +6,20 @@ export default function save({ attributes }) {
 	return (
 		<div {...useBlockProps.save({ className: "alignfull" })}>
 			<div className="slider-inner-content">
-				<RichText.Content
-					tagName="h2"
-					className="slider-title"
-					value={title}
-				/>
-				<RichText.Content
-					tagName="p"
-					className="slider-description"
-					value={description}
-				/>
+				{title && (
+					<RichText.Content
+						tagName="h2"
+						className="slider-title"
+						value={title}
+					/>
+				)}
+				{description && (
+					<RichText.Content
+						tagName="p"
+						className="slider-description"
+						value={description}
+					/>
+				)}
 				{slides.length > 0 && (
 					<div className="slider-media">
 						<div className="swiper-wrapper">

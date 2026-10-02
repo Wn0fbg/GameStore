@@ -345,6 +345,41 @@ return array(
 		'style' => 'file:./style-index.css',
 		'viewScript' => 'file:./view.js'
 	),
+	'block-latest-consoles' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'blocks-gamestore/block-latest-consoles',
+		'version' => '0.1.0',
+		'title' => 'Latest consoles',
+		'category' => 'gamestore',
+		'icon' => 'smiley',
+		'description' => 'Latest consoles block..',
+		'example' => array(
+			
+		),
+		'supports' => array(
+			'html' => false
+		),
+		'attributes' => array(
+			'count' => array(
+				'type' => 'number',
+				'default' => 8
+			),
+			'title' => array(
+				'type' => 'string'
+			),
+			'description' => array(
+				'type' => 'string'
+			),
+			'image' => array(
+				'type' => 'string'
+			)
+		),
+		'textdomain' => 'blocks-gamestore',
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'style' => 'file:./style-index.css'
+	),
 	'block-news-box' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,

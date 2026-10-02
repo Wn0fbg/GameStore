@@ -7,31 +7,6 @@
 
 if (!defined('ABSPATH')) exit;
 
-add_action('init', 'register_gamestore_console_taxonomy');
-function register_gamestore_console_taxonomy() {
-    register_taxonomy('product_console', 'product', array(
-        'labels' => array(
-            'name'              => __('Consoles', 'core-gamestore'),
-            'singular_name'     => __('Console', 'core-gamestore'),
-            'search_items'      => __('Search Consoles', 'core-gamestore'),
-            'all_items'         => __('All Consoles', 'core-gamestore'),
-            'parent_item'       => __('Parent Console', 'core-gamestore'),
-            'parent_item_colon' => __('Parent Console:', 'core-gamestore'),
-            'edit_item'         => __('Edit Console', 'core-gamestore'),
-            'update_item'       => __('Update Console', 'core-gamestore'),
-            'add_new_item'      => __('Add New Console', 'core-gamestore'),
-            'new_item_name'     => __('New Console Name', 'core-gamestore'),
-            'menu_name'         => __('Consoles', 'core-gamestore'),
-        ),
-        'hierarchical'      => true,
-        'public'            => true,
-        'show_ui'           => true,
-        'show_admin_column' => false,
-        'show_in_rest'      => true,
-        'rewrite'           => array('slug' => 'console'),
-    ));
-}
-
 /* ============================================================
  * МЕТАПОЛЯ КОНСОЛИ (картинка + наличие)
  * ============================================================ */

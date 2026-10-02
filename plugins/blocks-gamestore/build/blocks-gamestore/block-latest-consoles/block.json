@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "blocks-gamestore/block-latest-consoles",
+  "version": "0.1.0",
+  "title": "Latest consoles",
+  "category": "gamestore",
+  "icon": "smiley",
+  "description": "Latest consoles block..",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "count": {
+      "type": "number",
+      "default": 8
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "image": {
+      "type": "string"
+    }
+  },
+  "textdomain": "blocks-gamestore",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

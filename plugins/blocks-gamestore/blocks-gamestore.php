@@ -77,6 +77,9 @@ function create_block_blocks_gamestore_block_init() {
 	register_block_type(__DIR__ . '/build/blocks-gamestore/block-games-box', array(
 		'render_callback' => 'view_block_games_box',
 	));
+	register_block_type(__DIR__ . '/build/blocks-gamestore/block-latest-consoles', array(
+		'render_callback' => 'view_block_latest_consoles',
+	));
 }
 
 add_action( 'init', 'create_block_blocks_gamestore_block_init' );

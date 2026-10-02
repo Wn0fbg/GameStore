@@ -88,20 +88,24 @@ export default function Edit({ attributes, setAttributes }) {
 			</InspectorControls>
 			<div {...useBlockProps({ className: "alignfull" })}>
 				<div className="slider-inner-content">
-					<RichText
-						tagName="h2"
-						className="slider-title"
-						value={title}
-						onChange={(val) => setAttributes({ title: val })}
-						placeholder="Title..."
-					/>
-					<RichText
-						tagName="p"
-						className="slider-description"
-						value={description}
-						onChange={(val) => setAttributes({ description: val })}
-						placeholder="Description..."
-					/>
+					{title && (
+						<RichText
+							tagName="h2"
+							className="slider-title"
+							value={title}
+							onChange={(val) => setAttributes({ title: val })}
+							placeholder="Title..."
+						/>
+					)}
+					{description && (
+						<RichText
+							tagName="p"
+							className="slider-description"
+							value={description}
+							onChange={(val) => setAttributes({ description: val })}
+							placeholder="Description..."
+						/>
+					)}
 					{slides.length > 0 && (
 						<div className="slider-media">
 							<div className="swiper-wrapper">
