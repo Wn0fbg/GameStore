@@ -25,7 +25,7 @@ export default function Edit({ attributes, setAttributes }) {
 						value={productType}
 						onChange={(productType) => setAttributes({ productType })}
 						options={[
-							{ label: "Bestseller", value: "bestsellet" },
+							{ label: "Bestseller", value: "bestseller" },
 							{ label: "Cross-Seller", value: "crosseller" },
 						]}
 					/>

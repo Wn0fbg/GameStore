@@ -20,7 +20,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define('BLOCKS_GAMESTORE_PATH', plugin_dir_path( __FILE__ ) );
 
-require_once( BLOCKS_GAMESTORE_PATH .'blocks.php');
+
+require_once BLOCKS_GAMESTORE_PATH . 'inc/games-line.php';
+require_once BLOCKS_GAMESTORE_PATH . 'inc/resent-news.php';
+require_once BLOCKS_GAMESTORE_PATH . 'inc/subscribe.php';
+require_once BLOCKS_GAMESTORE_PATH . 'inc/featured-products.php';
+require_once BLOCKS_GAMESTORE_PATH . 'inc/single-news.php';
+require_once BLOCKS_GAMESTORE_PATH . 'inc/news-header.php';
+require_once BLOCKS_GAMESTORE_PATH . 'inc/news-box.php';
+require_once BLOCKS_GAMESTORE_PATH . 'inc/single-game.php';
+require_once BLOCKS_GAMESTORE_PATH . 'inc/similar-product.php';
+require_once BLOCKS_GAMESTORE_PATH . 'inc/product-header.php';
+require_once BLOCKS_GAMESTORE_PATH . 'inc/bestseller-products.php';
+require_once BLOCKS_GAMESTORE_PATH . 'inc/games-box.php';
+require_once BLOCKS_GAMESTORE_PATH . 'inc/latest-consoles.php';
 
 add_filter('block_categories_all', function($categories) {
 	return array_merge($categories, [

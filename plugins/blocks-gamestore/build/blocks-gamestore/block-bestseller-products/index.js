@@ -62,7 +62,7 @@ function Edit({
           }),
           options: [{
             label: "Bestseller",
-            value: "bestsellet"
+            value: "bestseller"
           }, {
             label: "Cross-Seller",
             value: "crosseller"
