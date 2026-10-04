@@ -39,24 +39,15 @@ function view_block_latest_consoles( $attributes ) {
 
 					if ( $cover_url ) {
 						echo '<div class="console-image">';
-							echo '<img src="' . esc_url( $cover_url ) . '" alt="' . esc_attr( $term->name ) . '">';
+							echo '<img 
+								src="' . esc_url( $cover_url ) . '" 
+								alt="' . esc_attr( $term->name ) . '"
+								class="console-image"	
+							>';
 						echo '</div>';
 					}
 
-					echo '<h3 class="console-title">' . esc_html( $term->name ) . '</h3>';
-
-					if ( $stock ) {
-						$labels = array(
-							'instock'    => 'In stock',
-							'outofstock' => 'Out of stock',
-							'preorder'   => 'Pre-order',
-						);
-						$label = $labels[ $stock ] ?? $stock;
-						echo '<span class="console-stock stock-' . esc_attr( $stock ) . '">'
-							. esc_html( $label ) .
-						'</span>';
-					}
-
+					echo '<a class="console-title">' . esc_html( $term->name ) . '</a>';
 				echo '</a>';
 			echo '</div>';
 		}

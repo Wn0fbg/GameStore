@@ -2,6 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
 function view_block_games_box($attributes) {
     $count = isset($attributes['count']) ? (int) $attributes['count'] : 8;
     $title = isset($attributes['title']) ? $attributes['title'] : '';
