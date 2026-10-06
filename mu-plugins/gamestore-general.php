@@ -9,10 +9,34 @@
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
+if (!defined('ABSPATH')) exit;
+
+/* ============================================================
+ * ДВЕ КОРНЕВЫЕ КАТЕГОРИИ: GAMES и ACCESSORIES
+ * ============================================================ */
+
+add_action('init', function() {
+    if (!taxonomy_exists('product_cat')) return;
+
+    $roots = [
+        'games'       => 'Games',
+        'consoles' => 'Consoles',
+    ];
+
+    foreach ($roots as $slug => $name) {
+        if (!term_exists($slug, 'product_cat')) {
+            wp_insert_term($name, 'product_cat', ['slug' => $slug]);
+        }
+    }
+}, 999);
+
+/* ============================================================
+ * DASHBOARD CLEANUP
+ * ============================================================ */
+
 function gamestore_remove_dashboard_widgets() {
     global $wp_meta_boxes;
     
-    // Удаляем из нормальной колонки
     unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_activity']);
     unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);
     unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments']);
@@ -20,7 +44,6 @@ function gamestore_remove_dashboard_widgets() {
     unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);
     unset($wp_meta_boxes['dashboard']['normal']['core']['rank_math_dashboard_widget']);
     
-    // Удаляем из боковой колонки (side) — вот это было пропущено!
     unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
     unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_recent_drafts']);
     unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
@@ -29,8 +52,12 @@ function gamestore_remove_dashboard_widgets() {
 }
 add_action('wp_dashboard_setup', 'gamestore_remove_dashboard_widgets');
 
+/* ============================================================
+ * SVG UPLOAD
+ * ============================================================ */
+
 function enable_svg_upload($mimes) {
-    $mimes['svg'] = 'image/svg+xml';
+    $mimes['svg']  = 'image/svg+xml';
     $mimes['svgz'] = 'image/svg+xml';
     return $mimes;
 }
@@ -46,67 +73,50 @@ function fix_svg_admin_display() {
 }
 add_action('admin_head', 'fix_svg_admin_display');
 
+/* ============================================================
+ * NEWS POST TYPE
+ * ============================================================ */
+
 function register_news_post_type() {
     register_post_type('news', [
         'labels' => [
-            'name'               => 'News',
-            'singular_name'      => 'News',
-            'add_new'            => 'Add News',
-            'add_new_item'       => 'Add New News',
-            'edit_item'          => 'Edit News',
-            'all_items'          => 'All News',
+            'name'          => 'News',
+            'singular_name' => 'News',
+            'add_new'       => 'Add News',
+            'add_new_item'  => 'Add New News',
+            'edit_item'     => 'Edit News',
+            'all_items'     => 'All News',
         ],
-        'public'             => true,
-        'menu_icon'          => 'dashicons-megaphone',
-        'menu_position'      => 5,
-        'supports'           => ['title', 'editor', 'thumbnail', 'excerpt'],
-        'has_archive'        => true,
-        'rewrite'            => ['slug' => 'news'],
-        'show_in_rest'       => true,
-        'show_ui'            => true,
+        'public'        => true,
+        'menu_icon'     => 'dashicons-megaphone',
+        'menu_position' => 5,
+        'supports'      => ['title', 'editor', 'thumbnail', 'excerpt'],
+        'has_archive'   => true,
+        'rewrite'       => ['slug' => 'news'],
+        'show_in_rest'  => true,
+        'show_ui'       => true,
     ]);
 }
 add_action('init', 'register_news_post_type');
 
-function register_gamestore_console_taxonomy() {
-    register_taxonomy('product_console', 'product', array(
-        'labels' => array(
-            'name'              => __('Consoles', 'core-gamestore'),
-            'singular_name'     => __('Console', 'core-gamestore'),
-            'search_items'      => __('Search Consoles', 'core-gamestore'),
-            'all_items'         => __('All Consoles', 'core-gamestore'),
-            'parent_item'       => __('Parent Console', 'core-gamestore'),
-            'parent_item_colon' => __('Parent Console:', 'core-gamestore'),
-            'edit_item'         => __('Edit Console', 'core-gamestore'),
-            'update_item'       => __('Update Console', 'core-gamestore'),
-            'add_new_item'      => __('Add New Console', 'core-gamestore'),
-            'new_item_name'     => __('New Console Name', 'core-gamestore'),
-            'menu_name'         => __('Consoles', 'core-gamestore'),
-        ),
-        'hierarchical'      => true,
-        'public'            => true,
-        'show_ui'           => true,
-        'show_admin_column' => false,
-        'show_in_rest'      => true,
-        'rewrite'           => array('slug' => 'console'),
-    ));
-}
-add_action('init', 'register_gamestore_console_taxonomy');
+/* ============================================================
+ * NEWS CATEGORY TAXONOMY
+ * ============================================================ */
 
 function register_news_category_taxonomy() {
     register_taxonomy('news_category', 'news', [
         'labels' => [
-            'name'              => 'News Categories',
-            'singular_name'     => 'News Category',
-            'add_new_item'      => 'Add New Category',
-            'edit_item'         => 'Edit Category',
-            'all_items'         => 'All Categories',
+            'name'          => 'News Categories',
+            'singular_name' => 'News Category',
+            'add_new_item'  => 'Add New Category',
+            'edit_item'     => 'Edit Category',
+            'all_items'     => 'All Categories',
         ],
-        'hierarchical'       => true,
-        'public'             => true,
-        'show_admin_column'  => true,
-        'rewrite'            => ['slug' => 'news-category'],
-        'show_in_rest'       => true,
+        'hierarchical'      => true,
+        'public'            => true,
+        'show_admin_column' => true,
+        'rewrite'           => ['slug' => 'news-category'],
+        'show_in_rest'      => true,
     ]);
 }
 add_action('init', 'register_news_category_taxonomy');

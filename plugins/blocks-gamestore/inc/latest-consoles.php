@@ -4,12 +4,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 function view_block_latest_consoles( $attributes ) {
-	$terms = get_terms( array(
-		'taxonomy'   => 'product_console',
-		'hide_empty' => false, 
-		'number'     => ! empty( $attributes['count'] ) ? (int) $attributes['count'] : 8,
-		'orderby'    => 'name',
-		'order'      => 'ASC',
+	$count = ! empty( $attributes['count'] ) ? (int) $attributes['count'] : 8;
+
+	$query = new WP_Query( array(
+		'post_type'      => 'product',
+		'post_status'    => 'publish',
+		'posts_per_page' => $count,
+		'orderby'        => 'date',
+		'order'          => 'DESC',
+		'tax_query'      => array(
+			array(
+				'taxonomy' => 'product_cat',
+				'field'    => 'slug',
+				'terms'    => 'consoles', //  слаг категории
+			),
+		),
 	) );
 
 	$image_bg = ! empty( $attributes['image'] )
@@ -19,40 +28,49 @@ function view_block_latest_consoles( $attributes ) {
 	ob_start();
 	echo '<div ' . get_block_wrapper_attributes() . ' ' . $image_bg . '>';
 
-	if ( $attributes['title'] ) {
+	if ( ! empty( $attributes['title'] ) ) {
 		echo '<h2>' . esc_html( $attributes['title'] ) . '</h2>';
 	}
-	if ( $attributes['description'] ) {
+	if ( ! empty( $attributes['description'] ) ) {
 		echo '<p>' . esc_html( $attributes['description'] ) . '</p>';
 	}
 
-	if ( ! is_wp_error( $terms ) && ! empty( $terms ) ) {
+	if ( $query->have_posts() ) {
 		echo '<div class="consoles-list">';
 
-		foreach ( $terms as $term ) {
-			$cover_id  = get_term_meta( $term->term_id, 'console_cover', true );
-			$cover_url = $cover_id ? wp_get_attachment_url( $cover_id ) : '';
-			$stock     = get_term_meta( $term->term_id, 'console_stock', true );
+		while ( $query->have_posts() ) {
+			$query->the_post();
+			$product = wc_get_product( get_the_ID() );
+
+			if ( ! $product ) {
+				continue;
+			}
+
+			$image_url = get_the_post_thumbnail_url( get_the_ID(), 'medium' );
+			$price     = $product->get_price_html();
+			$stock     = $product->is_in_stock();
 
 			echo '<div class="console-item">';
-				echo '<a href="' . esc_url( get_term_link( $term ) ) . '">';
+				echo '<a href="' . esc_url( get_permalink() ) . '">';
 
-					if ( $cover_url ) {
+					if ( $image_url ) {
 						echo '<div class="console-image">';
-							echo '<img 
-								src="' . esc_url( $cover_url ) . '" 
-								alt="' . esc_attr( $term->name ) . '"
-								class="console-image"	
-							>';
+							echo '<img src="' . esc_url( $image_url ) . '" alt="' . esc_attr( get_the_title() ) . '" class="console-image">';
 						echo '</div>';
 					}
 
-					echo '<a class="console-title">' . esc_html( $term->name ) . '</a>';
+					echo '<a 
+							href="' . esc_url( get_permalink() ) . '" 
+							class="console-title"
+						>
+							'. esc_html( get_the_title() ) . '
+						</a>';
 				echo '</a>';
 			echo '</div>';
 		}
 
 		echo '</div>';
+		wp_reset_postdata();
 	} else {
 		echo '<p>' . esc_html__( 'No consoles found.', 'blocks-gamestore' ) . '</p>';
 	}
