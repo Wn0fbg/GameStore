@@ -70,6 +70,51 @@
 				}
 			}
 		}
+
+				@media (max-width: 768px) {
+			.footer-bottom {
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 24px;
+
+				.left-part {
+					flex-wrap: wrap;
+					gap: 24px;
+				}
+
+				.right-part {
+					justify-content: flex-start;
+					flex-wrap: wrap;
+					gap: 24px;
+				}
+			}
+		}
+
+		// Adaptive 
+		@media (max-width: 480px) {
+			gap: 16px;
+
+			.footer-copyrights {
+				font-size: 14px;
+				max-width: 100%;
+			}
+
+			.footer-bottom {
+				.left-part {
+					flex-direction: column;
+					align-items: flex-start;
+					gap: 16px;
+					font-size: 14px;
+				}
+
+				.right-part {
+					flex-direction: column;
+					align-items: flex-start;
+					gap: 16px;
+					width: 100%;
+				}
+			}
+		}
 	}
 }
 

@@ -97,6 +97,8 @@ body .is-layout-constrained .wp-block-blocks-gamestore-block-hero {
 			margin-right: auto;
 			margin-left: auto;
 			z-index: 3;
+			padding-left: var(--wp--style--root--padding-left);
+			padding-right: var(--wp--style--root--padding-right);
 
 			.swiper-wrapper {
 				display: flex;
@@ -113,6 +115,129 @@ body .is-layout-constrained .wp-block-blocks-gamestore-block-hero {
 					img.light-logo {
 						display: block;
 					}
+				}
+			}
+		}
+	}
+
+	// ===== АДАПТИВ =====
+
+	// Ноутбук / небольшой десктоп
+	@media (max-width: 1280px) {
+		.hero-content {
+			max-width: 100%;
+		}
+
+		.hero-slider .slider-container .swiper-wrapper .slide-item {
+			margin-right: 80px;
+		}
+	}
+
+	// Планшет
+	@media (max-width: 1024px) {
+		height: 820px;
+
+		.image-bg,
+		.video-bg {
+			height: 820px;
+		}
+
+		.hero-mask {
+			width: 100%;
+		}
+
+		.hero-content {
+			gap: 20px;
+
+			.hero-description {
+				font-size: 18px;
+			}
+		}
+
+		.hero-slider {
+			height: 130px;
+
+			.slider-container .swiper-wrapper .slide-item {
+				margin-right: 56px;
+			}
+		}
+	}
+
+	// Большой мобильный / маленький планшет
+	@media (max-width: 768px) {
+		height: 700px;
+
+		.image-bg,
+		.video-bg {
+			height: 700px;
+		}
+
+		.hero-content {
+			gap: 16px;
+			justify-content: center;
+			padding-top: 40px;
+			padding-bottom: 160px; // чтобы контент не заезжал под слайдер
+
+			.hero-description {
+				font-size: 16px;
+				line-height: 1.5;
+			}
+		}
+
+		.hero-slider {
+			height: 110px;
+
+			.slider-container .swiper-wrapper .slide-item {
+				margin-right: 40px;
+
+				img {
+					max-height: 32px;
+					width: auto;
+				}
+			}
+		}
+	}
+
+	// Мобильный
+	@media (max-width: 480px) {
+		height: 600px;
+
+		.image-bg,
+		.video-bg {
+			height: 600px;
+		}
+
+		.hero-mask {
+			width: 100%;
+			background: var(
+				--mask-gradient-mobile,
+				linear-gradient(
+					180deg,
+					rgba(250, 250, 250, 0.2) 0%,
+					rgba(250, 250, 250, 0.75) 100%
+				)
+			);
+		}
+
+		.hero-content {
+			gap: 12px;
+			padding-top: 24px;
+			padding-bottom: 130px;
+
+			.hero-description {
+				font-size: 15px;
+			}
+		}
+
+		.hero-slider {
+			height: 90px;
+
+			.slider-container .swiper-wrapper .slide-item {
+				margin-right: 32px;
+
+				img {
+					max-height: 24px;
+					width: auto;
 				}
 			}
 		}

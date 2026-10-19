@@ -54,15 +54,18 @@ body .is-layout-constrained .wp-block-blocks-gamestore-recent-news {
   position: relative;
   z-index: 1;
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   justify-content: space-between;
   gap: 48px;
+  box-sizing: border-box;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
 }
 .wp-block-blocks-gamestore-recent-news .recent-news .news-item {
-  width: calc(33.33% - 32px);
-  overflow: hidden;
-  width: 481px;
+  width: calc((100% - 144px) / 3);
+  min-width: 0;
   height: 748px;
+  overflow: hidden;
   position: relative;
   box-sizing: border-box;
   border-radius: 8px;
@@ -92,7 +95,6 @@ body .is-layout-constrained .wp-block-blocks-gamestore-recent-news {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  font-style: Bold;
   font-weight: 700;
   line-height: 1.4;
   letter-spacing: 0%;
@@ -107,6 +109,7 @@ body .is-layout-constrained .wp-block-blocks-gamestore-recent-news {
 .wp-block-blocks-gamestore-recent-news .recent-news .news-item .news-thumbnail {
   position: relative;
   aspect-ratio: 16/9;
+  width: 100%;
 }
 .wp-block-blocks-gamestore-recent-news .recent-news .news-item .news-thumbnail img {
   width: 100%;
@@ -141,15 +144,14 @@ body .is-layout-constrained .wp-block-blocks-gamestore-recent-news {
   letter-spacing: 0%;
 }
 .wp-block-blocks-gamestore-recent-news .recent-news .news-item .read-more {
+  margin-top: auto;
   display: inline-flex;
   background: var(--accent-gradient, linear-gradient(90deg, #3dafe2 0%, #6f76c0 100%));
   border-radius: 5px;
   box-shadow: 0px 16px 24px 0px rgba(61, 175, 226, 0.48);
-  color: var(--white-contrast, #0a090a);
   padding: 20px 32px;
   gap: 10px;
   color: var(--white-main, rgb(255, 255, 255));
-  font-style: Bold;
   font-size: 14px;
   font-weight: 700;
   line-height: 1.4;
@@ -166,11 +168,139 @@ body .is-layout-constrained .wp-block-blocks-gamestore-recent-news {
   content: "";
   width: 24px;
   height: 24px;
+  flex-shrink: 0;
   display: block;
-  background: url("data:image/svg+xml,<svg viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"24.000000\" height=\"24.000000\" fill=\"none\" customFrame=\"%23000000\"><rect id=\"document-text\" width=\"24.000000\" height=\"24.000000\" x=\"0.000000\" y=\"0.000000\" fill=\"rgb%28255,255,255%29\" fill-opacity=\"0\" /><g id=\"vuesax/bold/document-text\"><g id=\"document-text\"><path id=\"Vector\" d=\"M24 0L0 0L0 24L24 24L24 0Z\" opacity=\"0\" fill=\"rgb%28255,255,255%29\" fill-rule=\"nonzero\" /><path id=\"Vector\" d=\"M16 2L8 2C4.5 2 3 4 3 7L3 17C3 20 4.5 22 8 22L16 22C19.5 22 21 20 21 17L21 7C21 4 19.5 2 16 2ZM8 12.25L12 12.25C12.41 12.25 12.75 12.59 12.75 13C12.75 13.41 12.41 13.75 12 13.75L8 13.75C7.59 13.75 7.25 13.41 7.25 13C7.25 12.59 7.59 12.25 8 12.25ZM16 17.75L8 17.75C7.59 17.75 7.25 17.41 7.25 17C7.25 16.59 7.59 16.25 8 16.25L16 16.25C16.41 16.25 16.75 16.59 16.75 17C16.75 17.41 16.41 17.75 16 17.75ZM18.5 9.25L16.5 9.25C14.98 9.25 13.75 8.02 13.75 6.5L13.75 4.5C13.75 4.09 14.09 3.75 14.5 3.75C14.91 3.75 15.25 4.09 15.25 4.5L15.25 6.5C15.25 7.19 15.81 7.75 16.5 7.75L18.5 7.75C18.91 7.75 19.25 8.09 19.25 8.5C19.25 8.91 18.91 9.25 18.5 9.25Z\" fill=\"rgb%28255,255,255%29\" fill-rule=\"nonzero\" /><path id=\"Vector\" d=\"M24 0L0 0L0 24L24 24L24 0Z\" opacity=\"0\" fill=\"rgb%28255,255,255%29\" fill-rule=\"nonzero\" transform=\"matrix%28-1,-1.22465e-16,1.22465e-16,-1,24,24%29\" /></g></g></svg>") center center no-repeat;
+  background: url("data:image/svg+xml,<svg viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\"><path d=\"M16 2L8 2C4.5 2 3 4 3 7L3 17C3 20 4.5 22 8 22L16 22C19.5 22 21 20 21 17L21 7C21 4 19.5 2 16 2ZM8 12.25L12 12.25C12.41 12.25 12.75 12.59 12.75 13C12.75 13.41 12.41 13.75 12 13.75L8 13.75C7.59 13.75 7.25 13.41 7.25 13C7.25 12.59 7.59 12.25 8 12.25ZM16 17.75L8 17.75C7.59 17.75 7.25 17.41 7.25 17C7.25 16.59 7.59 16.25 8 16.25L16 16.25C16.41 16.25 16.75 16.59 16.75 17C16.75 17.41 16.41 17.75 16 17.75ZM18.5 9.25L16.5 9.25C14.98 9.25 13.75 8.02 13.75 6.5L13.75 4.5C13.75 4.09 14.09 3.75 14.5 3.75C14.91 3.75 15.25 4.09 15.25 4.5L15.25 6.5C15.25 7.19 15.81 7.75 16.5 7.75L18.5 7.75C18.91 7.75 19.25 8.09 19.25 8.5C19.25 8.91 18.91 9.25 18.5 9.25Z\" fill=\"rgb%28255,255,255%29\" fill-rule=\"nonzero\"/></svg>") center center no-repeat;
 }
 .wp-block-blocks-gamestore-recent-news .recent-news img {
   max-width: 100%;
+}
+@media (max-width: 1280px) {
+  .wp-block-blocks-gamestore-recent-news p {
+    font-size: 18px;
+    margin-bottom: 40px;
+    padding-left: var(--wp--style--root--padding-left);
+    padding-right: var(--wp--style--root--padding-right);
+  }
+  .wp-block-blocks-gamestore-recent-news .recent-news {
+    gap: 32px;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+  .wp-block-blocks-gamestore-recent-news .recent-news .news-item {
+    width: calc((100% - 112px) / 3);
+    height: auto;
+    min-height: 640px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    gap: 20px;
+  }
+  .wp-block-blocks-gamestore-recent-news .recent-news .news-item h3 {
+    padding-left: 28px;
+    padding-right: 28px;
+    font-size: 28px;
+  }
+  .wp-block-blocks-gamestore-recent-news .recent-news .news-item .news-excert {
+    padding-left: 32px;
+    padding-right: 32px;
+    font-size: 17px;
+  }
+  .wp-block-blocks-gamestore-recent-news .recent-news .news-item .read-more {
+    padding: 18px 28px;
+  }
+}
+@media (max-width: 1024px) {
+  .wp-block-blocks-gamestore-recent-news .recent-news {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 32px;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+  .wp-block-blocks-gamestore-recent-news .recent-news .news-item {
+    width: calc((100% - 80px) / 2);
+    height: auto;
+    min-height: 0;
+  }
+}
+@media (max-width: 768px) {
+  .wp-block-blocks-gamestore-recent-news h2 {
+    margin-bottom: 16px;
+  }
+  .wp-block-blocks-gamestore-recent-news p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 32px;
+  }
+  .wp-block-blocks-gamestore-recent-news .recent-news {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+  .wp-block-blocks-gamestore-recent-news .recent-news .news-item {
+    width: 100%;
+    max-width: 480px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    gap: 16px;
+  }
+  .wp-block-blocks-gamestore-recent-news .recent-news .news-item::before {
+    height: 6px;
+  }
+  .wp-block-blocks-gamestore-recent-news .recent-news .news-item h3 {
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 24px;
+  }
+  .wp-block-blocks-gamestore-recent-news .recent-news .news-item .news-excert {
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 16px;
+  }
+  .wp-block-blocks-gamestore-recent-news .recent-news .news-item .read-more {
+    padding: 16px 24px;
+    font-size: 13px;
+  }
+  .wp-block-blocks-gamestore-recent-news .recent-news .news-item .read-more::before {
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+  }
+}
+@media (max-width: 480px) {
+  .wp-block-blocks-gamestore-recent-news p {
+    font-size: 15px;
+  }
+  .wp-block-blocks-gamestore-recent-news .recent-news {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  .wp-block-blocks-gamestore-recent-news .recent-news .news-item {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 6px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+  .wp-block-blocks-gamestore-recent-news .recent-news .news-item h3 {
+    padding-left: 16px;
+    padding-right: 16px;
+    font-size: 20px;
+  }
+  .wp-block-blocks-gamestore-recent-news .recent-news .news-item .news-excert {
+    padding-left: 16px;
+    padding-right: 16px;
+    font-size: 15px;
+    -webkit-line-clamp: 3;
+    max-height: 4.8em;
+  }
+  .wp-block-blocks-gamestore-recent-news .recent-news .news-item .read-more {
+    padding: 14px 20px;
+    font-size: 12px;
+    letter-spacing: 10%;
+  }
 }
 
 /*# sourceMappingURL=style-index.css.map*/

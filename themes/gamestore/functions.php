@@ -15,6 +15,14 @@ function gamestore_styles() {
 		true
 	);
 
+	// styles for product search
+	wp_enqueue_style(
+		'gamestore-products-search',
+		get_template_directory_uri() . '/assets/css/products-search.css',
+		[],
+		wp_get_theme()->get( 'Version' )
+	);
+
 	wp_localize_script(
 		'gamestore-theme-related',
 		'gamestore_params',

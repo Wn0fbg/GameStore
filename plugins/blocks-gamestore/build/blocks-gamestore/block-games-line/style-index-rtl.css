@@ -22,10 +22,58 @@ body .is-layout-constrained .wp-block-blocks-gamestore-games-line {
   height: 403px;
   margin-right: 4px;
   margin-left: 4px;
+  flex: 0 0 auto;
 }
 .wp-block-blocks-gamestore-games-line .gamestore-line-container .game-item img {
   object-fit: cover;
   width: 100%;
   height: 100%;
   border-radius: 8px;
+  display: block;
+}
+@media (max-width: 1440px) {
+  .wp-block-blocks-gamestore-games-line .gamestore-line-container .game-item {
+    width: 240px;
+    height: 362px;
+  }
+}
+@media (max-width: 1280px) {
+  .wp-block-blocks-gamestore-games-line .gamestore-line-container .game-item {
+    width: 220px;
+    height: 332px;
+  }
+}
+@media (max-width: 1024px) {
+  .wp-block-blocks-gamestore-games-line .gamestore-line-container .game-item {
+    width: 200px;
+    height: 302px;
+  }
+}
+@media (max-width: 768px) {
+  .wp-block-blocks-gamestore-games-line .gamestore-line-container .game-item {
+    width: 170px;
+    height: 256px;
+    margin-right: 3px;
+    margin-left: 3px;
+  }
+  .wp-block-blocks-gamestore-games-line .gamestore-line-container .game-item img {
+    border-radius: 6px;
+  }
+}
+@media (max-width: 480px) {
+  .wp-block-blocks-gamestore-games-line .gamestore-line-container .game-item {
+    width: 130px;
+    height: 196px;
+    margin-right: 2px;
+    margin-left: 2px;
+  }
+  .wp-block-blocks-gamestore-games-line .gamestore-line-container .game-item img {
+    border-radius: 4px;
+  }
+}
+@media (max-width: 360px) {
+  .wp-block-blocks-gamestore-games-line .gamestore-line-container .game-item {
+    width: 110px;
+    height: 166px;
+  }
 }

@@ -4,11 +4,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 function view_block_games_line($attributes) {
+	$count = ! empty( $attributes['count'] ) ? (int) $attributes['count'] : 8;
+
+
     $args = array(
-        'post_type' => 'product',
-        'posts_per_page' => $attributes['count'],
-        'orderby' => 'date',
-        'order' => 'DESC'
+        'post_type'      => 'product',
+		'post_status'    => 'publish',
+		'posts_per_page' => $count,
+		'orderby'        => 'date',
+		'order'          => 'DESC',
+		'tax_query'      => array(
+			array(
+				'taxonomy' => 'product_cat',
+				'field'    => 'slug',
+				'terms'    => 'games', //  слаг категории
+			),
+		),
     );
     $games_query = new WP_Query($args);
 

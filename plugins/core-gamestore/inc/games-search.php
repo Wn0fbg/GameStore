@@ -26,10 +26,18 @@ add_action('wp_footer', 'gamestore_footer_search_popup');
 // Load latest 18 games
 function load_latest_games() {
     $args = array(
-        'post_type' => 'product',
+        'post_type'      => 'product',
         'posts_per_page' => '18',
-        'post_status' => 'publish',
-        'orderby' => 'date',
+		'post_status'    => 'publish',
+		'orderby'        => 'date',
+		'order'          => 'DESC',
+		'tax_query'      => array(
+			array(
+				'taxonomy' => 'product_cat',
+				'field'    => 'slug',
+				'terms'    => 'games', //  слаг категории
+			),
+		),
     );
     $games_query = new WP_Query($args);
 
