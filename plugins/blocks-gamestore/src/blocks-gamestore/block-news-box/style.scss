@@ -3,7 +3,7 @@
 	z-index: 1;
 	display: flex;
 	align-items: flex-start;
-	justify-content: space-between;
+	justify-content: flex-start; // карточки идут друг за другом, не по краям
 	gap: 48px;
 
 	li {
@@ -11,6 +11,48 @@
 		width: calc(33.33% - 32px);
 		margin-top: 0;
 		margin-bottom: 0;
+		flex: 0 0 auto; // не растягиваем и не сжимаем
+	}
+
+	// ===== АДАПТИВ =====
+	@media (max-width: 1200px) {
+		gap: 32px;
+		padding-left: 24px;
+		padding-right: 24px;
+		box-sizing: border-box;
+
+		li {
+			width: calc(33.33% - 21.33px);
+		}
+	}
+
+	@media (max-width: 1024px) {
+		gap: 24px;
+		flex-wrap: wrap;
+		padding-left: 20px;
+		padding-right: 20px;
+
+		li {
+			width: calc(50% - 12px);
+		}
+	}
+
+	@media (max-width: 768px) {
+		gap: 20px;
+		flex-direction: column;
+		align-items: stretch;
+		padding-left: 16px;
+		padding-right: 16px;
+
+		li {
+			width: 100%;
+		}
+	}
+
+	@media (max-width: 480px) {
+		gap: 16px;
+		padding-left: 12px;
+		padding-right: 12px;
 	}
 }
 
@@ -21,6 +63,7 @@
 	justify-content: center;
 	gap: 12px;
 	margin-bottom: clamp(3.75rem, calc(2.77rem + 4.92vw), 7.5rem);
+	box-sizing: border-box;
 
 	> span,
 	> a {
@@ -41,10 +84,69 @@
 	.current {
 		background: var(--purple-main, rgba(111, 118, 192, 1));
 	}
+
+	// ===== АДАПТИВ =====
+	@media (max-width: 1200px) {
+		padding-left: 24px;
+		padding-right: 24px;
+	}
+
+	@media (max-width: 1024px) {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	@media (max-width: 768px) {
+		gap: 8px;
+		padding-left: 16px;
+		padding-right: 16px;
+
+		> span,
+		> a {
+			width: 36px;
+			height: 36px;
+			font-size: 13px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		gap: 6px;
+		padding-left: 12px;
+		padding-right: 12px;
+
+		> span,
+		> a {
+			width: 32px;
+			height: 32px;
+			font-size: 12px;
+		}
+	}
 }
 
 .wp-block-query.wrapper {
 	margin-bottom: clamp(3.75rem, calc(2.77rem + 4.92vw), 7.5rem);
+
+	// ===== АДАПТИВ =====
+	@media (max-width: 1200px) {
+		padding-left: 24px;
+		padding-right: 24px;
+		box-sizing: border-box;
+	}
+
+	@media (max-width: 1024px) {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	@media (max-width: 768px) {
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+
+	@media (max-width: 480px) {
+		padding-left: 12px;
+		padding-right: 12px;
+	}
 }
 
 .wp-block-blocks-gamestore-news-box {
@@ -177,6 +279,110 @@
 
 		img {
 			max-width: 100%;
+		}
+	}
+
+	// ===== АДАПТИВ =====
+	@media (max-width: 1200px) {
+		width: 100%;
+		max-width: 481px;
+		height: auto;
+		min-height: 680px;
+		padding-top: 40px;
+		padding-bottom: 40px;
+		gap: 20px;
+
+		h3 {
+			font-size: 30px;
+			padding-left: 32px;
+			padding-right: 32px;
+		}
+
+		.news-excert {
+			font-size: 18px;
+			padding-left: 32px;
+			padding-right: 32px;
+		}
+	}
+
+	@media (max-width: 1024px) {
+		max-width: 100%;
+		min-height: 600px;
+
+		h3 {
+			font-size: 28px;
+		}
+
+		.news-excert {
+			font-size: 17px;
+		}
+	}
+
+	@media (max-width: 768px) {
+		width: 100%;
+		height: auto;
+		min-height: auto;
+		padding-top: 32px;
+		padding-bottom: 32px;
+		gap: 16px;
+
+		h3 {
+			font-size: 24px;
+			padding-left: 24px;
+			padding-right: 24px;
+		}
+
+		.news-excert {
+			font-size: 16px;
+			padding-left: 24px;
+			padding-right: 24px;
+			-webkit-line-clamp: 3;
+			max-height: calc(1.6em * 3);
+		}
+
+		.read-more {
+			padding: 16px 24px;
+			font-size: 13px;
+			gap: 8px;
+
+			&::before {
+				width: 20px;
+				height: 20px;
+				background-size: 20px 20px;
+			}
+		}
+	}
+
+	@media (max-width: 480px) {
+		padding-top: 24px;
+		padding-bottom: 24px;
+		gap: 14px;
+		border-radius: 6px;
+
+		h3 {
+			font-size: 20px;
+			padding-left: 16px;
+			padding-right: 16px;
+		}
+
+		.news-excert {
+			font-size: 14px;
+			padding-left: 16px;
+			padding-right: 16px;
+			-webkit-line-clamp: 3;
+			max-height: calc(1.6em * 3);
+		}
+
+		.read-more {
+			padding: 14px 20px;
+			font-size: 12px;
+			letter-spacing: 0.1em;
+
+			&::before {
+				width: 18px;
+				height: 18px;
+				background-size: 18px 18px;
+			}
 		}
 	}
 }

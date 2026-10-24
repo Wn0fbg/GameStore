@@ -131,7 +131,7 @@ export default function Edit({ attributes, setAttributes }) {
 						/>
 						<div className="links-list">
 							{links.map((link, index) => (
-								<p key={index}>
+								<p className="link-item" key={index}>
 									<a href={link.url} target="_blank" rel="noopener noreferrer">
 										{link.anchor || "Unitied Link"}
 									</a>

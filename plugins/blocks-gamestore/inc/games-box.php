@@ -29,10 +29,40 @@ function view_block_games_box($attributes) {
     $singleplayers = ['Yes', 'No'];
     $html  = '';
 
-    $games_posts = wc_get_products(array(
-        'status' => 'publish',
-        'limit'  => $count,
-    ));
+    // только games, исключая consoles
+    $games_query = new WP_Query( array(
+        'post_type'      => 'product',
+        'post_status'    => 'publish',
+        'posts_per_page' => $count,
+        'tax_query'      => array(
+            'relation' => 'AND',
+            array(
+                'taxonomy'         => 'product_cat',
+                'field'            => 'slug',
+                'terms'            => 'games',
+                'include_children' => true,
+            ),
+            array(
+                'taxonomy'         => 'product_cat',
+                'field'            => 'slug',
+                'terms'            => 'consoles',
+                'operator'         => 'NOT IN',
+                'include_children' => true,
+            ),
+        ),
+    ) );
+
+    $games_posts = array();
+    if ( $games_query->have_posts() ) {
+        while ( $games_query->have_posts() ) {
+            $games_query->the_post();
+            $product = wc_get_product( get_the_ID() );
+            if ( $product ) {
+                $games_posts[] = $product;
+            }
+        }
+        wp_reset_postdata();
+    }
 
     $html .= '<div ' . get_block_wrapper_attributes() . '>';
         $html .= '<div class="wrapper">';
@@ -54,23 +84,17 @@ function view_block_games_box($attributes) {
                 $html .= '</div>';
             }
 
-            $html .= '<div class="games-box-filter">';  
+            $html .= '<div class="games-box-filter">';
                 $html .= '<div class="games-filter">';
                     $html .= '<form method="POST" action="">';
+
                         if (!empty($languages) && !is_wp_error($languages)) {
                             $html .= '<div class="games-filter-item">';
                                 $html .= '<h5>Languages</h5>';
                                 foreach($languages as $language) {
                                     $html .= '<div class="filter-item">';
-                                        $html .= '<input 
-                                            type="checkbox" 
-                                            id="language-'.$language->term_id.'"
-                                            name="language-'.$language->term_id.'"
-                                        >
-                                            <label for="language-'.$language->term_id.'">
-                                                '.$language->name.'
-                                            </label>
-                                        </input>';
+                                        $html .= '<input type="checkbox" id="language-'.$language->term_id.'" name="language-'.$language->term_id.'">';
+                                        $html .= '<label for="language-'.$language->term_id.'">'.$language->name.'</label>';
                                     $html .= '</div>';
                                 }
                             $html .= '</div>';
@@ -81,15 +105,8 @@ function view_block_games_box($attributes) {
                                 $html .= '<h5>Genre</h5>';
                                 foreach($genres as $genre) {
                                     $html .= '<div class="filter-item">';
-                                        $html .= '<input 
-                                            type="checkbox" 
-                                            id="genre-'.$genre->term_id.'"
-                                            name="genre-'.$genre->term_id.'"
-                                        >
-                                            <label for="genre-'.$genre->term_id.'">
-                                                '.$genre->name.'
-                                            </label>
-                                        </input>';
+                                        $html .= '<input type="checkbox" id="genre-'.$genre->term_id.'" name="genre-'.$genre->term_id.'">';
+                                        $html .= '<label for="genre-'.$genre->term_id.'">'.$genre->name.'</label>';
                                     $html .= '</div>';
                                 }
                             $html .= '</div>';
@@ -100,11 +117,7 @@ function view_block_games_box($attributes) {
                                 $html .= '<select name="platforms" id="platforms">';
                                     $html .= '<option value="">Platform</option>';
                                     foreach($platforms as $platform) {
-                                        $html .= '<option 
-                                            value="'.$platform->term_id.'"
-                                        >
-                                            '.$platform->name.'
-                                        </option>';
+                                        $html .= '<option value="'.$platform->term_id.'">'.$platform->name.'</option>';
                                     }
                                 $html .= '</select>';
                             $html .= '</div>';
@@ -144,55 +157,45 @@ function view_block_games_box($attributes) {
                         }
 
                         $html .= '<div class="games-filter-item-select">
-                            <button class="hero-button shadow select-button" type="reset">
-                                Reset filters
-                            </button>
+                            <button class="hero-button shadow select-button" type="reset">Reset filters</button>
                         </div>';
                         $html .= '<input type="hidden" name="posts_per_page" value="'.esc_attr($count).'"/>';
 
                     $html .= '</form>';
                 $html .= '</div>';
-            
+
                 $html .= '<div class="games-box-list">';
-                    if (!empty($games_posts)) {
-                            $html .= '<div class="games-list">';
-                            foreach ($games_posts as $game) {
-                                $platforms_html = ''; 
-                                $html .= '<div class="game-result">';
-                                    $html .= '<a href="' . esc_url($game->get_permalink()) . '">';
-                                        $html .= '<div class="game-featured-image">';
-                                            $html .= $game->get_image('full');
+                    if ( ! empty( $games_posts ) ) {
+                        $html .= '<div class="games-list">';
+                        foreach ( $games_posts as $game ) {
+                            $platforms_html = '';
+                            $html .= '<div class="game-result">';
+                                $html .= '<a href="' . esc_url( $game->get_permalink() ) . '">';
+                                    $html .= '<div class="game-featured-image">';
+                                        $html .= $game->get_image( 'full' );
+                                    $html .= '</div>';
+                                    $html .= '<div class="game-meta">';
+                                        $html .= '<div class="game-price">';
+                                            $html .= $game->get_price_html();
                                         $html .= '</div>';
-                                        $html .= '<div class="game-meta">';
-                                            $html .= '<div class="game-price">';
-                                                $html .= $game->get_price_html();
-                                            $html .= '</div>';
-                                            $html .= '<h3>' . $game->get_name() . '</h3>';
-                                            $platforms = array('Xbox', 'PC', 'PlayStation');
-                                            foreach ($platforms as $platform) {
-                                                $meta = get_post_meta(
-                                                    $game->get_ID(),
-                                                    '_platform_' . strtolower($platform),
-                                                    true
-                                                );
-                                                if ($meta === 'yes') {
-                                                    $platforms_html .= '<div class="platform_' . strtolower($platform) . '"></div>';
-                                                }
+                                        $html .= '<h3>' . $game->get_name() . '</h3>';
+                                        $platforms_list = array( 'Xbox', 'PC', 'PlayStation' );
+                                        foreach ( $platforms_list as $platform ) {
+                                            $meta = get_post_meta( $game->get_ID(), '_platform_' . strtolower( $platform ), true );
+                                            if ( $meta === 'yes' ) {
+                                                $platforms_html .= '<div class="platform_' . strtolower( $platform ) . '"></div>';
                                             }
-                                            if ($platforms_html !== '') {
-                                                $html .= '<div class="game-platforms">' . $platforms_html . '</div>';
-                                            }
-                                        $html .= '</div>';
-                                    $html .= '</a>';
-                                $html .= '</div>';
-                            }
+                                        }
+                                        if ( $platforms_html !== '' ) {
+                                            $html .= '<div class="game-platforms">' . $platforms_html . '</div>';
+                                        }
+                                    $html .= '</div>';
+                                $html .= '</a>';
+                            $html .= '</div>';
+                        }
                         $html .= '</div>';
                         $html .= '<div class="load-more-container">';
-                            $html .= '<a
-                                class="load-more-button hero-button shadow"   
-                            >
-                                Load More
-                            </a>';
+                            $html .= '<a class="load-more-button hero-button shadow">Load More</a>';
                         $html .= '</div>';
                     } else {
                         $html .= '<p>No games found.</p>';

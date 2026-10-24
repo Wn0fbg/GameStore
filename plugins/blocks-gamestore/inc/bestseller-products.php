@@ -50,6 +50,13 @@ function view_block_bestseller_products($attributes) {
             'meta_key' => 'total_sales',
             'orderby'  => 'meta_value_num',
             'order'    => 'DESC',
+            'tax_query'=> array(
+                array(
+                    'taxonomy' => 'product_cat',
+                    'field'    => 'slug',
+                    'terms'    => 'games', //  слаг категории
+                ),
+		    ),
         ));
     }
 

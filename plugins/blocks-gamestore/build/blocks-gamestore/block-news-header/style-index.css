@@ -76,5 +76,81 @@
   position: relative;
   z-index: 1;
 }
+@media (max-width: 1024px) {
+  .wp-block-blocks-gamestore-news-header .wrapper .news-categories {
+    gap: 16px;
+    margin-top: 40px;
+  }
+  .wp-block-blocks-gamestore-news-header .wrapper .news-categories .news-cat-item {
+    padding: 20px;
+    gap: 16px;
+    font-size: 13px;
+  }
+  .wp-block-blocks-gamestore-news-header h1 {
+    margin-bottom: 20px;
+  }
+  .wp-block-blocks-gamestore-news-header p {
+    max-width: 100%;
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+}
+@media (max-width: 768px) {
+  .wp-block-blocks-gamestore-news-header .wrapper .news-categories {
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 32px;
+  }
+  .wp-block-blocks-gamestore-news-header .wrapper .news-categories .news-cat-item {
+    padding: 16px 20px;
+    gap: 12px;
+    font-size: 12px;
+    border-radius: 12px;
+  }
+  .wp-block-blocks-gamestore-news-header h1 {
+    margin-bottom: 16px;
+  }
+  .wp-block-blocks-gamestore-news-header p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 32px;
+  }
+}
+@media (max-width: 576px) {
+  .wp-block-blocks-gamestore-news-header .wrapper .news-categories {
+    gap: 10px;
+    margin-top: 24px;
+  }
+  .wp-block-blocks-gamestore-news-header .wrapper .news-categories .news-cat-item {
+    padding: 14px 16px;
+    gap: 8px;
+    font-size: 12px;
+    border-radius: 10px;
+  }
+  .wp-block-blocks-gamestore-news-header h1 {
+    margin-bottom: 12px;
+  }
+  .wp-block-blocks-gamestore-news-header p {
+    font-size: 15px;
+    margin-bottom: 24px;
+  }
+}
+@media (max-width: 375px) {
+  .wp-block-blocks-gamestore-news-header .wrapper .news-categories {
+    gap: 8px;
+  }
+  .wp-block-blocks-gamestore-news-header .wrapper .news-categories .news-cat-item {
+    padding: 12px 14px;
+    font-size: 11px;
+    border-radius: 8px;
+  }
+  .wp-block-blocks-gamestore-news-header h1 {
+    margin-bottom: 10px;
+  }
+  .wp-block-blocks-gamestore-news-header p {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+}
 
 /*# sourceMappingURL=style-index.css.map*/
