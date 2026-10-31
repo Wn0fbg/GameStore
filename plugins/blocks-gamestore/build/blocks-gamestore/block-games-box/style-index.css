@@ -158,5 +158,159 @@
 .wp-block-blocks-gamestore-games-box .games-list .game-result .game-meta h3 {
   color: var(--text-primary, #0e0d0f);
 }
+.wp-block-blocks-gamestore-games-box .games-pagination,
+.wp-block-blocks-gamestore-games-box .wp-block-query-pagination-numbers {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 40px;
+  margin-bottom: clamp(3.75rem, 2.77rem + 4.92vw, 7.5rem);
+  box-sizing: border-box;
+}
+.wp-block-blocks-gamestore-games-box .games-pagination > span,
+.wp-block-blocks-gamestore-games-box .games-pagination > a,
+.wp-block-blocks-gamestore-games-box .wp-block-query-pagination-numbers > span,
+.wp-block-blocks-gamestore-games-box .wp-block-query-pagination-numbers > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  background: var(--text-secondary, rgba(14, 13, 15, 0.7));
+  color: var(--black-contrast, #fff);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.wp-block-blocks-gamestore-games-box .games-pagination .current,
+.wp-block-blocks-gamestore-games-box .wp-block-query-pagination-numbers .current {
+  background: var(--purple-main, rgb(111, 118, 192));
+}
+.wp-block-blocks-gamestore-games-box .games-pagination .dots,
+.wp-block-blocks-gamestore-games-box .wp-block-query-pagination-numbers .dots {
+  background: transparent;
+  color: var(--text-secondary, rgba(14, 13, 15, 0.7));
+}
+@media (max-width: 1200px) {
+  .wp-block-blocks-gamestore-games-box .games-pagination,
+  .wp-block-blocks-gamestore-games-box .wp-block-query-pagination-numbers {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+@media (max-width: 1024px) {
+  .wp-block-blocks-gamestore-games-box .games-pagination,
+  .wp-block-blocks-gamestore-games-box .wp-block-query-pagination-numbers {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .wp-block-blocks-gamestore-games-box .games-pagination,
+  .wp-block-blocks-gamestore-games-box .wp-block-query-pagination-numbers {
+    gap: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .wp-block-blocks-gamestore-games-box .games-pagination > span,
+  .wp-block-blocks-gamestore-games-box .games-pagination > a,
+  .wp-block-blocks-gamestore-games-box .wp-block-query-pagination-numbers > span,
+  .wp-block-blocks-gamestore-games-box .wp-block-query-pagination-numbers > a {
+    width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
+}
+@media (max-width: 480px) {
+  .wp-block-blocks-gamestore-games-box .games-pagination,
+  .wp-block-blocks-gamestore-games-box .wp-block-query-pagination-numbers {
+    gap: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .wp-block-blocks-gamestore-games-box .games-pagination > span,
+  .wp-block-blocks-gamestore-games-box .games-pagination > a,
+  .wp-block-blocks-gamestore-games-box .wp-block-query-pagination-numbers > span,
+  .wp-block-blocks-gamestore-games-box .wp-block-query-pagination-numbers > a {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+}
+@media (max-width: 1200px) {
+  .wp-block-blocks-gamestore-games-box .filter-title-top {
+    margin-bottom: 32px;
+  }
+  .wp-block-blocks-gamestore-games-box .games-box-filter {
+    gap: 32px;
+  }
+  .wp-block-blocks-gamestore-games-box .games-box-filter .games-filter {
+    width: 340px;
+    padding: 32px;
+  }
+  .wp-block-blocks-gamestore-games-box .games-box-filter .games-filter form .games-filter-item-select select,
+  .wp-block-blocks-gamestore-games-box .games-box-filter .games-filter form .games-filter-item-select .select-button {
+    width: 100%;
+  }
+  .wp-block-blocks-gamestore-games-box .games-box-filter .games-box-list {
+    width: calc(100% - 372px);
+  }
+  .wp-block-blocks-gamestore-games-box .games-list .game-result {
+    width: calc(50% - 8px);
+  }
+}
+@media (max-width: 1024px) {
+  .wp-block-blocks-gamestore-games-box .games-box-filter {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .wp-block-blocks-gamestore-games-box .games-box-filter .games-filter {
+    width: 100%;
+    padding: 24px;
+  }
+  .wp-block-blocks-gamestore-games-box .games-box-filter .games-filter form .games-filter-item-select select,
+  .wp-block-blocks-gamestore-games-box .games-box-filter .games-filter form .games-filter-item-select .select-button {
+    width: 100%;
+  }
+  .wp-block-blocks-gamestore-games-box .games-box-filter .games-box-list {
+    width: 100%;
+  }
+  .wp-block-blocks-gamestore-games-box .games-list .game-result {
+    width: calc(50% - 8px);
+  }
+}
+@media (max-width: 768px) {
+  .wp-block-blocks-gamestore-games-box .filter-title-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .wp-block-blocks-gamestore-games-box .filter-title-top h2 {
+    margin-bottom: 0;
+  }
+  .wp-block-blocks-gamestore-games-box .filter-title-top .custom-sort {
+    width: 100%;
+  }
+  .wp-block-blocks-gamestore-games-box .filter-title-top .custom-sort select {
+    width: 100%;
+  }
+  .wp-block-blocks-gamestore-games-box .games-list .game-result {
+    width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .wp-block-blocks-gamestore-games-box .games-filter {
+    padding: 16px;
+    border-radius: 12px;
+  }
+  .wp-block-blocks-gamestore-games-box .games-list {
+    gap: 12px;
+  }
+}
 
 /*# sourceMappingURL=style-index.css.map*/
