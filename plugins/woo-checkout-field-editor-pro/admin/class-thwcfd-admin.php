@@ -15,6 +15,7 @@ if(!class_exists('THWCFD_Admin')):
 class THWCFD_Admin {
 	private $plugin_name;
 	private $version;
+	private $ui_revamp_announcement_dismissal_version = 'v1';
 	private $screen_id;
 
 	/**
@@ -152,6 +153,103 @@ class THWCFD_Admin {
         </div>
 		<?php
 
+	}
+
+	/**
+	 * Save the current user's UI revamp announcement dismissal and redirect to settings.
+	 *
+	 * @internal
+	 */
+	public function ui_revamp_announcement_popup_actions(){
+		$page = isset($_GET['page']) && is_string($_GET['page']) ? sanitize_key(wp_unslash($_GET['page'])) : '';
+		if($page !== 'checkout_form_designer' || !isset($_GET['thwcfd_ui_revamp_announcement_dismiss'])){
+			return;
+		}
+
+		$nonce = isset($_GET['thwcfd_ui_revamp_announcement_nonce']) && is_string($_GET['thwcfd_ui_revamp_announcement_nonce']) ? sanitize_text_field(wp_unslash($_GET['thwcfd_ui_revamp_announcement_nonce'])) : false;
+		$nonce_action = 'thwcfd_ui_revamp_announcement_dismiss_' . $this->ui_revamp_announcement_dismissal_version;
+		$capability = THWCFD_Utils::wcfd_capability();
+		if(!wp_verify_nonce($nonce, $nonce_action) || !current_user_can($capability)){
+			return;
+		}
+
+		update_user_meta(get_current_user_id(), $this->get_ui_revamp_announcement_dismissal_key(), true);
+
+		$redirect_args = array('page' => 'checkout_form_designer');
+		foreach(array('tab', 'c_type', 'section') as $arg){
+			if(isset($_GET[$arg]) && is_string($_GET[$arg])){
+				$redirect_args[$arg] = sanitize_text_field(wp_unslash($_GET[$arg]));
+			}
+		}
+
+		wp_safe_redirect(esc_url_raw(add_query_arg($redirect_args, admin_url('admin.php'))));
+		exit;
+	}
+
+	/**
+	 * Display the UI revamp announcement on the plugin settings page unless dismissed.
+	 *
+	 * @internal
+	 */
+	public function ui_revamp_announcement_popup(){
+		$current_screen = get_current_screen();
+		if(!$current_screen || $current_screen->id !== 'woocommerce_page_checkout_form_designer'){
+			return;
+		}
+
+		if(!current_user_can(THWCFD_Utils::wcfd_capability())){
+			return;
+		}
+
+		// Preserve dismissals saved before the announcement identifiers were renamed.
+		$legacy_dismissal_key = 'thwcfd_announcement_dismissed_' . $this->ui_revamp_announcement_dismissal_version . '_' . get_current_blog_id();
+		if(get_user_meta(get_current_user_id(), $this->get_ui_revamp_announcement_dismissal_key(), true) || get_user_meta(get_current_user_id(), $legacy_dismissal_key, true)){
+			return;
+		}
+
+		$redirect_args = array(
+			'page' => 'checkout_form_designer',
+			'thwcfd_ui_revamp_announcement_dismiss' => '1',
+			'thwcfd_ui_revamp_announcement_nonce' => wp_create_nonce('thwcfd_ui_revamp_announcement_dismiss_' . $this->ui_revamp_announcement_dismissal_version),
+		);
+		foreach(array('tab', 'c_type', 'section') as $arg){
+			if(isset($_GET[$arg]) && is_string($_GET[$arg])){
+				$redirect_args[$arg] = sanitize_text_field(wp_unslash($_GET[$arg]));
+			}
+		}
+		$dismiss_url = add_query_arg($redirect_args, admin_url('admin.php'));
+		?>
+		<div class="thwcfd-ui-revamp-announcement-overlay">
+			<div class="thwcfd-ui-revamp-announcement-modal" role="dialog" aria-modal="true" aria-labelledby="thwcfd-ui-revamp-announcement-title" tabindex="-1">
+				<a class="thwcfd-ui-revamp-announcement-close" href="<?php echo esc_url($dismiss_url); ?>" aria-label="<?php esc_attr_e('Dismiss announcement', 'woo-checkout-field-editor-pro'); ?>">
+					<span aria-hidden="true">&times;</span>
+				</a>
+				<div class="thwcfd-ui-revamp-announcement-media">
+					<img class="thwcfd-ui-revamp-announcement-image" src="<?php echo esc_url(THWCFD_ASSETS_URL_ADMIN . 'images/thwcfd-ui-revamp-announcement-preview.png'); ?>" alt="<?php esc_attr_e('Preview of the updated Checkout Field Editor interface', 'woo-checkout-field-editor-pro'); ?>" />
+				</div>
+				<div class="thwcfd-ui-revamp-announcement-content">
+					<div class="thwcfd-ui-revamp-announcement-badge">
+						<span class="thwcfd-ui-revamp-announcement-badge-icon" aria-hidden="true">✦</span>
+						<?php esc_html_e('Upcoming update', 'woo-checkout-field-editor-pro'); ?>
+					</div>
+					<h2 id="thwcfd-ui-revamp-announcement-title">
+						<?php esc_html_e('A sleek new', 'woo-checkout-field-editor-pro'); ?><br />
+						<span class="thwcfd-ui-revamp-announcement-title-accent"><?php esc_html_e('Checkout Field Editor', 'woo-checkout-field-editor-pro'); ?></span>
+					</h2>
+					<p><?php esc_html_e('Your Checkout Field Editor is getting a new, modern interface to manage checkout fields more easily.', 'woo-checkout-field-editor-pro'); ?></p>
+				</div>
+			</div>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Get the dismissal meta key for the current site and announcement version.
+	 *
+	 * @return string Announcement dismissal meta key.
+	 */
+	private function get_ui_revamp_announcement_dismissal_key(){
+		return 'thwcfd_ui_revamp_announcement_dismissed_' . $this->ui_revamp_announcement_dismissal_version . '_' . get_current_blog_id();
 	}
 
 	public function wcfd_notice_actions(){

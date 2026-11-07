@@ -60,9 +60,30 @@ trait CheckoutTrait {
 	}
 
 	/**
+	 * Stops the request when the order could not be saved, removing a draft order from the session so a later
+	 * request does not resume it.
+	 *
+	 * @throws RouteException When the order is missing or its last save failed.
+	 */
+	private function validate_order_was_saved(): void {
+		$order = $this->get_order_or_throw();
+		$this->forget_draft_order_if_not_saved( $order );
+
+		if ( null === $order->get_last_save_error() ) {
+			return;
+		}
+
+		throw new RouteException(
+			'woocommerce_rest_checkout_order_not_saved',
+			esc_html__( 'Your order could not be saved. Please try again.', 'woocommerce' ),
+			500
+		);
+	}
+
+	/**
 	 * For orders which do not require payment, just update status.
 	 *
-	 * @throws RouteException If the order is missing.
+	 * @throws RouteException If the order is missing or could not be saved.
 	 *
 	 * @param \WP_REST_Request $request Request object.
 	 * @param PaymentResult    $payment_result Payment result object.
@@ -71,6 +92,7 @@ trait CheckoutTrait {
 		$order = $this->get_order_or_throw();
 
 		$order->payment_complete();
+		$this->validate_order_was_saved();
 
 		// Mark the payment as successful.
 		$payment_result->set_status( 'success' );
@@ -87,6 +109,13 @@ trait CheckoutTrait {
 	 */
 	private function process_payment( \WP_REST_Request $request, PaymentResult $payment_result ) {
 		$order = $this->get_order_or_throw();
+
+		$session = WC()->session;
+		$session->set( 'order_awaiting_payment', $order->get_id() );
+		// Persist before invoking gateways because redirects or stalled requests may prevent the session from being saved on shutdown.
+		if ( is_callable( array( $session, 'save_data' ) ) ) {
+			$session->save_data();
+		}
 
 		try {
 			// Prepare the payment context object to pass through payment hooks.
@@ -117,7 +146,7 @@ trait CheckoutTrait {
 			/**
 			 * Allows to check if WP_DEBUG mode is enabled before returning previous Exception.
 			 *
-			 * @param bool The WP_DEBUG mode.
+			 * @param bool $return_previous_exceptions Whether to include the previous exception. Defaults to the WP_DEBUG value.
 			 */
 			if ( apply_filters( 'woocommerce_return_previous_exceptions', Constants::is_true( 'WP_DEBUG' ) ) && $e->getPrevious() ) {
 				$additional_data = [
@@ -148,10 +177,7 @@ trait CheckoutTrait {
 	 * @return array
 	 */
 	private function get_request_payment_data( \WP_REST_Request $request ) {
-		static $payment_data = [];
-		if ( ! empty( $payment_data ) ) {
-			return $payment_data;
-		}
+		$payment_data = [];
 		if ( ! empty( $request['payment_data'] ) ) {
 			foreach ( $request['payment_data'] as $data ) {
 				$payment_data[ sanitize_key( $data['key'] ) ] = wc_clean( $data['value'] );
@@ -248,6 +274,7 @@ trait CheckoutTrait {
 
 		if ( $persist ) {
 			$order->save();
+			$this->validate_order_was_saved();
 		}
 	}
 

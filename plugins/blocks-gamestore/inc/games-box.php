@@ -7,6 +7,31 @@ function view_block_games_box($attributes) {
     $count = isset($attributes['count']) ? (int) $attributes['count'] : 8;
     $title = isset($attributes['title']) ? $attributes['title'] : '';
 
+    // ===== Динамическая категория =====
+    $current_cat = 'games'; // fallback
+
+    // 1) атрибут блока — приоритет (если выбран в админке)
+    if ( ! empty( $attributes['product_category'] ) ) {
+        $current_cat = sanitize_title( $attributes['product_category'] );
+    }
+    // 2) архив категории товаров (если атрибут не задан)
+    elseif ( is_product_category() ) {
+        $term = get_queried_object();
+        if ( $term && ! is_wp_error( $term ) && ! empty( $term->slug ) ) {
+            $current_cat = $term->slug;
+        }
+    }
+    // 3) обычная страница, slug которой совпадает с product_cat
+    elseif ( is_page() ) {
+        $page = get_queried_object();
+        if ( $page && ! empty( $page->post_name ) ) {
+            $maybe_term = get_term_by( 'slug', $page->post_name, 'product_cat' );
+            if ( $maybe_term && ! is_wp_error( $maybe_term ) ) {
+                $current_cat = $maybe_term->slug;
+            }
+        }
+    }
+
     // текущая страница пагинации (из URL ?paged=N)
     $paged = max( 1, (int) get_query_var( 'paged' ), (int) get_query_var( 'page' ) );
 
@@ -29,7 +54,7 @@ function view_block_games_box($attributes) {
             array(
                 'taxonomy' => 'product_cat',
                 'field'    => 'slug',
-                'terms'    => 'games',
+                'terms'    => $current_cat,
             ),
         ),
     ) );
@@ -131,6 +156,8 @@ function view_block_games_box($attributes) {
                             <button class="hero-button shadow select-button" type="reset">Reset filters</button>
                         </div>';
                         echo '<input type="hidden" name="posts_per_page" value="' . esc_attr( $count ) . '"/>';
+                        // ===== Динамическая категория для AJAX =====
+                        echo '<input type="hidden" name="current_cat" value="' . esc_attr( $current_cat ) . '"/>';
 
                     echo '</form>';
                 echo '</div>';
@@ -177,7 +204,7 @@ function view_block_games_box($attributes) {
 
                         echo '</div>';
 
-                        // ===== ПАГИНАЦИЯ (как в news) =====
+                        // ===== ПАГИНАЦИЯ =====
                         $pagination = paginate_links( array(
                             'total'     => $query->max_num_pages,
                             'current'   => $paged,

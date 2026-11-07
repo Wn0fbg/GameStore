@@ -1,15 +1,15 @@
 === Checkout Field Editor (Checkout Manager) for WooCommerce ===
 Contributors: ThemeHigh
 Donate link: https://themehigh.com/
-Tags: Checkout  Manager, Checkout Field Editor, WooCommerce Checkout, WooCommerce Checkout Field, Custom fields
+Tags: Checkout  Manager, Checkout Field Editor, Block Checkout, Checkout Field Customizer, WooCommerce Custom Checkout
 Requires at least: 5.0
 Tested up to: 7.1
 Requires PHP: 5.6
-Stable tag: 2.2.0
+Stable tag: 2.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Checkout Field Editor (Checkout Manager) for WooCommerce – The best WooCommerce checkout manager plugin to manage WooCommerce checkout fields.
+Checkout Field Editor for WooCommerce – The best WooCommerce checkout manager plugin to manage checkout fields in both Classic & Block Checkout.
 
 == Description ==
 **WooCommerce Checkout Field Editor** enables you to edit the default checkout fields of your WooCommerce platform, add, edit, hide, or delete the default fields, change labels, rearrange checkout fields, validate the checkout fields, add custom css classes etc.
@@ -36,7 +36,7 @@ The default WooCommerce checkout field editor offers only basic fields, limiting
 
 ✳️ **Custom Hooks →** Easily Add more functionalities features with developer-friendly custom Hooks.
 
-**👉Note:** Block Compatibility → Our Checkout Field Editor (Checkout Manager) for WooCommerce now supports WooCommerce Checkout Blocks, allowing customization with Text, Select, Radio, and Checkbox fields, plus validation for Email, Phone, and URL. More field types will be added in upcoming updates.
+**👉Note:** Block Compatibility → Our Checkout Field Editor (Checkout Manager) for WooCommerce now supports WooCommerce Checkout Blocks, allowing customization with Text, Select, Radio, Checkbox and other 6 field types. Also provides validation for Email, Phone, and URL as well. More field types will be added in upcoming updates.
 
 [Try Demo]((https://flydemos.com/wcfe/?utm_source=wcfe_free&utm_medium=referral&utm_campaign=try_demo)) | [Documentation](https://www.themehigh.com/docs/docs-category/checkout-field-editor-for-woocommerce/?utm_source=wcfe_free&utm_medium=referral&utm_campaign=pro_doc) | [Get Pro ](https://www.themehigh.com/product/woocommerce-checkout-field-editor-pro/?utm_source=wcfe_free&utm_medium=referral&utm_campaign=wcfe_upgrade_link) 
 
@@ -135,7 +135,7 @@ The WooCommerce Checkout Field Editor works smoothly with WPML, allowing you to 
     3.  Date Picker
     4.  Label
 
-🆕 **👉 Note:** The Pro version  lets you add an extra checkout field type **Date Picker** when using Block Checkout.
+🆕 **👉 Note:** The Pro version lets you add additional checkout field types, including **Date Picker, Label, and File Upload,** when using Block Checkout.
    
 = ✅ POSITION SECTIONS AT 14 POSITIONS  = 
 Display sections at 14 different locations, offering greater flexibility in organizing your checkout page.
@@ -233,7 +233,7 @@ At themehigh, we specialize in providing thoughtful solutions to help you create
 🏆 Most Lightweight Plugins
 
 ==🔥  Explore More ==
-If you like the Extra product option, then consider checking out our other WordPress Plugins: 
+Check out more popular WooCommerce plugins from Themehigh to enhance your WooCommerce store. 
 
 👉[Extra Product Options For WooCommerce: ](https://www.themehigh.com/product/woocommerce-extra-product-options/)
 This Custom Product addons plugin lets you quickly add additional fields (19 custom field types) and sections to your WooCommerce Product page.
@@ -352,6 +352,10 @@ No, the free version does not support this feature. However, with the pro versio
 12. Block checkout custom fields( Radio and Text)
 
 == Changelog ==
+
+= 2.2.1=
+* Added WooCommerce 11.2 compatibility.
+* Improved PHP 8.2 compatibility.
 
 = 2.2.0=
 * Added WooCommerce 11.0 compatibility.

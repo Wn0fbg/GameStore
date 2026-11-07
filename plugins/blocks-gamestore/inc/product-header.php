@@ -28,17 +28,17 @@ function view_block_product_header($attributes) {
                     'hide_empty' => false,
                 ));
 
-                if (!empty($terms_news) && !is_wp_error($terms_news)) {
-                    echo '<div class="games-categories">';
-                        foreach($terms_news as $term) {                        
-                            echo '<div class="games-cat-item">';
-                                echo '<a href="' . esc_url(get_term_link($term)) . '">';
-                                    echo esc_html($term->name);
-                                echo '</a>';
-                            echo '</div>';
-                        }
-                    echo '</div>';
-                }
+                // if (!empty($terms_news) && !is_wp_error($terms_news)) {
+                //     echo '<div class="games-categories">';
+                //         foreach($terms_news as $term) {                        
+                //             echo '<div class="games-cat-item">';
+                //                 echo '<a href="' . esc_url(get_term_link($term)) . '">';
+                //                     echo esc_html($term->name);
+                //                 echo '</a>';
+                //             echo '</div>';
+                //         }
+                //     echo '</div>';
+                // }
             } else {
                if(!empty($attributes['links'])) {
                 echo '<div class="cart-link">';

@@ -18,6 +18,7 @@ class WCFE_Checkout_Section {
 	public $type = '';
 	public $cssclass = '';
 	public $enabled = true;
+	public $checkout_type = 'standard';
 	
 	public $custom_section = 1;
 	public $show_title = 1;

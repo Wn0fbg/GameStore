@@ -117,27 +117,33 @@
 			gap: 24px;
 
 			.right-part {
-				order: 2;
-				width: 100%;
-				min-height: 280px;
-				display: flex;
-				align-items: flex-end;
-				justify-content: center;
+				display: none;
+				// order: 2;
+				// width: 100%;
+				// min-height: 280px;
+				// display: flex;
+				// align-items: flex-end;
+				// justify-content: center;
+				// overflow: hidden; // ← чтобы картинка не вылезала
 
-				.image-cta {
-					position: relative;
-					right: auto;
-					bottom: auto;
-					width: 100%;
-					display: flex;
-					justify-content: center;
+				// .image-cta {
+				// 	position: relative;
+				// 	right: auto;
+				// 	bottom: auto;
+				// 	width: 100%;
+				// 	display: flex;
+				// 	justify-content: center;
 
-					img {
-						max-height: 280px;
-						width: auto;
-						margin: 0 auto;
-					}
-				}
+				// 	img {
+				// 		max-height: 280px;
+				// 		max-width: 100%;
+				// 		width: auto;
+				// 		height: auto;
+				// 		object-fit: contain;
+				// 		margin: 0 auto;
+				// 		display: block;
+				// 	}
+				// }
 			}
 
 			.left-part {
@@ -166,7 +172,6 @@
 						width: 100%;
 						max-width: 320px;
 						min-width: 160px;
-						flex: 0 1 320px;
 						margin: 0;
 						padding: 0;
 						height: auto;
@@ -189,13 +194,16 @@
 			gap: 16px;
 
 			.right-part {
-				min-height: 220px;
+				display: none;
+				// min-height: 220px;
 
-				.image-cta {
-					img {
-						max-height: 220px;
-					}
-				}
+				// .image-cta img {
+				// 	max-height: 220px;
+				// 	max-width: 100%;
+				// 	width: auto;
+				// 	height: auto;
+				// 	object-fit: contain;
+				// }
 			}
 
 			.left-part {
@@ -213,7 +221,6 @@
 						width: 100%;
 						max-width: 320px;
 						min-width: 160px;
-						flex: 0 1 320px;
 						margin: 0;
 						padding: 0;
 						box-sizing: border-box;
@@ -236,13 +243,16 @@
 			gap: 12px;
 
 			.right-part {
-				min-height: 180px;
+				display: none;
+				// min-height: 180px;
 
-				.image-cta {
-					img {
-						max-height: 180px;
-					}
-				}
+				// .image-cta img {
+				// 	max-height: 180px;
+				// 	max-width: 100%;
+				// 	width: auto;
+				// 	height: auto;
+				// 	object-fit: contain;
+				// }
 			}
 
 			.left-part {
@@ -260,7 +270,6 @@
 						width: 100%;
 						max-width: 320px;
 						min-width: 160px;
-						flex: 0 1 320px;
 						margin: 0;
 						padding: 0;
 						box-sizing: border-box;

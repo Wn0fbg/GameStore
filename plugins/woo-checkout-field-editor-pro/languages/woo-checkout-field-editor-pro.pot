@@ -2,36 +2,32 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Checkout Field Editor for WooCommerce 2.1.9\n"
+"Project-Id-Version: Checkout Field Editor for WooCommerce 2.2.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woo-checkout-field-editor-pro\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-05-25T07:25:50+00:00\n"
+"POT-Creation-Date: 2026-10-29T06:00:32+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.12.0\n"
+"X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: woo-checkout-field-editor-pro\n"
 
 #. Plugin Name of the plugin
-#: checkout-form-designer.php
 msgid "Checkout Field Editor for WooCommerce"
 msgstr ""
 
 #. Plugin URI of the plugin
 #. Author URI of the plugin
-#: checkout-form-designer.php
 msgid "https://www.themehigh.com"
 msgstr ""
 
 #. Description of the plugin
-#: checkout-form-designer.php
 msgid "Customize WooCommerce checkout fields(Add, Edit, Delete and re-arrange fields)."
 msgstr ""
 
 #. Author of the plugin
-#: checkout-form-designer.php
 msgid "ThemeHigh"
 msgstr ""
 
@@ -411,17 +407,17 @@ msgstr ""
 msgid "No checkout fields found. Click on Add Field button to create new fields."
 msgstr ""
 
-#: admin/class-thwcfd-admin-settings-block-fields.php:331
+#: admin/class-thwcfd-admin-settings-block-fields.php:323
 #: admin/class-thwcfd-admin-settings-general.php:286
 msgid "Your changes were not saved due to no fields found."
 msgstr ""
 
-#: admin/class-thwcfd-admin-settings-block-fields.php:385
+#: admin/class-thwcfd-admin-settings-block-fields.php:377
 #: admin/class-thwcfd-admin-settings-general.php:77
 msgid "Checkout fields successfully reset"
 msgstr ""
 
-#: admin/class-thwcfd-admin-settings-block-fields.php:604
+#: admin/class-thwcfd-admin-settings-block-fields.php:596
 msgid "Edit Section"
 msgstr ""
 
@@ -486,46 +482,69 @@ msgstr ""
 msgid "Install now"
 msgstr ""
 
-#: admin/class-thwcfd-admin.php:56
+#: admin/class-thwcfd-admin.php:57
 msgid "WooCommerce Checkout Field Editor"
 msgstr ""
 
-#: admin/class-thwcfd-admin.php:56
-#: admin/class-thwcfd-admin.php:96
+#: admin/class-thwcfd-admin.php:57
+#: admin/class-thwcfd-admin.php:97
 msgid "Checkout Form"
 msgstr ""
 
-#: admin/class-thwcfd-admin.php:64
+#: admin/class-thwcfd-admin.php:65
 msgid "WooCommerce"
 msgstr ""
 
-#: admin/class-thwcfd-admin.php:70
+#: admin/class-thwcfd-admin.php:71
 msgid "Settings"
 msgstr ""
 
-#: admin/class-thwcfd-admin.php:72
+#: admin/class-thwcfd-admin.php:73
 msgid "Get Pro"
 msgstr ""
 
-#: admin/class-thwcfd-admin.php:87
+#: admin/class-thwcfd-admin.php:88
 msgid "Join Community"
 msgstr ""
 
-#: admin/class-thwcfd-admin.php:88
+#: admin/class-thwcfd-admin.php:89
 msgid "Review us"
 msgstr ""
 
 #. translators: %s: Support team link
-#: admin/class-thwcfd-admin.php:143
-#, php-format
+#: admin/class-thwcfd-admin.php:144
 msgid ""
 "Our Checkout Field Editor now supports WooCommerce Checkout Blocks!\n"
 "\t\t\t\t\t\t\tIf you're using Block Checkout, make sure to switch to the Block Checkout Fields tab, otherwise, your changes won’t be reflected. Have questions or need help? \n"
 "\t\t\t\t\t\t\tReach out to our  %s ."
 msgstr ""
 
-#: admin/class-thwcfd-admin.php:146
+#: admin/class-thwcfd-admin.php:147
 msgid " Support team"
+msgstr ""
+
+#: admin/class-thwcfd-admin.php:224
+msgid "Dismiss announcement"
+msgstr ""
+
+#: admin/class-thwcfd-admin.php:228
+msgid "Preview of the updated Checkout Field Editor interface"
+msgstr ""
+
+#: admin/class-thwcfd-admin.php:233
+msgid "Upcoming update"
+msgstr ""
+
+#: admin/class-thwcfd-admin.php:236
+msgid "A sleek new"
+msgstr ""
+
+#: admin/class-thwcfd-admin.php:237
+msgid "Checkout Field Editor"
+msgstr ""
+
+#: admin/class-thwcfd-admin.php:239
+msgid "Your Checkout Field Editor is getting a new, modern interface to manage checkout fields more easily."
 msgstr ""
 
 #: admin/thwcfd-landing-page.php:20
@@ -606,7 +625,6 @@ msgstr ""
 
 #. Translators: %s is the section ID.
 #: block/class-thwcfd-block-extend-store-endpoint.php:80
-#, php-format
 msgid "Additional checkout fields for section %s"
 msgstr ""
 
@@ -617,125 +635,120 @@ msgstr ""
 
 #. translators: %s is the title of the field being validated.
 #: block/class-thwcfd-block.php:263
-#, php-format
 msgid "The provided %s is not a valid email address."
 msgstr ""
 
 #. translators: %s is the title of the field being validated.
 #: block/class-thwcfd-block.php:277
-#, php-format
 msgid "The provided %s is not a valid phone number."
 msgstr ""
 
 #. translators: %s is the title of the field being validated.
 #: block/class-thwcfd-block.php:291
-#, php-format
 msgid "The provided %s is not a valid postcode."
 msgstr ""
 
-#: includes/class-thwcfd.php:176
+#: includes/class-thwcfd.php:178
 msgid "Quick Feedback"
 msgstr ""
 
-#: includes/class-thwcfd.php:181
-#: includes/class-thwcfd.php:212
+#: includes/class-thwcfd.php:183
+#: includes/class-thwcfd.php:214
 msgid "Get Support"
 msgstr ""
 
-#: includes/class-thwcfd.php:185
+#: includes/class-thwcfd.php:187
 msgid "If you have a moment, please let us know why you want to deactivate this plugin"
 msgstr ""
 
-#: includes/class-thwcfd.php:204
+#: includes/class-thwcfd.php:206
 msgid "This form is only for getting your valuable feedback. We do not collect your personal data. To know more read our "
 msgstr ""
 
-#: includes/class-thwcfd.php:204
+#: includes/class-thwcfd.php:206
 msgid "Privacy Policy"
 msgstr ""
 
-#: includes/class-thwcfd.php:208
+#: includes/class-thwcfd.php:210
 msgid "Skip & Deactivate"
 msgstr ""
 
-#: includes/class-thwcfd.php:214
+#: includes/class-thwcfd.php:216
 msgid "Submit and Deactivate"
 msgstr ""
 
-#: includes/class-thwcfd.php:215
+#: includes/class-thwcfd.php:217
 msgid "Cancel"
 msgstr ""
 
-#: includes/class-thwcfd.php:436
+#: includes/class-thwcfd.php:438
 msgid "Deactivate and "
 msgstr ""
 
-#: includes/class-thwcfd.php:438
+#: includes/class-thwcfd.php:440
 msgid "leave a review"
 msgstr ""
 
-#: includes/class-thwcfd.php:442
+#: includes/class-thwcfd.php:444
 msgid "Upgraded"
 msgstr ""
 
-#: includes/class-thwcfd.php:512
+#: includes/class-thwcfd.php:514
 msgid "Upgraded to premium."
 msgstr ""
 
-#: includes/class-thwcfd.php:519
+#: includes/class-thwcfd.php:521
 msgid "A specific feature is missing"
 msgstr ""
 
-#: includes/class-thwcfd.php:521
+#: includes/class-thwcfd.php:523
 msgid "Type in the feature"
 msgstr ""
 
-#: includes/class-thwcfd.php:526
+#: includes/class-thwcfd.php:528
 msgid "Found an error in the plugin/ Plugin was not working"
 msgstr ""
 
-#: includes/class-thwcfd.php:528
+#: includes/class-thwcfd.php:530
 msgid "Specify the issue"
 msgstr ""
 
-#: includes/class-thwcfd.php:533
+#: includes/class-thwcfd.php:535
 msgid "It was hard to use"
 msgstr ""
 
-#: includes/class-thwcfd.php:535
+#: includes/class-thwcfd.php:537
 msgid "How can we improve your experience?"
 msgstr ""
 
-#: includes/class-thwcfd.php:540
+#: includes/class-thwcfd.php:542
 msgid "I found a better Plugin"
 msgstr ""
 
-#: includes/class-thwcfd.php:542
-#: includes/class-thwcfd.php:556
+#: includes/class-thwcfd.php:544
+#: includes/class-thwcfd.php:558
 msgid "Could you please mention the plugin?"
 msgstr ""
 
-#: includes/class-thwcfd.php:554
+#: includes/class-thwcfd.php:556
 msgid "It’s a temporary deactivation - I’m troubleshooting an issue"
 msgstr ""
 
-#: includes/class-thwcfd.php:561
+#: includes/class-thwcfd.php:563
 msgid "Not mentioned here"
 msgstr ""
 
-#: includes/class-thwcfd.php:563
+#: includes/class-thwcfd.php:565
 msgid "Kindly tell us your reason, so that we can improve"
 msgstr ""
 
 #. translators: %s: Field label
-#: public/class-thwcfd-public-checkout.php:552
-#, php-format
+#: public/class-thwcfd-public-checkout.php:562
 msgid "<strong>%s</strong> is not a valid number."
 msgstr ""
 
 #. translators: %s: Field label
-#: public/class-thwcfd-public-checkout.php:557
-#, php-format
+#: public/class-thwcfd-public-checkout.php:567
 msgid "<strong>%s</strong> is not a valid url."
 msgstr ""
 
@@ -786,7 +799,6 @@ msgstr ""
 #: block/assets/dist/additional-sections.js:932
 #: block/assets/dist/contact-info-section-frontend.js:411
 #: block/assets/dist/contact-info-section.js:520
-#, js-format
 msgid "Select a %s"
 msgstr ""
 

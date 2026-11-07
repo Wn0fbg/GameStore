@@ -4,10 +4,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 function view_block_bestseller_products($attributes) {
-    if (isset($attributes['productType'])) {
-        $product_type = $attributes['productType'] ?? '';
-    }
-    $count        = $attributes['count'] ?? 10;
+    $product_type = $attributes['productType'] ?? '';
+    $count        = isset($attributes['count']) ? (int) $attributes['count'] : 6;
     $slider_games = [];
 
     if ($product_type === 'crosseller') {
@@ -31,10 +29,6 @@ function view_block_bestseller_products($attributes) {
 
         $cross_sell_ids = array_values(array_unique(array_filter($cross_sell_ids)));
 
-        if (empty($cross_sell_ids)) {
-            $slider_games = [];
-        }
-
         if (!empty($cross_sell_ids)) {
             $slider_games = wc_get_products(array(
                 'status'  => 'publish',
@@ -42,6 +36,8 @@ function view_block_bestseller_products($attributes) {
                 'include' => $cross_sell_ids,
                 'orderby' => 'post__in',
             ));
+            // Ограничиваем 6 товарами
+            $slider_games = array_slice($slider_games, 0, 6);
         }
     } else {
         $slider_games = wc_get_products(array(
@@ -54,70 +50,64 @@ function view_block_bestseller_products($attributes) {
                 array(
                     'taxonomy' => 'product_cat',
                     'field'    => 'slug',
-                    'terms'    => 'games', //  слаг категории
+                    'terms'    => 'games',
                 ),
-		    ),
+            ),
         ));
     }
 
     ob_start();
 
     if (!empty($slider_games)) {
-            echo '<div '.get_block_wrapper_attributes(
-        array('class' => ' wrapper')).'
-    >';
-    echo '<div class="bestseller-top">';
-        if ($attributes['title']) {
-            echo '<h2>' . $attributes['title'] . '</h2>';
-        }
-        echo '<div class="right-bestseller-top">';
-            if (count($slider_games) > 6) {
-                echo '<div class="bestseller-navigation">';
-                    echo '<div class="bestseller-left">';
-                    echo '</div>';
-                    echo '<div class="bestseller-right">';
-                    echo '</div>';
-                echo '</div>';
+        echo '<div ' . get_block_wrapper_attributes(array('class' => 'wrapper')) . '>';
+
+        echo '<div class="bestseller-top">';
+            if (!empty($attributes['title'])) {
+                echo '<h2>' . wp_kses_post($attributes['title']) . '</h2>';
             }
+            echo '<div class="right-bestseller-top">';
+                if (count($slider_games) > 6) {
+                    echo '<div class="bestseller-navigation">';
+                        echo '<div class="bestseller-left"></div>';
+                        echo '<div class="bestseller-right"></div>';
+                    echo '</div>';
+                }
+            echo '</div>';
         echo '</div>';
-    echo '</div>';
 
-    $platforms = array('Xbox', 'PC', 'PlayStation');
+        $platforms = array('Xbox', 'PC', 'PlayStation');
 
-        echo '<div class="games-list bestseller-games-list"><div class="swiper-wrapper">';
-            forEach($slider_games as $game) {
-                $platforms_html = '';
-                echo '<div class="game-result swiper-slide">';
-                    echo '<a href="'
-                        .esc_url($game->get_permalink()).
-                    '">';
-                        echo '<div class="game-featured-image">
-                            '.$game->get_image('full').
-                        '</div>';
-                        echo '<div class="game-meta">';
-                            echo '<div class="game-price">
-                                '.$game->get_price_html().'
-                            </div>';
-                            echo '<h3>'.$game->get_name().'</h3>';
-                            echo '<div class="game-platforms">';
-                                foreach ($platforms as $platform) {
-                                    $platforms_html .= (get_post_meta(
-                                        $game->get_ID(), 
-                                        '_platform_'.strtolower($platform), 
-                                        true) == 'yes') ? 
-                                            '<div class="platform_'.strtolower($platform).'"></div>' 
-                                            : null;
-                                }
-                                echo $platforms_html;
+        echo '<div class="games-list bestseller-games-list">';
+            echo '<div class="swiper-wrapper">';
+                foreach ($slider_games as $game) {
+                    $platforms_html = '';
+
+                    echo '<div class="game-result swiper-slide">';
+                        echo '<a href="' . esc_url($game->get_permalink()) . '">';
+                            echo '<div class="game-featured-image">' . $game->get_image('full') . '</div>';
+                            echo '<div class="game-meta">';
+                                echo '<div class="game-price">' . $game->get_price_html() . '</div>';
+                                echo '<h3>' . esc_html($game->get_name()) . '</h3>';
+                                echo '<div class="game-platforms">';
+                                    foreach ($platforms as $platform) {
+                                        $platforms_html .= (get_post_meta(
+                                            $game->get_ID(),
+                                            '_platform_' . strtolower($platform),
+                                            true) == 'yes') ?
+                                                '<div class="platform_' . strtolower($platform) . '"></div>'
+                                                : '';
+                                    }
+                                    echo $platforms_html;
+                                echo '</div>';
                             echo '</div>';
-                        echo '</div>';
-                    echo '</a>';
-                echo '</div>';
-            }
+                        echo '</a>';
+                    echo '</div>';
+                }
+            echo '</div>';
         echo '</div>';
+
         echo '</div>';
-    } 
-    echo '</div>';
+    }
 
     return ob_get_clean();
 }

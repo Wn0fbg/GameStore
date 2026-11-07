@@ -862,6 +862,53 @@ class OrdersTableDataStore extends \Abstract_WC_Order_Data_Store_CPT implements 
 	}
 
 	/**
+	 * Throws before any order table is written when a value will not fit its column.
+	 *
+	 * Rows saved with $wpdb->insert() or $wpdb->update() (the ones with a `where` clause) are refused by wpdb when a
+	 * value is too long, which would otherwise happen after the order row was already written. The other rows use a
+	 * raw query, where MySQL truncates instead of failing, so they are not checked.
+	 *
+	 * @param array $db_updates Rows to persist, as returned by get_db_rows_for_order().
+	 * @return void
+	 * @throws \Exception When a value is longer than its column allows.
+	 */
+	private function validate_db_row_lengths( array $db_updates ): void {
+		global $wpdb;
+
+		foreach ( $db_updates as $update ) {
+			if ( ! isset( $update['where'] ) ) {
+				continue;
+			}
+
+			foreach ( $update['data'] as $column => $value ) {
+				if ( ! is_string( $value ) || in_array( $update['format'][ $column ] ?? '%s', array( '%d', '%f' ), true ) ) {
+					continue;
+				}
+
+				$column_length = $wpdb->get_col_length( $update['table'], $column );
+				if ( ! is_array( $column_length ) || empty( $column_length['length'] ) ) {
+					continue;
+				}
+
+				// Same measure wpdb uses: bytes for binary and text columns, characters for char and varchar.
+				$value_length = 'byte' === $column_length['type'] ? strlen( $value ) : mb_strlen( $value, 'UTF-8' );
+				if ( $value_length > $column_length['length'] ) {
+					throw new \Exception(
+						esc_html(
+							sprintf(
+								/* translators: 1: database table name, 2: column name. */
+								__( 'Could not persist order to database table "%1$s": the value for "%2$s" is too long.', 'woocommerce' ),
+								$update['table'],
+								$column
+							)
+						)
+					);
+				}
+			}
+		}
+	}
+
+	/**
 	 * Get information about whether permissions are granted yet.
 	 *
 	 * @param \WC_Order $order Order object.
@@ -1121,7 +1168,9 @@ WHERE
 	 */
 	protected function get_refund_orders_join_clause( int $order_id ): string {
 		global $wpdb;
-		return $wpdb->prepare( '%i AS refunds ON ( refunds.type = %s AND refunds.parent_order_id = %d )', self::get_orders_table_name(), 'shop_order_refund', $order_id );
+		$orders_table = self::get_orders_table_name();
+		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- trusted table name.
+		return $wpdb->prepare( "{$orders_table} AS refunds ON ( refunds.type = %s AND refunds.parent_order_id = %d )", 'shop_order_refund', $order_id );
 	}
 
 	/**
@@ -2264,6 +2313,8 @@ FROM $order_meta_table
 		// Figure out what needs to be updated in the database.
 		$db_updates = $this->get_db_rows_for_order( $order, $context, $only_changes );
 
+		$this->validate_db_row_lengths( $db_updates );
+
 		// Persist changes.
 		foreach ( $db_updates as $update ) {
 			// Make sure 'data' and 'format' entries match before passing to $wpdb.
@@ -2708,6 +2759,18 @@ FROM $order_meta_table
 	protected function handle_order_deletion_with_sync_disabled( $order_id ): void {
 		global $wpdb;
 
+		// Notes are the order's own data, not the backup post's, so they shouldn't wait on a deferred post record.
+		$comments = $wpdb->get_col(
+			$wpdb->prepare(
+				"SELECT comment_ID FROM {$wpdb->comments} WHERE comment_post_ID = %d",
+				$order_id
+			)
+		);
+
+		foreach ( $comments as $comment_id ) {
+			wp_delete_comment( $comment_id, true );
+		}
+
 		$post_type = $wpdb->get_var(
 			$wpdb->prepare( "SELECT post_type FROM {$wpdb->posts} WHERE ID=%d", $order_id )
 		);
@@ -2917,6 +2980,31 @@ FROM $order_meta_table
 
 		// Was the status successfully restored? Let's clean up the meta and indicate success...
 		if ( 'wc-' . $order->get_status() === $previous_status ) {
+			wp_untrash_post_comments( $id );
+
+			// Order notes are always restored. Other comment types are left alone.
+			global $wpdb;
+			$order_note_ids = $wpdb->get_col(
+				$wpdb->prepare(
+					"SELECT comment_ID FROM {$wpdb->comments} WHERE comment_post_ID = %d AND comment_approved = %s AND comment_type = %s",
+					$id,
+					'post-trashed',
+					'order_note'
+				)
+			);
+			if ( $order_note_ids ) {
+				$wpdb->update(
+					$wpdb->comments,
+					array( 'comment_approved' => '1' ),
+					array(
+						'comment_post_ID'  => $id,
+						'comment_approved' => 'post-trashed',
+						'comment_type'     => 'order_note',
+					)
+				);
+				clean_comment_cache( $order_note_ids );
+			}
+
 			$order->delete_meta_data( '_wp_trash_meta_status' );
 			$order->delete_meta_data( '_wp_trash_meta_time' );
 			$order->delete_meta_data( '_wp_trash_meta_comments_status' );
@@ -3389,9 +3477,10 @@ FROM $order_meta_table
 	 */
 	protected function get_refund_orders_batch_join_clause( array $order_ids ): string {
 		global $wpdb;
-		$id_list = implode( ', ', array_map( 'absint', $order_ids ) );
-		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- $id_list is sanitized via absint above.
-		return $wpdb->prepare( "%i AS refunds ON ( refunds.type = %s AND refunds.parent_order_id IN ( $id_list ) )", self::get_orders_table_name(), 'shop_order_refund' );
+		$id_list      = implode( ', ', array_map( 'absint', $order_ids ) );
+		$orders_table = self::get_orders_table_name();
+		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- $id_list is sanitized via absint above; trusted table name.
+		return $wpdb->prepare( "{$orders_table} AS refunds ON ( refunds.type = %s AND refunds.parent_order_id IN ( $id_list ) )", 'shop_order_refund' );
 	}
 
 	/**
@@ -3417,17 +3506,15 @@ FROM $order_meta_table
 	protected function get_batch_refund_totals( array $order_ids ): array {
 		global $wpdb;
 
-		$id_list = implode( ', ', array_map( 'absint', $order_ids ) );
+		$id_list      = implode( ', ', array_map( 'absint', $order_ids ) );
+		$orders_table = self::get_orders_table_name();
 
-		// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- $id_list is sanitized via absint above.
+		// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- $id_list is sanitized via absint above; trusted table name.
 		$refund_totals = $wpdb->get_results(
-			$wpdb->prepare(
-				"SELECT parent_order_id AS order_id, SUM( total_amount ) AS total
-				FROM %i
+			"SELECT parent_order_id AS order_id, SUM( total_amount ) AS total
+				FROM {$orders_table}
 				WHERE type = 'shop_order_refund' AND parent_order_id IN ( $id_list )
-				GROUP BY parent_order_id",
-				self::get_orders_table_name()
-			)
+				GROUP BY parent_order_id"
 		);
 		// phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 

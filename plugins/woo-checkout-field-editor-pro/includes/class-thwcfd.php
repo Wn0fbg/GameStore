@@ -101,6 +101,8 @@ class THWCFD {
 		add_filter('woocommerce_screen_ids', array($plugin_admin, 'add_screen_id'));
 		add_filter('plugin_action_links_'.THWCFD_BASE_NAME, array($plugin_admin, 'plugin_action_links'));
 		add_action( 'admin_init', array( $plugin_admin, 'wcfd_notice_actions' ), 20 );
+		add_action( 'admin_init', array( $plugin_admin, 'ui_revamp_announcement_popup_actions' ), 20 );
+		add_action( 'admin_footer', array( $plugin_admin, 'ui_revamp_announcement_popup' ), 10 );
 		add_action( 'admin_notices', array($plugin_admin, 'output_review_request_link'));
 		add_action('admin_footer-plugins.php', array($this, 'thwcfd_deactivation_form'));
         add_action('wp_ajax_thwcfd_deactivation_reason', array($this, 'thwcfd_deactivation_reason'));

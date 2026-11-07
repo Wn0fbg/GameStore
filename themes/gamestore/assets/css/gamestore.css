@@ -284,16 +284,16 @@ input[type="submit"] {
 }
 
 .game-result .game-featured-image {
-  width: 100%;
-  height: 340px;
   margin-bottom: 8px;
+  overflow: hidden;
+  border-radius: 8px;
 }
 
 .game-result .game-featured-image img {
-  border-radius: 8px;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .game-result a {

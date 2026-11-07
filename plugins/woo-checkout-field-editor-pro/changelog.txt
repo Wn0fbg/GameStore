@@ -1,4 +1,8 @@
 == Changelog ==
+= 2.2.1=
+* Added WooCommerce 11.2 compatibility.
+* Improved PHP 8.2 compatibility.
+
 = 2.2.0=
 * Added WooCommerce 11.0 compatibility.
 * Added WordPress 7.1 compatibility.

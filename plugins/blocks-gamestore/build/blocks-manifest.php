@@ -225,6 +225,10 @@ return array(
 			),
 			'title' => array(
 				'type' => 'string'
+			),
+			'product_category' => array(
+				'type' => 'string',
+				'default' => ''
 			)
 		),
 		'textdomain' => 'blocks-gamestore',
