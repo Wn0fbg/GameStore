@@ -1,6 +1,26 @@
 .wp-site-blocks > .wp-block-blocks-gamestore-block-latest-consoles {
 	margin-block-start: 120px !important;
 	margin-block-end: 120px !important;
+
+	@media (max-width: 1200px) {
+		margin-block-start: 60px !important;
+		margin-block-end: 60px !important;
+	}
+
+	@media (max-width: 1024px) {
+		margin-block-start: 50px !important;
+		margin-block-end: 50px !important;
+	}
+
+	@media (max-width: 768px) {
+		margin-block-start: 40px !important;
+		margin-block-end: 40px !important;
+	}
+
+	@media (max-width: 480px) {
+		margin-block-start: 30px !important;
+		margin-block-end: 30px !important;
+	}
 }
 
 .wp-block-blocks-gamestore-block-latest-consoles {
@@ -82,5 +102,8 @@
 				text-decoration: none;
 			}
 		}
+	}
+
+	@media (max-width: 1200px) {
 	}
 }

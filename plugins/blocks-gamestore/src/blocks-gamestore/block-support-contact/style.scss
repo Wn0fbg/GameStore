@@ -1,9 +1,52 @@
 .wp-site-blocks > .wp-block-blocks-gamestore-block-support-contact {
 	margin-block-start: 120px !important;
 	margin-block-end: 120px !important;
+
+	@media (max-width: 1200px) {
+		margin-block-start: 60px !important;
+		margin-block-end: 60px !important;
+	}
+
+	@media (max-width: 1024px) {
+		margin-block-start: 40px !important;
+		margin-block-end: 40px !important;
+	}
+
+	@media (max-width: 768px) {
+		margin-block-start: 30px !important;
+		margin-block-end: 30px !important;
+	}
+
+	@media (max-width: 480px) {
+		margin-block-start: 20px !important;
+		margin-block-end: 20px !important;
+	}
 }
 
 .wp-block-blocks-gamestore-block-support-contact {
+	padding-left: 24px;
+	padding-right: 24px;
+
+	@media (max-width: 1200px) {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	@media (max-width: 1024px) {
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+
+	@media (max-width: 768px) {
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+
+	@media (max-width: 480px) {
+		padding-left: 12px;
+		padding-right: 12px;
+	}
+
 	.support-contact-inner {
 		display: flex;
 		justify-content: space-between;
@@ -68,6 +111,141 @@
 				display: block;
 				border-radius: 24px;
 				opacity: 0.4;
+			}
+		}
+	}
+
+	@media (max-width: 1400px) {
+		.support-contact-inner {
+			gap: 10px;
+
+			.support-contact-left {
+				.support-contact-title {
+					padding-top: 40px;
+					font-size: 40px;
+					width: 650px;
+
+					&.l-title {
+						width: 418px;
+					}
+				}
+
+				.support-contact-description {
+					font-size: 18px;
+					margin-bottom: 15px;
+				}
+			}
+
+			.support-contact-right {
+				.image-support-wrapper {
+					width: 500px;
+					height: 300px;
+				}
+			}
+		}
+	}
+
+	@media (max-width: 1200px) {
+		.support-contact-inner {
+			.support-contact-left {
+				.support-contact-title {
+					padding-top: 35px;
+					font-size: 35px;
+					line-height: 1;
+					width: 500px;
+					margin-bottom: 10px;
+
+					&.l-title {
+						width: 318px;
+					}
+				}
+
+				.support-contact-description {
+					font-size: 16px;
+					width: 400px;
+					margin-bottom: 10px;
+				}
+			}
+
+			.support-contact-right {
+				.image-support-wrapper {
+					width: 400px;
+					height: 250px;
+				}
+			}
+		}
+	}
+
+	@media (max-width: 1000px) {
+		.support-contact-inner {
+			gap: 5px;
+
+			.support-contact-left {
+				.support-contact-title {
+					padding-top: 20px;
+					font-size: 30px;
+					width: 400px;
+
+					&.l-title {
+						width: 260px;
+					}
+				}
+
+				.support-contact-description {
+					font-size: 15px;
+					width: 350px;
+				}
+			}
+
+			.support-contact-right {
+				.image-support-wrapper {
+					width: 350px;
+					height: 200px;
+				}
+			}
+		}
+	}
+
+	@media (max-width: 800px) {
+		.support-contact-inner {
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			gap: 0;
+
+			.support-contact-left,
+			.support-contact-right {
+				width: 100%;
+				max-width: 300px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				text-align: center;
+			}
+
+			.support-contact-left {
+				.support-contact-title {
+					padding-top: 15px;
+					font-size: 25px;
+					width: 100%;
+
+					&.l-title {
+						width: 240px;
+					}
+				}
+
+				.support-contact-description {
+					font-size: 14px;
+					line-height: 1.4;
+				}
+			}
+
+			.support-contact-right {
+				.image-support-wrapper {
+					width: 300px;
+					height: 200px;
+					margin-top: 30px;
+				}
 			}
 		}
 	}

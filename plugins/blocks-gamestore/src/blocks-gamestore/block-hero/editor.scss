@@ -31,6 +31,20 @@
 	}
 }
 
+@media (max-width: 1200px) {
+	.hero-button {
+		padding: 15px 26px;
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 1000px) {
+	.hero-button {
+		padding: 5px 10px;
+		font-size: 12px;
+	}
+}
+
 .wp-block-blocks-gamestore-block-hero .hero-content .hero-title {
 	line-height: 1.2;
 }

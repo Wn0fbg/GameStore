@@ -6,6 +6,34 @@
   margin-bottom: clamp(3.75rem, 2.77rem + 4.92vw, 7.5rem) !important;
 }
 
+.wp-block-blocks-gamestore-block-faq {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+@media (max-width: 1200px) {
+  .wp-block-blocks-gamestore-block-faq {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+@media (max-width: 1024px) {
+  .wp-block-blocks-gamestore-block-faq {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+@media (max-width: 768px) {
+  .wp-block-blocks-gamestore-block-faq {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+@media (max-width: 480px) {
+  .wp-block-blocks-gamestore-block-faq {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
 .wp-block-blocks-gamestore-block-faq.no-margin {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
