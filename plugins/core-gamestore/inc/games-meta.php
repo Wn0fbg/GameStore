@@ -63,6 +63,14 @@ function add_gamestore_tab_content() {
         echo '</div>';
     }
     echo '</p>';
+
+    woocommerce_wp_text_input(array(
+        'id' => '_gamestore_game_cover_class',
+        'label' => __('Game Cover Class', 'core-gamestore'),
+        'desc_tip' => true,
+        'description' => __('Additional CSS class(es) for the cover <img> tag, separated by spaces.', 'core-gamestore'),
+        'placeholder' => 'e.g. game-cover game-cover--large'
+    ));
     
     echo '</div></div>';
 }
@@ -147,6 +155,15 @@ function save_gamestore_tab_fields($post_id) {
 
     if (isset($_POST['_gamestore_game_cover'])) {
         update_post_meta($post_id, '_gamestore_game_cover', esc_url_raw($_POST['_gamestore_game_cover']));
+    }
+
+    // ← новое поле: класс для обложки
+    if (isset($_POST['_gamestore_game_cover_class'])) {
+        update_post_meta(
+            $post_id,
+            '_gamestore_game_cover_class',
+            sanitize_text_field($_POST['_gamestore_game_cover_class'])
+        );
     }
 }
 

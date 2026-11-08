@@ -1,10 +1,37 @@
+:root :where(.is-layout-flow) > .wp-block-blocks-gamestore-block-cta {
+	margin-block-start: 280px !important;
+	margin-block-end: 120px !important;
+}
+
+.wp-site-blocks > .wp-block-blocks-gamestore-block-cta {
+	margin-block-start: 240px !important;
+	margin-block-end: 120px !important;
+
+	@media (max-width: 1200px) {
+		margin-block-start: 60px !important;
+		margin-block-end: 60px !important;
+	}
+
+	@media (max-width: 1024px) {
+		margin-block-start: 40px !important;
+		margin-block-end: 40px !important;
+	}
+
+	@media (max-width: 768px) {
+		margin-block-start: 30px !important;
+		margin-block-end: 30px !important;
+	}
+
+	@media (max-width: 480px) {
+		margin-block-start: 20px !important;
+		margin-block-end: 20px !important;
+	}
+}
+
 .wp-block-blocks-gamestore-block-cta {
 	position: relative;
 	background-size: cover;
-	margin-top: clamp(3.75rem, calc(2.77rem + 4.92vw), 7.5rem) !important;
-	margin-bottom: clamp(3.75rem, calc(2.77rem + 4.92vw), 7.5rem) !important;
-	padding-top: clamp(3.75rem, calc(2.77rem + 4.92vw), 7.5rem) !important;
-	padding-bottom: clamp(3.75rem, calc(2.77rem + 4.92vw), 7.5rem) !important;
+	padding: 30px !important;
 
 	&::before {
 		content: "";
@@ -108,10 +135,7 @@
 			}
 		}
 
-		// ===== АДАПТИВ =====
-
-		// Планшет / ноутбук — блок и ссылки в колонку
-		@media (max-width: 1200px) {
+		@media (max-width: 1400px) {
 			flex-direction: column;
 			align-items: stretch;
 			gap: 24px;
@@ -159,7 +183,7 @@
 				}
 
 				.links-list {
-					flex-direction: column;
+					justify-content: center;
 					align-items: center;
 					flex-wrap: nowrap;
 					width: 100%;
@@ -189,7 +213,6 @@
 			}
 		}
 
-		// Мобильный
 		@media (max-width: 768px) {
 			gap: 16px;
 
@@ -220,7 +243,7 @@
 					.link-item {
 						width: 100%;
 						max-width: 320px;
-						min-width: 160px;
+						min-width: 80px;
 						margin: 0;
 						padding: 0;
 						box-sizing: border-box;
@@ -230,15 +253,14 @@
 							width: 100%;
 							box-sizing: border-box;
 							text-align: center;
-							padding: 16px 24px;
-							font-size: 13px;
+							padding: 10px 16px;
+							font-size: 10px;
 						}
 					}
 				}
 			}
 		}
 
-		// Очень узкий мобильный
 		@media (max-width: 480px) {
 			gap: 12px;
 
@@ -264,12 +286,12 @@
 				}
 
 				.links-list {
-					gap: 10px;
+					gap: 12px;
 
 					.link-item {
 						width: 100%;
 						max-width: 320px;
-						min-width: 160px;
+						min-width: 70px;
 						margin: 0;
 						padding: 0;
 						box-sizing: border-box;
@@ -279,9 +301,8 @@
 							width: 100%;
 							box-sizing: border-box;
 							text-align: center;
-							padding: 14px 20px;
-							font-size: 12px;
-							letter-spacing: 0.1em;
+							padding: 10px 14px;
+							font-size: 8px;
 						}
 					}
 				}

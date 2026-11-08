@@ -1,6 +1,21 @@
 .wp-site-blocks > .wp-block-blocks-gamestore-bestseller-products {
-	margin-block-start: 120px !important;
 	margin-block-end: 120px !important;
+
+	@media (max-width: 1200px) {
+		margin-block-end: 60px !important;
+	}
+
+	@media (max-width: 1024px) {
+		margin-block-end: 60px !important;
+	}
+
+	@media (max-width: 768px) {
+		margin-block-end: 40px !important;
+	}
+
+	@media (max-width: 480px) {
+		margin-block-end: 30px !important;
+	}
 }
 
 .wp-block-blocks-gamestore-bestseller-products {

@@ -1,6 +1,7 @@
 /*!******************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/blocks-gamestore/block-latest-consoles/style.scss ***!
   \******************************************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
 .wp-site-blocks > .wp-block-blocks-gamestore-block-latest-consoles {
   margin-block-start: 120px !important;
   margin-block-end: 120px !important;
@@ -75,22 +76,31 @@
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 24px;
-  padding-left: 190px;
-  padding-right: 190px;
+  max-width: 1548px; /* 4 × 367 + 3 × 24 + padding */
+  margin-inline: auto;
+  padding-left: clamp(16px, 5vw, 190px);
+  padding-right: clamp(16px, 5vw, 190px);
 }
 .wp-block-blocks-gamestore-block-latest-consoles .consoles-list .console-item {
-  width: 367px;
-  height: 317px;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 367/357;
   border: 1px solid var(--divider-main, rgba(14, 13, 15, 0.08));
   border-radius: 16px;
   backdrop-filter: blur(8px);
   background: var(--background-48, rgba(250, 250, 250, 0.48));
   cursor: pointer;
+  overflow: hidden;
 }
 .wp-block-blocks-gamestore-block-latest-consoles .consoles-list .console-item .console-image {
   margin-bottom: 12px;
+}
+.wp-block-blocks-gamestore-block-latest-consoles .consoles-list .console-item .console-image img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 .wp-block-blocks-gamestore-block-latest-consoles .consoles-list .console-item .console-title {
   color: var(--text-primary, rgb(14, 13, 15));
@@ -98,6 +108,59 @@
   font-weight: 700;
   text-transform: uppercase;
   text-decoration: none;
+}
+@media (max-width: 1200px) {
+  .wp-block-blocks-gamestore-block-latest-consoles .consoles-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+  .wp-block-blocks-gamestore-block-latest-consoles p {
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+}
+@media (max-width: 1024px) {
+  .wp-block-blocks-gamestore-block-latest-consoles .consoles-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .wp-block-blocks-gamestore-block-latest-consoles p {
+    font-size: 16px;
+    margin-bottom: 32px;
+  }
+  .wp-block-blocks-gamestore-block-latest-consoles .consoles-list {
+    gap: 16px;
+  }
+  .wp-block-blocks-gamestore-block-latest-consoles .console-item {
+    border-radius: 12px;
+  }
+  .wp-block-blocks-gamestore-block-latest-consoles .console-item .console-title {
+    font-size: 14px;
+  }
+}
+@media (max-width: 480px) {
+  .wp-block-blocks-gamestore-block-latest-consoles h2 {
+    margin-bottom: 16px;
+  }
+  .wp-block-blocks-gamestore-block-latest-consoles p {
+    font-size: 15px;
+    margin-bottom: 24px;
+  }
+  .wp-block-blocks-gamestore-block-latest-consoles .consoles-list {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .wp-block-blocks-gamestore-block-latest-consoles .console-item {
+    border-radius: 10px;
+  }
+  .wp-block-blocks-gamestore-block-latest-consoles .console-item .console-image {
+    margin-bottom: 8px;
+  }
+  .wp-block-blocks-gamestore-block-latest-consoles .console-item .console-title {
+    font-size: 12px;
+  }
 }
 
 /*# sourceMappingURL=style-index.css.map*/

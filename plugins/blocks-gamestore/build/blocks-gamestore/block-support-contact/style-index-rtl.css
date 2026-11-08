@@ -66,6 +66,11 @@
 .wp-block-blocks-gamestore-block-support-contact .support-contact-inner.is-reverse {
   flex-direction: row-reverse;
 }
+@media (max-width: 800px) {
+  .wp-block-blocks-gamestore-block-support-contact .support-contact-inner.is-reverse {
+    flex-direction: column;
+  }
+}
 .wp-block-blocks-gamestore-block-support-contact .support-contact-inner .support-contact-left .support-contact-title {
   padding-top: 53px;
   font-size: 64px;

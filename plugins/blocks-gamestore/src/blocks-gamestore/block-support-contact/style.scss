@@ -54,6 +54,10 @@
 
 		&.is-reverse {
 			flex-direction: row-reverse;
+
+			@media (max-width: 800px) {
+				flex-direction: column;
+			}
 		}
 
 		.support-contact-left {
